@@ -1,0 +1,69 @@
+body {
+  background-image: linear-gradient(#e1e2f4, #c2b8e9);
+}
+
+.bg-sidebar {
+  background-image: linear-gradient(#c2b8e9, #9cc9f3);
+}
+
+.fa-2x {
+  font-size: 2rem;
+}
+.fa-color {
+  color: Dodgerblue;
+}
+
+.shadow {
+  -webkit-box-shadow: 0 2px 5px 2px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0 2px 5px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 5px 2px rgba(0, 0, 0, 0.3);
+}
+.rounded {
+  border-radius: 8px !important;
+}
+.p-home-btn {
+  padding-top: 2.3rem;
+  padding-bottom: 2.3rem;
+}
+
+.partner {
+  height: 80px;
+  width: 120px;
+}
+
+select.form-control option {
+  background-color: rgb(248, 248, 248);
+}
+
+.home-link {
+  text-decoration: underline;
+  color: rgb(49, 49, 49);
+}
+
+.map-border {
+  border: 3px solid black;
+}
+.contact-form-border {
+  border: 4px solid #5380ea;
+}
+input.form-control,
+textarea.form-control {
+  background-color: rgb(255, 255, 255);
+}
+.px-10 {
+  padding-right: 6rem !important;
+  padding-left: 6rem !important;
+}
+
+.btn-active {
+  background-color: #c4b8e8;
+  border-color: #c4b8e8;
+}
+
+.btn-n1 {
+  background-color: #b7e9e8;
+}
+
+.btn-n2 {
+  background-color: #d8e8b9;
+}
