@@ -68,9 +68,7 @@ class Index extends Component {
                 </li>
               </ul>
               <Link href="/contact">
-              <a  className="btn btn-dark btn-block">
-                Contact
-              </a>
+                <a className="btn btn-dark btn-block">Contact</a>
               </Link>
             </div>
             <div className="col-sm-9">
@@ -86,28 +84,34 @@ class Index extends Component {
             <div className="row justify-content-center">
               <ul className="list-inline py-2">
                 <li className="list-inline-item">
-                  <a href="http://mobilewebghana.org/" target="_blank">
-                    <img
-                      src="../static/img/partners/mwg.png"
-                      className="partner"
-                    />
-                  </a>
+                  <Link href="http://mobilewebghana.org/">
+                    <a target="_blank">
+                      <img
+                        src="../static/img/partners/mwg.png"
+                        className="partner"
+                      />
+                    </a>
+                  </Link>
                 </li>
                 <li className="list-inline-item">
-                  <a href="https://www.osmghana.org/" target="_blank">
-                    <img
-                      src="../static/img/partners/osmghana.png"
-                      className="partner"
-                    />
-                  </a>
+                  <Link href="https://www.osmghana.org/">
+                    <a target="_blank">
+                      <img
+                        src="../static/img/partners/osmghana.png"
+                        className="partner"
+                      />
+                    </a>
+                  </Link>
                 </li>
                 <li className="list-inline-item">
-                  <a href="https://www.hotosm.org/" target="_blank">
-                    <img
-                      src="../static/img/partners/hot.png"
-                      className="partner"
-                    />
-                  </a>
+                  <Link href="https://www.hotosm.org/">
+                    <a target="_blank">
+                      <img
+                        src="../static/img/partners/hot.png"
+                        className="partner"
+                      />
+                    </a>
+                  </Link>
                 </li>
               </ul>
             </div>

@@ -14,8 +14,8 @@ export default class MyDocument extends Document {
     return (
       <html>
         <Head>
-          <title>Open Cities Accra - Home</title>
-          <meta charset="utf-8" />
+          <title>Open Cities Accra </title>
+          <meta charSet="utf-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <link
             rel="stylesheet"

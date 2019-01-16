@@ -28,20 +28,15 @@ class Drainage extends Component {
                   className="btn-group btn-group-lg w-100 rounded"
                   role="group"
                 >
-                  <Link>
-                    <a href="/drainage" className="btn btn-active">
-                      Drainage
-                    </a>
+                  <Link href="/drainage">
+                    <a className="btn btn-active">Drainage</a>
                   </Link>
                   <Link href="/buildings">
                     <a className="btn btn-n1">Buildings</a>
                   </Link>
-                  <Link>
-                    <a href="/flood-history" className="btn btn-n2">
-                      Food History
-                    </a>
+                  <Link href="/flood-history">
+                    <a className="btn btn-n2">Food History</a>
                   </Link>
-                  >
                 </div>
 
                 <div className="py-2 px-2">
@@ -76,28 +71,34 @@ class Drainage extends Component {
             <div className="row justify-content-center">
               <ul className="list-inline py-2">
                 <li className="list-inline-item">
-                  <a href="http://mobilewebghana.org/" target="_blank">
-                    <img
-                      src="../static/img/partners/mwg.png"
-                      className="partner"
-                    />
-                  </a>
+                  <Link href="http://mobilewebghana.org/">
+                    <a target="_blank">
+                      <img
+                        src="../static/img/partners/mwg.png"
+                        className="partner"
+                      />
+                    </a>
+                  </Link>
                 </li>
                 <li className="list-inline-item">
-                  <a href="https://www.osmghana.org/" target="_blank">
-                    <img
-                      src="../static/img/partners/osmghana.png"
-                      className="partner"
-                    />
-                  </a>
+                  <Link href="https://www.osmghana.org/">
+                    <a target="_blank">
+                      <img
+                        src="../static/img/partners/osmghana.png"
+                        className="partner"
+                      />
+                    </a>
+                  </Link>
                 </li>
                 <li className="list-inline-item">
-                  <a href="https://www.hotosm.org/" target="_blank">
-                    <img
-                      src="../static/img/partners/hot.png"
-                      className="partner"
-                    />
-                  </a>
+                  <Link href="https://www.hotosm.org/">
+                    <a target="_blank">
+                      <img
+                        src="../static/img/partners/hot.png"
+                        className="partner"
+                      />
+                    </a>
+                  </Link>
                 </li>
               </ul>
             </div>
