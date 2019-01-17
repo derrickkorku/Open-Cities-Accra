@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "node server/server.js",
     "build": "next build ./src",
-    "start": "NODE_ENV=production node server/server.js",
+    "start": "node server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "heroku-postbuild": "next build ./src"
   },
