@@ -111,7 +111,7 @@
       "publicPath": "static/chunks/commons.d59d4e537a096be39d68.js"
     }
   ],
-  "@babel/runtime-corejs2/helpers/defineProperty": [
+  "./defineProperty": [
     {
       "id": 14,
       "name": "../node_modules/@babel/runtime-corejs2/helpers/defineProperty.js",
@@ -399,7 +399,7 @@
       "publicPath": "static/chunks/commons.d59d4e537a096be39d68.js"
     }
   ],
-  "./assertThisInitialized": [
+  "@babel/runtime-corejs2/helpers/assertThisInitialized": [
     {
       "id": 50,
       "name": "../node_modules/@babel/runtime-corejs2/helpers/assertThisInitialized.js",
@@ -471,7 +471,7 @@
       "publicPath": "static/chunks/commons.d59d4e537a096be39d68.js"
     }
   ],
-  "../../modules/_wks-ext": [
+  "./_wks-ext": [
     {
       "id": 59,
       "name": "../node_modules/core-js/library/modules/_wks-ext.js",
