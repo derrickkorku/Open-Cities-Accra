@@ -1,8 +1,24 @@
 import { Component } from "react";
 import Link from "next/link";
+import ReactMapGL, { NavigationControl } from "react-map-gl";
+const navStyle = {
+  position: "absolute",
+  top: 0,
+  left: 0,
+  padding: "10px"
+};
 class Index extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      viewport: {
+        width: "inherit",
+        height: "inherit",
+        latitude: 5.63689,
+        longitude: -0.23602,
+        zoom: 12.0
+      }
+    };
   }
 
   render() {
@@ -73,7 +89,21 @@ class Index extends Component {
             </div>
             <div className="col-sm-9">
               <div className="map-border" style={{ height: "600px" }}>
-                Map content here
+                <ReactMapGL
+                  mapboxApiAccessToken={
+                    "pk.eyJ1Ijoid2lzZG9tMDA2MyIsImEiOiJjanI1aWg0cGQwZTByM3dtc3J1OHJ3MGNqIn0.yjtKpgtEmgCkCcLvpH_tJg"
+                  }
+                  {...this.state.viewport}
+                  mapStyle="mapbox://styles/mapbox/streets-v9"
+                  onViewportChange={viewport => this.setState({ viewport })}
+                >
+                  {" "}
+                  <div className="nav" style={navStyle}>
+                    <NavigationControl
+                      onViewportChange={viewport => this.setState({ viewport })}
+                    />
+                  </div>
+                </ReactMapGL>
               </div>
             </div>
           </div>
