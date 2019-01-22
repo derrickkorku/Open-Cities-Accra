@@ -1,8 +1,22 @@
 import { Component } from "react";
 import Link from "next/link";
+import ReactMapGL from "react-map-gl";
 class Buildings extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      viewport: {
+        width: "inherit",
+        height: "inherit",
+        latitude: 5.63689,
+        longitude: -0.23602,
+        zoom: 17,
+        bearing: 9.6,
+
+        pitch: 60,
+        opacity: 1
+      }
+    };
   }
 
   render() {
@@ -60,7 +74,14 @@ class Buildings extends Component {
             </div>
             <div className="col-sm-7">
               <div className="map-border" style={{ height: "600px" }}>
-                Map content here
+                <ReactMapGL
+                  mapboxApiAccessToken={
+                    "pk.eyJ1Ijoid2lzZG9tMDA2MyIsImEiOiJjanI1aWg0cGQwZTByM3dtc3J1OHJ3MGNqIn0.yjtKpgtEmgCkCcLvpH_tJg"
+                  }
+                  {...this.state.viewport}
+                  mapStyle="mapbox://styles/wisdom0063/cjr7sq6mg0tie2rnr07rxsk7g"
+                  onViewportChange={viewport => this.setState({ viewport })}
+                />
               </div>
             </div>
           </div>

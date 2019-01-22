@@ -12,8 +12,8 @@ app.prepare().then(() => {
   server.get("*", (req, res) => {
     return handler(req, res);
   });
-  server.listen(process.env.PORT, err => {
+  server.listen(process.env.PORT || 5000, err => {
     if (err) throw err;
-    console.log(`> Ready on http://localhost:${process.env.PORT}`);
+    console.log(`> Ready on http://localhost:${process.env.PORT || 5000}`);
   });
 });

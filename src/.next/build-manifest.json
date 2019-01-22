@@ -1,47 +1,25 @@
 {
-  "devFiles": [],
+  "devFiles": [
+    "static/development/dll/dll_704a39911c0bfe3dbdb0.js"
+  ],
   "pages": {
     "/_app": [
-      "static/runtime/webpack-89179faa512dd01fbb62.js",
-      "static/chunks/commons.d59d4e537a096be39d68.js",
-      "static/css/styles.638ed2e4.chunk.css",
-      "static/chunks/styles.994953ce95c5eff176e5.js",
-      "static/runtime/main-701d2ac3de808c14949b.js"
-    ],
-    "/buildings": [
-      "static/runtime/webpack-89179faa512dd01fbb62.js",
-      "static/chunks/commons.d59d4e537a096be39d68.js",
-      "static/runtime/main-701d2ac3de808c14949b.js"
-    ],
-    "/contact": [
-      "static/runtime/webpack-89179faa512dd01fbb62.js",
-      "static/chunks/commons.d59d4e537a096be39d68.js",
-      "static/runtime/main-701d2ac3de808c14949b.js"
-    ],
-    "/drainage": [
-      "static/runtime/webpack-89179faa512dd01fbb62.js",
-      "static/chunks/commons.d59d4e537a096be39d68.js",
-      "static/runtime/main-701d2ac3de808c14949b.js"
-    ],
-    "/flood-history": [
-      "static/runtime/webpack-89179faa512dd01fbb62.js",
-      "static/chunks/commons.d59d4e537a096be39d68.js",
-      "static/runtime/main-701d2ac3de808c14949b.js"
-    ],
-    "/index": [
-      "static/runtime/webpack-89179faa512dd01fbb62.js",
-      "static/chunks/commons.d59d4e537a096be39d68.js",
-      "static/runtime/main-701d2ac3de808c14949b.js"
+      "static/runtime/webpack.js",
+      "static/css/styles.chunk.css",
+      "static/chunks/styles.js",
+      "static/runtime/main.js"
     ],
     "/_error": [
-      "static/runtime/webpack-89179faa512dd01fbb62.js",
-      "static/chunks/commons.d59d4e537a096be39d68.js",
-      "static/runtime/main-701d2ac3de808c14949b.js"
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
     ],
-    "/": [
-      "static/runtime/webpack-89179faa512dd01fbb62.js",
-      "static/chunks/commons.d59d4e537a096be39d68.js",
-      "static/runtime/main-701d2ac3de808c14949b.js"
+    "/buildings": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
+    ],
+    "/drainage": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
     ]
   }
 }
