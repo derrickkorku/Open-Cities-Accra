@@ -25423,8 +25423,7 @@ function (_Component) {
         height: "inherit",
         latitude: 5.63689,
         longitude: -0.23602,
-        zoom: 17,
-        bearing: 9.6,
+        zoom: 12,
         pitch: 60,
         opacity: 1
       }
@@ -25498,13 +25497,69 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_map_gl__WEBPACK_IMPORTED_MODULE_2__["default"], _extends({
         mapboxApiAccessToken: "pk.eyJ1Ijoid2lzZG9tMDA2MyIsImEiOiJjanI1aWg0cGQwZTByM3dtc3J1OHJ3MGNqIn0.yjtKpgtEmgCkCcLvpH_tJg"
       }, this.state.viewport, {
-        mapStyle: "mapbox://styles/wisdom0063/cjr7sq6mg0tie2rnr07rxsk7g",
+        mapStyle: "mapbox://styles/mapbox/streets-v9",
         onViewportChange: function onViewportChange(viewport) {
           return _this2.setState({
             viewport: viewport
           });
         }
-      })))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_map_gl__WEBPACK_IMPORTED_MODULE_2__["Marker"], {
+        latitude: "5.53689",
+        longitude: "-0.21602"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "https://img.icons8.com/color/48/000000/marker.png",
+        width: "10",
+        height: "10"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_map_gl__WEBPACK_IMPORTED_MODULE_2__["Marker"], {
+        latitude: "5.63799",
+        longitude: "-0.23602"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "https://img.icons8.com/color/48/000000/marker.png",
+        width: "10",
+        height: "10"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_map_gl__WEBPACK_IMPORTED_MODULE_2__["Marker"], {
+        latitude: "5.63749",
+        longitude: "-0.23602"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "https://img.icons8.com/color/48/000000/marker.png",
+        width: "10",
+        height: "10"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_map_gl__WEBPACK_IMPORTED_MODULE_2__["Marker"], {
+        latitude: "5.61499",
+        longitude: "-0.25607"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "https://img.icons8.com/color/48/000000/marker.png",
+        width: "10",
+        height: "10"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_map_gl__WEBPACK_IMPORTED_MODULE_2__["Marker"], {
+        latitude: "5.63719",
+        longitude: "-0.26662"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "https://img.icons8.com/color/48/000000/marker.png",
+        width: "10",
+        height: "10"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_map_gl__WEBPACK_IMPORTED_MODULE_2__["Marker"], {
+        latitude: "5.69749",
+        longitude: "-0.23912"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "https://img.icons8.com/color/48/000000/marker.png",
+        width: "10",
+        height: "10"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_map_gl__WEBPACK_IMPORTED_MODULE_2__["Marker"], {
+        latitude: "5.63749",
+        longitude: "-0.23612"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "https://img.icons8.com/color/48/000000/marker.png",
+        width: "10",
+        height: "10"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_map_gl__WEBPACK_IMPORTED_MODULE_2__["Marker"], {
+        latitude: "5.63599",
+        longitude: "-0.23603"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "https://img.icons8.com/color/48/000000/marker.png",
+        width: "10",
+        height: "10"
+      }))))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("center", null, "Powered by:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row justify-content-center"

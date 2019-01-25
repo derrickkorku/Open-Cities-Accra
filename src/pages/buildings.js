@@ -1,6 +1,6 @@
 import { Component } from "react";
 import Link from "next/link";
-import ReactMapGL from "react-map-gl";
+import ReactMapGL, { Marker } from "react-map-gl";
 class Buildings extends Component {
   constructor(props) {
     super(props);
@@ -10,8 +10,7 @@ class Buildings extends Component {
         height: "inherit",
         latitude: 5.63689,
         longitude: -0.23602,
-        zoom: 17,
-        bearing: 9.6,
+        zoom: 12,
 
         pitch: 60,
         opacity: 1
@@ -79,9 +78,67 @@ class Buildings extends Component {
                     "pk.eyJ1Ijoid2lzZG9tMDA2MyIsImEiOiJjanI1aWg0cGQwZTByM3dtc3J1OHJ3MGNqIn0.yjtKpgtEmgCkCcLvpH_tJg"
                   }
                   {...this.state.viewport}
-                  mapStyle="mapbox://styles/wisdom0063/cjr7sq6mg0tie2rnr07rxsk7g"
+                  mapStyle="mapbox://styles/mapbox/streets-v9"
                   onViewportChange={viewport => this.setState({ viewport })}
-                />
+                >
+                  {" "}
+                  <Marker latitude="5.53689" longitude="-0.21602">
+                    <img
+                      src="https://img.icons8.com/color/48/000000/marker.png"
+                      width="10"
+                      height="10"
+                    />
+                  </Marker>
+                  <Marker latitude="5.63799" longitude="-0.23602">
+                    <img
+                      src="https://img.icons8.com/color/48/000000/marker.png"
+                      width="10"
+                      height="10"
+                    />
+                  </Marker>
+                  <Marker latitude="5.63749" longitude="-0.23602">
+                    <img
+                      src="https://img.icons8.com/color/48/000000/marker.png"
+                      width="10"
+                      height="10"
+                    />
+                  </Marker>
+                  <Marker latitude="5.61499" longitude="-0.25607">
+                    <img
+                      src="https://img.icons8.com/color/48/000000/marker.png"
+                      width="10"
+                      height="10"
+                    />
+                  </Marker>
+                  <Marker latitude="5.63719" longitude="-0.26662">
+                    <img
+                      src="https://img.icons8.com/color/48/000000/marker.png"
+                      width="10"
+                      height="10"
+                    />
+                  </Marker>
+                  <Marker latitude="5.69749" longitude="-0.23912">
+                    <img
+                      src="https://img.icons8.com/color/48/000000/marker.png"
+                      width="10"
+                      height="10"
+                    />
+                  </Marker>
+                  <Marker latitude="5.63749" longitude="-0.23612">
+                    <img
+                      src="https://img.icons8.com/color/48/000000/marker.png"
+                      width="10"
+                      height="10"
+                    />
+                  </Marker>
+                  <Marker latitude="5.63599" longitude="-0.23603">
+                    <img
+                      src="https://img.icons8.com/color/48/000000/marker.png"
+                      width="10"
+                      height="10"
+                    />
+                  </Marker>
+                </ReactMapGL>
               </div>
             </div>
           </div>
