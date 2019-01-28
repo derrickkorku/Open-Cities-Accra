@@ -5,8 +5,10 @@ const navStyle = {
   position: "absolute",
   top: 0,
   left: 0,
-  padding: "10px"
+  padding: "20px"
 };
+import fetch from "isomorphic-unfetch";
+const base_url = "http://localhost:5000";
 class Index extends Component {
   constructor(props) {
     super(props);
@@ -16,9 +18,15 @@ class Index extends Component {
         height: "inherit",
         latitude: 5.63689,
         longitude: -0.23602,
-        zoom: 12.0
+        zoom: 15.3
       }
     };
+  }
+  static async getInitialProps() {
+    const InduestryRes = await fetch(base_url + "/static/data/derrick.json");
+    const InduestryData = await InduestryRes.json();
+    // console.log(InduestryData);
+    return { InduestryData };
   }
 
   render() {
@@ -103,62 +111,23 @@ class Index extends Component {
                       onViewportChange={viewport => this.setState({ viewport })}
                     />
                   </div>
-                  <Marker latitude="5.53689" longitude="-0.21602">
-                    <img
-                      src="https://img.icons8.com/color/48/000000/marker.png"
-                      width="10"
-                      height="10"
-                    />
-                  </Marker>
-                  <Marker latitude="5.63799" longitude="-0.23602">
-                    <img
-                      src="https://img.icons8.com/color/48/000000/marker.png"
-                      width="10"
-                      height="10"
-                    />
-                  </Marker>
-                  <Marker latitude="5.63749" longitude="-0.23602">
-                    <img
-                      src="https://img.icons8.com/color/48/000000/marker.png"
-                      width="10"
-                      height="10"
-                    />
-                  </Marker>
-                  <Marker latitude="5.61499" longitude="-0.25607">
-                    <img
-                      src="https://img.icons8.com/color/48/000000/marker.png"
-                      width="10"
-                      height="10"
-                    />
-                  </Marker>
-                  <Marker latitude="5.63719" longitude="-0.26662">
-                    <img
-                      src="https://img.icons8.com/color/48/000000/marker.png"
-                      width="10"
-                      height="10"
-                    />
-                  </Marker>
-                  <Marker latitude="5.69749" longitude="-0.23912">
-                    <img
-                      src="https://img.icons8.com/color/48/000000/marker.png"
-                      width="10"
-                      height="10"
-                    />
-                  </Marker>
-                  <Marker latitude="5.63749" longitude="-0.23612">
-                    <img
-                      src="https://img.icons8.com/color/48/000000/marker.png"
-                      width="10"
-                      height="10"
-                    />
-                  </Marker>
-                  <Marker latitude="5.63599" longitude="-0.23603">
-                    <img
-                      src="https://img.icons8.com/color/48/000000/marker.png"
-                      width="10"
-                      height="10"
-                    />
-                  </Marker>
+                  {this.props.InduestryData.features.map(value => {
+                    return value.geometry.coordinates.map((val, index) => {
+                      return (
+                        <Marker
+                          latitude={val[index][1]}
+                          longitude={val[index][0]}
+                          key={index}
+                        >
+                          <img
+                            src="https://img.icons8.com/color/48/000000/marker.png"
+                            width="20"
+                            height="20"
+                          />
+                        </Marker>
+                      );
+                    });
+                  })}
                 </ReactMapGL>
               </div>
             </div>
