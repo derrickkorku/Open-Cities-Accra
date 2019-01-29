@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -168,7 +168,7 @@ function (_Component) {
         height: "inherit",
         latitude: 5.63689,
         longitude: -0.23602,
-        zoom: 15.3
+        zoom: 15.6
       }
     };
     return _this;
@@ -252,7 +252,7 @@ function (_Component) {
             viewport: viewport
           });
         }
-      }), " ", react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "nav",
         style: navStyle
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_map_gl__WEBPACK_IMPORTED_MODULE_3__["NavigationControl"], {
@@ -261,19 +261,7 @@ function (_Component) {
             viewport: viewport
           });
         }
-      })), this.props.InduestryData.features.map(function (value) {
-        return value.geometry.coordinates.map(function (val, index) {
-          return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_map_gl__WEBPACK_IMPORTED_MODULE_3__["Marker"], {
-            latitude: val[index][1],
-            longitude: val[index][0],
-            key: index
-          }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
-            src: "https://img.icons8.com/color/48/000000/marker.png",
-            width: "20",
-            height: "20"
-          }));
-        });
-      })))))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("footer", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+      }))))))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("footer", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "container"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("center", null, "Powered by:"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "row justify-content-center"
@@ -356,7 +344,7 @@ function (_Component) {
 
 /***/ }),
 
-/***/ 3:
+/***/ 5:
 /*!******************************!*\
   !*** multi ./pages/index.js ***!
   \******************************/

@@ -1,6 +1,6 @@
 import { Component } from "react";
 import Link from "next/link";
-import ReactMapGL, { NavigationControl, Marker } from "react-map-gl";
+import ReactMapGL, { NavigationControl, Marker, Popup } from "react-map-gl";
 const navStyle = {
   position: "absolute",
   top: 0,
@@ -18,7 +18,7 @@ class Index extends Component {
         height: "inherit",
         latitude: 5.63689,
         longitude: -0.23602,
-        zoom: 15.3
+        zoom: 15.6
       }
     };
   }
@@ -105,29 +105,11 @@ class Index extends Component {
                   mapStyle="mapbox://styles/mapbox/streets-v9"
                   onViewportChange={viewport => this.setState({ viewport })}
                 >
-                  {" "}
                   <div className="nav" style={navStyle}>
                     <NavigationControl
                       onViewportChange={viewport => this.setState({ viewport })}
                     />
                   </div>
-                  {this.props.InduestryData.features.map(value => {
-                    return value.geometry.coordinates.map((val, index) => {
-                      return (
-                        <Marker
-                          latitude={val[index][1]}
-                          longitude={val[index][0]}
-                          key={index}
-                        >
-                          <img
-                            src="https://img.icons8.com/color/48/000000/marker.png"
-                            width="20"
-                            height="20"
-                          />
-                        </Marker>
-                      );
-                    });
-                  })}
                 </ReactMapGL>
               </div>
             </div>

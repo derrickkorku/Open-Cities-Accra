@@ -1,6 +1,14 @@
 import { Component } from "react";
 import Link from "next/link";
-import ReactMapGL, { Marker } from "react-map-gl";
+import ReactMapGL, { Marker, Popup, NavigationControl } from "react-map-gl";
+const navStyle = {
+  position: "absolute",
+  top: 0,
+  left: 0,
+  padding: "20px"
+};
+import fetch from "isomorphic-unfetch";
+const base_url = "http://localhost:5000";
 class Buildings extends Component {
   constructor(props) {
     super(props);
@@ -10,12 +18,58 @@ class Buildings extends Component {
         height: "inherit",
         latitude: 5.63689,
         longitude: -0.23602,
-        zoom: 12,
-
-        pitch: 60,
-        opacity: 1
-      }
+        zoom: 15.6
+      },
+      popupInfo: null,
+      placeInfo: null
     };
+    this.renderPopup = this.renderPopup.bind(this);
+  }
+
+  static async getInitialProps() {
+    const buildingsRes = await fetch(base_url + "/static/data/derrick.json");
+    const buildingData = await buildingsRes.json();
+    // console.log(InduestryData);
+    return { buildingData };
+  }
+
+  renderPopup() {
+    console.log(this.state.placeInfo);
+    return (
+      this.state.popupInfo && (
+        <Popup
+          tipSize={10}
+          anchor="bottom-right"
+          longitude={this.state.popupInfo.state.longitude}
+          latitude={this.state.popupInfo.state.latitude}
+          onClose={() => this.setState({ popupInfo: null })}
+          closeOnClick={true}
+        >
+          <table width="200">
+            <tbody>
+              <tr>
+                <th>Community</th>
+                <td style={{ paddingLeft: "5px" }}>
+                  {this.state.placeInfo.community}
+                </td>
+              </tr>
+              <tr>
+                <th tyle={{ width: "80px" }}>Building material</th>
+                <td style={{ paddingLeft: "5px" }}>
+                  {this.state.placeInfo.building_material}
+                </td>
+              </tr>
+              <tr>
+                <th>Roof material</th>
+                <td style={{ paddingLeft: "5px" }}>
+                  {this.state.placeInfo.roof_material}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </Popup>
+      )
+    );
   }
 
   render() {
@@ -81,63 +135,49 @@ class Buildings extends Component {
                   mapStyle="mapbox://styles/mapbox/streets-v9"
                   onViewportChange={viewport => this.setState({ viewport })}
                 >
-                  {" "}
-                  <Marker latitude="5.53689" longitude="-0.21602">
-                    <img
-                      src="https://img.icons8.com/color/48/000000/marker.png"
-                      width="10"
-                      height="10"
+                  {this.props.buildingData.features.map(value => {
+                    return value.geometry.coordinates.map((val, index) => {
+                      return (
+                        <Marker
+                          latitude={val[index][1]}
+                          longitude={val[index][0]}
+                          key={index}
+                        >
+                          <img
+                            src="../static/img/home.png"
+                            width="20"
+                            height="20"
+                            onClick={() => {
+                              console.log("hhhheheheheh");
+                              this.setState({
+                                popupInfo: {
+                                  state: {
+                                    longitude: val[index][0],
+                                    latitude: val[index][1]
+                                  }
+                                },
+                                placeInfo: {
+                                  community: value.properties["addr:community"],
+                                  building_material:
+                                    value.properties["building:material"] ||
+                                    null,
+                                  roof_material:
+                                    value.properties["roof:material"] || null
+                                }
+                              });
+                            }}
+                          />
+                        </Marker>
+                      );
+                    });
+                  })}
+
+                  <div className="nav" style={navStyle}>
+                    <NavigationControl
+                      onViewportChange={viewport => this.setState({ viewport })}
                     />
-                  </Marker>
-                  <Marker latitude="5.63799" longitude="-0.23602">
-                    <img
-                      src="https://img.icons8.com/color/48/000000/marker.png"
-                      width="10"
-                      height="10"
-                    />
-                  </Marker>
-                  <Marker latitude="5.63749" longitude="-0.23602">
-                    <img
-                      src="https://img.icons8.com/color/48/000000/marker.png"
-                      width="10"
-                      height="10"
-                    />
-                  </Marker>
-                  <Marker latitude="5.61499" longitude="-0.25607">
-                    <img
-                      src="https://img.icons8.com/color/48/000000/marker.png"
-                      width="10"
-                      height="10"
-                    />
-                  </Marker>
-                  <Marker latitude="5.63719" longitude="-0.26662">
-                    <img
-                      src="https://img.icons8.com/color/48/000000/marker.png"
-                      width="10"
-                      height="10"
-                    />
-                  </Marker>
-                  <Marker latitude="5.69749" longitude="-0.23912">
-                    <img
-                      src="https://img.icons8.com/color/48/000000/marker.png"
-                      width="10"
-                      height="10"
-                    />
-                  </Marker>
-                  <Marker latitude="5.63749" longitude="-0.23612">
-                    <img
-                      src="https://img.icons8.com/color/48/000000/marker.png"
-                      width="10"
-                      height="10"
-                    />
-                  </Marker>
-                  <Marker latitude="5.63599" longitude="-0.23603">
-                    <img
-                      src="https://img.icons8.com/color/48/000000/marker.png"
-                      width="10"
-                      height="10"
-                    />
-                  </Marker>
+                  </div>
+                  {this.renderPopup()}
                 </ReactMapGL>
               </div>
             </div>
