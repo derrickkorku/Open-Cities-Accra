@@ -22,12 +22,6 @@ class Index extends Component {
       }
     };
   }
-  static async getInitialProps() {
-    const InduestryRes = await fetch(base_url + "/static/data/derrick.json");
-    const InduestryData = await InduestryRes.json();
-    // console.log(InduestryData);
-    return { InduestryData };
-  }
 
   render() {
     return (
