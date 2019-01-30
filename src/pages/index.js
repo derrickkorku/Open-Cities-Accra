@@ -8,7 +8,7 @@ const navStyle = {
   padding: "20px"
 };
 import fetch from "isomorphic-unfetch";
-const base_url = "http://localhost:5000";
+const base_url = "https://ocav1-app.herokuapp.com";
 class Index extends Component {
   constructor(props) {
     super(props);
@@ -19,8 +19,57 @@ class Index extends Component {
         latitude: 5.63689,
         longitude: -0.23602,
         zoom: 15.6
-      }
+      },
+      popupInfo: null,
+      placeInfo: null
     };
+    this.renderPopup = this.renderPopup.bind(this);
+  }
+
+  static async getInitialProps() {
+    const buildingsRes = await fetch(base_url + "/static/data/derrick.json");
+    const buildingData = await buildingsRes.json();
+    // console.log(InduestryData);
+    return { buildingData };
+  }
+
+  renderPopup() {
+    console.log(this.state.placeInfo);
+    return (
+      this.state.popupInfo && (
+        <Popup
+          tipSize={10}
+          anchor="bottom-right"
+          longitude={this.state.popupInfo.state.longitude}
+          latitude={this.state.popupInfo.state.latitude}
+          onClose={() => this.setState({ popupInfo: null })}
+          closeOnClick={true}
+        >
+          <table width="200">
+            <tbody>
+              <tr>
+                <th>Community</th>
+                <td style={{ paddingLeft: "5px" }}>
+                  {this.state.placeInfo.community}
+                </td>
+              </tr>
+              <tr>
+                <th tyle={{ width: "80px" }}>Building material</th>
+                <td style={{ paddingLeft: "5px" }}>
+                  {this.state.placeInfo.building_material}
+                </td>
+              </tr>
+              <tr>
+                <th>Roof material</th>
+                <td style={{ paddingLeft: "5px" }}>
+                  {this.state.placeInfo.roof_material}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </Popup>
+      )
+    );
   }
 
   render() {
@@ -99,11 +148,49 @@ class Index extends Component {
                   mapStyle="mapbox://styles/mapbox/streets-v9"
                   onViewportChange={viewport => this.setState({ viewport })}
                 >
+                  {this.props.buildingData.features.map(value => {
+                    return value.geometry.coordinates.map((val, index) => {
+                      return (
+                        <Marker
+                          latitude={val[index][1]}
+                          longitude={val[index][0]}
+                          key={index}
+                        >
+                          <img
+                            src="../static/img/home.png"
+                            width="20"
+                            height="20"
+                            onClick={() => {
+                              console.log("hhhheheheheh");
+                              this.setState({
+                                popupInfo: {
+                                  state: {
+                                    longitude: val[index][0],
+                                    latitude: val[index][1]
+                                  }
+                                },
+                                placeInfo: {
+                                  community: value.properties["addr:community"],
+                                  building_material:
+                                    value.properties["building:material"] ||
+                                    null,
+                                  roof_material:
+                                    value.properties["roof:material"] || null
+                                }
+                              });
+                            }}
+                          />
+                        </Marker>
+                      );
+                    });
+                  })}
+
                   <div className="nav" style={navStyle}>
                     <NavigationControl
                       onViewportChange={viewport => this.setState({ viewport })}
                     />
                   </div>
+                  {this.renderPopup()}
                 </ReactMapGL>
               </div>
             </div>
