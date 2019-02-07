@@ -1,0 +1,243 @@
+import { Component } from "react";
+import Link from "next/link";
+import ReactMapGL, { NavigationControl, Marker, Popup } from "react-map-gl";
+const navStyle = {
+  position: "absolute",
+  top: 0,
+  left: 0,
+  padding: "20px"
+};
+import fetch from "isomorphic-unfetch";
+const base_url = "https://ocav1-app.herokuapp.com";
+class Index extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      viewport: {
+        width: "inherit",
+        height: "inherit",
+        latitude: 5.63689,
+        longitude: -0.23602,
+        zoom: 15.6
+      },
+      popupInfo: null,
+      placeInfo: null
+    };
+    this.renderPopup = this.renderPopup.bind(this);
+  }
+
+  static async getInitialProps() {
+    const buildingsRes = await fetch(base_url + "/static/data/derrick.json");
+    const buildingData = await buildingsRes.json();
+    // console.log(InduestryData);
+    return { buildingData };
+  }
+
+  renderPopup() {
+    console.log(this.state.placeInfo);
+    return (
+      this.state.popupInfo && (
+        <Popup
+          tipSize={10}
+          anchor="bottom-right"
+          longitude={this.state.popupInfo.state.longitude}
+          latitude={this.state.popupInfo.state.latitude}
+          onClose={() => this.setState({ popupInfo: null })}
+          closeOnClick={true}
+        >
+          <table width="200">
+            <tbody>
+              <tr>
+                <th>Community</th>
+                <td style={{ paddingLeft: "5px" }}>
+                  {this.state.placeInfo.community}
+                </td>
+              </tr>
+              <tr>
+                <th tyle={{ width: "80px" }}>Building material</th>
+                <td style={{ paddingLeft: "5px" }}>
+                  {this.state.placeInfo.building_material}
+                </td>
+              </tr>
+              <tr>
+                <th>Roof material</th>
+                <td style={{ paddingLeft: "5px" }}>
+                  {this.state.placeInfo.roof_material}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </Popup>
+      )
+    );
+  }
+
+  render() {
+    return (
+      <div>
+        <div className="container mt-3">
+          <div className="row">
+            <div className="col-sm-3" style={{ marginTop: "0.8em" }}>
+              <center>
+                <Link href="/">
+                  <a className="home-link">HOME</a>
+                </Link>
+              </center>
+            </div>
+            <div className="col-sm-9">
+              <center>
+                <select className="form-control mb-3 text-center w-50 rounded">
+                  <option>-- Select Community --</option>
+                  <option>Akweteyman</option>
+                  <option>Alogboshie</option>
+                  <option>Alajo</option>
+                  <option>Nima</option>
+                </select>
+              </center>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-sm-3">
+              <ul className="list-unstyled px-3 py-3 rounded bg-sidebar shadow">
+                <li className="mb-3">
+                  <input
+                    type="search"
+                    className="form-control rounded"
+                    placeholder="Search location..."
+                  />
+                </li>
+                <li className="mb-3">
+                  <Link href="/buildings">
+                    <a className="btn btn-lg btn-block btn-light rounded p-home-btn">
+                      <i className="fas fa-home fa-2x fa-color" />
+                      <br />
+                      Building
+                    </a>
+                  </Link>
+                </li>
+                <li className="mb-3">
+                  <Link href="/flood-history">
+                    <a className="btn btn-lg btn-block btn-light rounded p-home-btn">
+                      <i className="fab fa-fort-awesome-alt fa-2x fa-color" />
+                      <br />
+                      Flood History
+                    </a>
+                  </Link>
+                </li>
+                <li className="">
+                  <Link href="/drainage">
+                    <a className="btn btn-lg btn-block btn-lg btn-light rounded p-home-btn">
+                      <i className="fab fa-schlix fa-2x fa-color" />
+                      <br />
+                      Drainage Points
+                    </a>
+                  </Link>
+                </li>
+              </ul>
+              <Link href="/contact">
+                <a className="btn btn-dark btn-block">Contact</a>
+              </Link>
+            </div>
+            <div className="col-sm-9">
+              <div className="map-border" style={{ height: "600px" }}>
+                <ReactMapGL
+                  mapboxApiAccessToken={
+                    "pk.eyJ1Ijoid2lzZG9tMDA2MyIsImEiOiJjanI1aWg0cGQwZTByM3dtc3J1OHJ3MGNqIn0.yjtKpgtEmgCkCcLvpH_tJg"
+                  }
+                  {...this.state.viewport}
+                  mapStyle="mapbox://styles/mapbox/streets-v9"
+                  onViewportChange={viewport => this.setState({ viewport })}
+                >
+                  {this.props.buildingData.features.map(value => {
+                    return value.geometry.coordinates.map((val, index) => {
+                      return (
+                        <Marker
+                          latitude={val[index][1]}
+                          longitude={val[index][0]}
+                          key={index}
+                        >
+                          <img
+                            src="../static/img/home.png"
+                            width="20"
+                            height="20"
+                            onClick={() => {
+                              console.log("hhhheheheheh");
+                              this.setState({
+                                popupInfo: {
+                                  state: {
+                                    longitude: val[index][0],
+                                    latitude: val[index][1]
+                                  }
+                                },
+                                placeInfo: {
+                                  community: value.properties["addr:community"],
+                                  building_material:
+                                    value.properties["building:material"] ||
+                                    null,
+                                  roof_material:
+                                    value.properties["roof:material"] || null
+                                }
+                              });
+                            }}
+                          />
+                        </Marker>
+                      );
+                    });
+                  })}
+
+                  <div className="nav" style={navStyle}>
+                    <NavigationControl
+                      onViewportChange={viewport => this.setState({ viewport })}
+                    />
+                  </div>
+                  {this.renderPopup()}
+                </ReactMapGL>
+              </div>
+            </div>
+          </div>
+        </div>
+        <footer>
+          <div className="container">
+            <center>Powered by:</center>
+            <div className="row justify-content-center">
+              <ul className="list-inline py-2">
+                <li className="list-inline-item">
+                  <Link href="http://mobilewebghana.org/">
+                    <a target="_blank">
+                      <img
+                        src="../static/img/partners/mwg.png"
+                        className="partner"
+                      />
+                    </a>
+                  </Link>
+                </li>
+                <li className="list-inline-item">
+                  <Link href="https://www.osmghana.org/">
+                    <a target="_blank">
+                      <img
+                        src="../static/img/partners/osmghana.png"
+                        className="partner"
+                      />
+                    </a>
+                  </Link>
+                </li>
+                <li className="list-inline-item">
+                  <Link href="https://www.hotosm.org/">
+                    <a target="_blank">
+                      <img
+                        src="../static/img/partners/hot.png"
+                        className="partner"
+                      />
+                    </a>
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </footer>
+      </div>
+    );
+  }
+}
+
+export default Index;
