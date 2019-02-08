@@ -1,7 +1,6 @@
 import { Component } from "react";
 import Link from "next/link";
 import ReactMapGL, { NavigationControl, Marker, Popup } from "react-map-gl";
-//import {Config} from "../../config/config"
 const navStyle = {
   position: "absolute",
   top: 0,

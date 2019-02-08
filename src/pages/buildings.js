@@ -1,7 +1,6 @@
 import { Component } from "react";
 import Link from "next/link";
 import ReactMapGL, { Marker, Popup, NavigationControl } from "react-map-gl";
-//import {Config} from "../../config/config"
 const navStyle = {
   position: "absolute",
   top: 0,
@@ -9,7 +8,7 @@ const navStyle = {
   padding: "20px"
 };
 import fetch from "isomorphic-unfetch";
-const base_url = "http://localhost:5000" || "https://ocav1-app.herokuapp.com";
+const base_url ="https://ocav1-app.herokuapp.com" || "http://localhost:5000" 
 class Buildings extends Component {
   constructor(props) {
     super(props);

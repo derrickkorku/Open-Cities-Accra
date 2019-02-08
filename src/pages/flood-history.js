@@ -1,6 +1,5 @@
 import { Component } from "react";
 import Link from "next/link";
-import {Config} from "../../config/config"
 class FloodHistory extends Component {
   constructor(props) {
     super(props);
