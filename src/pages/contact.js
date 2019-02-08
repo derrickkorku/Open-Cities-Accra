@@ -1,8 +1,25 @@
 import { Component } from "react";
 import Link from "next/link";
+import fetch from "isomorphic-unfetch";
+const base_url = "http://localhost:5000";
 class Contact extends Component {
   constructor(props) {
     super(props);
+    this.sendEmail = this.sendEmail.bind(this);
+  }
+
+  async sendEmail(e) {
+    window.alert("hhhhhhh");
+    e.preventDefault();
+    const drainageRes = await fetch(base_url + "/send-email", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ hungry: true })
+    });
+    const drainageData = await drainageRes.json();
+    console.log(drainageData);
   }
 
   render() {
@@ -18,7 +35,11 @@ class Contact extends Component {
           </div>
           <div className="row justify-content-center mb-2">
             <div className="col-sm-10">
-              <form className="contact-form-border p-4">
+              <form
+              method="POST"
+                className="contact-form-border p-4"
+                onSubmit={this.sendEmail}
+              >
                 <div className="form-row">
                   <div className="col-12 form-group">
                     <h5>Send Us a Message</h5>

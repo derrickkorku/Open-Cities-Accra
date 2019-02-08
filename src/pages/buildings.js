@@ -8,7 +8,8 @@ const navStyle = {
   padding: "20px"
 };
 import fetch from "isomorphic-unfetch";
-const base_url = "https://ocav1-app.herokuapp.com";
+// const base_url = "https://ocav1-app.herokuapp.com";
+const base_url = "http://localhost:5000"
 class Buildings extends Component {
   constructor(props) {
     super(props);
@@ -45,7 +46,7 @@ class Buildings extends Component {
           onClose={() => this.setState({ popupInfo: null })}
           closeOnClick={true}
         >
-          <table width="200">
+          <table width="300">
             <tbody>
               <tr>
                 <th>Community</th>
@@ -89,7 +90,7 @@ class Buildings extends Component {
             </div>
           </div>
           <div className="row">
-            <div className="col-sm-5">
+            <div className="col-sm-4">
               <ul className="list-unstyled rounded bg-sidebar shadow">
                 <div
                   className="btn-group btn-group-lg w-100 rounded"
@@ -125,8 +126,8 @@ class Buildings extends Component {
                 </Link>
               </center>
             </div>
-            <div className="col-sm-7">
-              <div className="map-border" style={{ height: "600px" }}>
+            <div className="col-sm-8">
+              <div className="map-border" style={{ height: "750px" }}>
                 <ReactMapGL
                   mapboxApiAccessToken={
                     "pk.eyJ1Ijoid2lzZG9tMDA2MyIsImEiOiJjanI1aWg0cGQwZTByM3dtc3J1OHJ3MGNqIn0.yjtKpgtEmgCkCcLvpH_tJg"
