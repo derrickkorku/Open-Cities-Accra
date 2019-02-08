@@ -1,6 +1,7 @@
 import { Component } from "react";
 import Link from "next/link";
 import ReactMapGL, { NavigationControl, Marker, Popup } from "react-map-gl";
+//import {Config} from "../../config/config"
 const navStyle = {
   position: "absolute",
   top: 0,
@@ -8,7 +9,8 @@ const navStyle = {
   padding: "20px"
 };
 import fetch from "isomorphic-unfetch";
-const base_url = "https://ocav1-app.herokuapp.com";
+const base_url ="https://ocav1-app.herokuapp.com" || "http://localhost:5000" 
+
 class Index extends Component {
   constructor(props) {
     super(props);
@@ -45,7 +47,7 @@ class Index extends Component {
           onClose={() => this.setState({ popupInfo: null })}
           closeOnClick={true}
         >
-          <table width="200">
+          <table width="300">
             <tbody>
               <tr>
                 <th>Community</th>
@@ -54,7 +56,7 @@ class Index extends Component {
                 </td>
               </tr>
               <tr>
-                <th tyle={{ width: "80px" }}>Building material</th>
+                <th tyle={{ width: "130px" }}>Building material</th>
                 <td style={{ paddingLeft: "5px" }}>
                   {this.state.placeInfo.building_material}
                 </td>
@@ -139,7 +141,7 @@ class Index extends Component {
               </Link>
             </div>
             <div className="col-sm-9">
-              <div className="map-border" style={{ height: "600px" }}>
+              <div className="map-border" style={{ height: "650px" }}>
                 <ReactMapGL
                   mapboxApiAccessToken={
                     "pk.eyJ1Ijoid2lzZG9tMDA2MyIsImEiOiJjanI1aWg0cGQwZTByM3dtc3J1OHJ3MGNqIn0.yjtKpgtEmgCkCcLvpH_tJg"

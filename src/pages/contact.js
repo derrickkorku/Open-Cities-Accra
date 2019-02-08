@@ -1,8 +1,33 @@
 import { Component } from "react";
 import Link from "next/link";
+import fetch from "isomorphic-unfetch";
+//import {Config} from "../../config/config"
+const base_url = "http://localhost:5000" || "https://ocav1-app.herokuapp.com";
 class Contact extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      name:"",
+      email:"",
+      phone_number:"",
+      Message:""
+    }
+
+    
+    this.sendEmail = this.sendEmail.bind(this);
+  }
+
+  async sendEmail(e) {
+    e.preventDefault();
+    const drainageRes = await fetch(base_url + "/send-email", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(this.state)
+    });
+    const drainageData = await drainageRes.json();
+    console.log(drainageData);
   }
 
   render() {
@@ -18,7 +43,11 @@ class Contact extends Component {
           </div>
           <div className="row justify-content-center mb-2">
             <div className="col-sm-10">
-              <form className="contact-form-border p-4">
+              <form
+              method="POST"
+                className="contact-form-border p-4"
+                onSubmit={this.sendEmail}
+              >
                 <div className="form-row">
                   <div className="col-12 form-group">
                     <h5>Send Us a Message</h5>
@@ -31,6 +60,7 @@ class Contact extends Component {
                       className="form-control"
                       placeholder="Name"
                       required
+                      onChange={(e)=>this.setState({name:e.target.value})}
                     />
                   </div>
                   <div className="col-6 form-group">
@@ -40,6 +70,7 @@ class Contact extends Component {
                       className="form-control"
                       placeholder="Email"
                       required
+                      onChange={(e)=>this.setState({email:e.target.value})}
                     />
                   </div>
                 </div>
@@ -50,6 +81,7 @@ class Contact extends Component {
                       name="phone"
                       className="form-control"
                       placeholder="Phone Number"
+                      onChange={(e)=>this.setState({phone_number:e.target.value})}
                     />
                   </div>
                 </div>
@@ -59,6 +91,7 @@ class Contact extends Component {
                       className="form-control"
                       rows="10"
                       placeholder="Message"
+                      onChange={(e)=>this.setState({Message:e.target.value})}
                     />
                   </div>
                 </div>

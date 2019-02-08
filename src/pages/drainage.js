@@ -1,6 +1,15 @@
 import { Component } from "react";
 import Link from "next/link";
-import ReactMapGL from "react-map-gl";
+import ReactMapGL, { Marker, Popup, NavigationControl } from "react-map-gl";
+//import {Config} from "../../config/config"
+const navStyle = {
+  position: "absolute",
+  top: 0,
+  left: 0,
+  padding: "20px"
+};
+import fetch from "isomorphic-unfetch";
+const base_url = "http://localhost:5000" || "https://ocav1-app.herokuapp.com";
 
 class Drainage extends Component {
   constructor(props) {
@@ -9,15 +18,22 @@ class Drainage extends Component {
       viewport: {
         width: "inherit",
         height: "inherit",
-        latitude: 5.63689,
-        longitude: -0.23602,
-        zoom: 10,
+        latitude: 5.6299636,
+        longitude: -0.2302194,
+        zoom: 15.6,
         bearing: 9.6,
-
         pitch: 60,
         opacity: 1
       }
     };
+  }
+
+  static async getInitialProps() {
+    const drainageRes = await fetch(
+      base_url + "/static/data/alogboshie_waterways.geojson"
+    );
+    const drainageData = await drainageRes.json();
+    return { drainageData };
   }
 
   render() {
@@ -37,7 +53,7 @@ class Drainage extends Component {
             </div>
           </div>
           <div className="row">
-            <div className="col-sm-5">
+            <div className="col-sm-4">
               <ul className="list-unstyled rounded bg-sidebar shadow">
                 <div
                   className="btn-group btn-group-lg w-100 rounded"
@@ -73,16 +89,47 @@ class Drainage extends Component {
                 </Link>
               </center>
             </div>
-            <div className="col-sm-7">
+            <div className="col-sm-8">
               <div className="map-border" style={{ height: "600px" }}>
                 <ReactMapGL
                   mapboxApiAccessToken={
                     "pk.eyJ1Ijoid2lzZG9tMDA2MyIsImEiOiJjanI1aWg0cGQwZTByM3dtc3J1OHJ3MGNqIn0.yjtKpgtEmgCkCcLvpH_tJg"
                   }
                   {...this.state.viewport}
-                  mapStyle="mapbox://styles/wisdom0063/cjr7vgc5j00zq2sn49x8tg8jd"
+                  mapStyle="mapbox://styles/mapbox/streets-v9"
                   onViewportChange={viewport => this.setState({ viewport })}
-                />
+                >
+                  {this.props.drainageData.features.map(value => {
+                    return value.geometry.coordinates.map((val, index) => {
+                      return (
+                        <Marker
+                          latitude={val[1]}
+                          longitude={val[0]}
+                          key={index}
+                        >
+                          <img
+                            src="../static/img/river.png"
+                            width="17"
+                            height="17"
+                            onClick={() => {
+                              return window.alert(
+                                `latitude is ${val[1]} and longitude is ${
+                                  val[0]
+                                }`
+                              );
+                            }}
+                          />
+                        </Marker>
+                      );
+                    });
+                  })}
+
+                  <div className="nav" style={navStyle}>
+                    <NavigationControl
+                      onViewportChange={viewport => this.setState({ viewport })}
+                    />
+                  </div>
+                </ReactMapGL>
               </div>
             </div>
           </div>

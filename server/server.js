@@ -4,10 +4,25 @@ const bodyParser = require("body-parser");
 const dev = process.env.NODE_ENV !== "production";
 const app = next({ dir: "src", dev });
 const handler = app.getRequestHandler();
+const sendEmail = require("./email");
 
 app.prepare().then(() => {
   const server = express();
   server.use(bodyParser.json());
+
+  server.post("/send-email", async (req, res) => {
+    try{
+    let isSent = await sendEmail({
+      fromEmail: "kwartengwisdomug95@gmail.com",
+      message: "hello",
+      template: "message"
+    });
+
+    if (isSent) return res.json({ success: true });
+  }catch(err){
+    return res.send({success:false, message:err.message})
+  }
+  });
 
   server.get("*", (req, res) => {
     return handler(req, res);

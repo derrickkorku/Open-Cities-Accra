@@ -13,11 +13,11 @@
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/index": [
+    "/contact": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/buildings": [
+    "/index": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
