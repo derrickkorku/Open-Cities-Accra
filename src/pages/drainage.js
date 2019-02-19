@@ -83,7 +83,7 @@ class Drainage extends Component {
                     <a className="btn btn-n1">Buildings</a>
                   </Link>
                   <Link href="/flood-history">
-                    <a className="btn btn-n2">Food History</a>
+                    <a className="btn btn-n2">Flood History</a>
                   </Link>
                 </div>
 
@@ -107,7 +107,7 @@ class Drainage extends Component {
               </center>
             </div>
             <div className="col-sm-8">
-              <div className="map-border" style={{ height: "600px" }}>
+              <div className="map-border" style={{ height: "700px" }}>
                 <ReactMapGL
                   mapboxApiAccessToken={
                     "pk.eyJ1Ijoid2lzZG9tMDA2MyIsImEiOiJjanI1aWg0cGQwZTByM3dtc3J1OHJ3MGNqIn0.yjtKpgtEmgCkCcLvpH_tJg"

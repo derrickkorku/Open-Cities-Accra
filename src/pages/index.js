@@ -196,16 +196,9 @@ class Index extends Component {
               </div>
             </div>
           </div>
-          <div className="row">
+          <div className="row index-pg">
             <div className="col-sm-3">
               <ul className="list-unstyled px-3 py-3 rounded bg-sidebar shadow">
-                <li className="mb-3">
-                  <input
-                    type="search"
-                    className="form-control rounded"
-                    placeholder="Search location..."
-                  />
-                </li>
                 <li className="mb-3">
                   <Link href="/buildings">
                     <a className="btn btn-lg btn-block btn-light rounded p-home-btn">
@@ -258,6 +251,7 @@ class Index extends Component {
                         >
                           <img
                             src="../static/img/home.png"
+                         
                             width="20"
                             height="20"
                             onClick={() => {
@@ -312,7 +306,7 @@ class Index extends Component {
                                             key={index}
                                           >
                                             <img
-                                              src="../static/img/river.png"
+                                              src="../static/img/rivers.png"
                                               width="17"
                                               height="17"
                                               onClick={() => {
@@ -355,7 +349,7 @@ class Index extends Component {
             </div>
           </div>
         </div>
-        <footer>
+        <footer className="footer">
           <div className="container">
             <center>Powered by:</center>
             <div className="row justify-content-center">

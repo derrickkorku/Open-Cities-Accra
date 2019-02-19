@@ -157,7 +157,7 @@ class FloodHistory extends Component {
                   role="group"
                 >
                   <Link href="/flood-history">
-                    <a className="btn btn-active">Food History</a>
+                    <a className="btn btn-active">Flood History</a>
                   </Link>
                   <Link href="/drainage">
                     <a className="btn btn-n1">Drainage</a>

@@ -25959,7 +25959,7 @@ function (_Component) {
         },
         __self: this
       }, "Nima")))))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "row",
+        className: "row index-pg",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 199
@@ -25986,136 +25986,120 @@ function (_Component) {
           lineNumber: 202
         },
         __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
-        type: "search",
-        className: "form-control rounded",
-        placeholder: "Search location...",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 203
-        },
-        __self: this
-      })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
-        className: "mb-3",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 209
-        },
-        __self: this
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
         href: "/buildings",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 210
+          lineNumber: 203
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
         className: "btn btn-lg btn-block btn-light rounded p-home-btn",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 211
+          lineNumber: 204
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("i", {
         className: "fas fa-home fa-2x fa-color",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 212
+          lineNumber: 205
         },
         __self: this
       }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 213
+          lineNumber: 206
         },
         __self: this
       }), "Building"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
         className: "mb-3",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 218
+          lineNumber: 211
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
         href: "/flood-history",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 219
+          lineNumber: 212
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
         className: "btn btn-lg btn-block btn-light rounded p-home-btn",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 220
+          lineNumber: 213
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("i", {
         className: "fab fa-fort-awesome-alt fa-2x fa-color",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 221
+          lineNumber: 214
         },
         __self: this
       }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 222
+          lineNumber: 215
         },
         __self: this
       }), "Flood History"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
         className: "",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 227
+          lineNumber: 220
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
         href: "/drainage",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 228
+          lineNumber: 221
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
         className: "btn btn-lg btn-block btn-lg btn-light rounded p-home-btn",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 229
+          lineNumber: 222
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("i", {
         className: "fab fa-schlix fa-2x fa-color",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 230
+          lineNumber: 223
         },
         __self: this
       }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 231
+          lineNumber: 224
         },
         __self: this
       }), "Drainage Points")))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
         href: "/contact",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 237
+          lineNumber: 230
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
         className: "btn btn-dark btn-block",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 238
+          lineNumber: 231
         },
         __self: this
       }, "Contact"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-sm-9",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 241
+          lineNumber: 234
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
@@ -26125,7 +26109,7 @@ function (_Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 242
+          lineNumber: 235
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_map_gl__WEBPACK_IMPORTED_MODULE_3__["default"], _extends({
@@ -26139,7 +26123,7 @@ function (_Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 243
+          lineNumber: 236
         },
         __self: this
       }), this.props.buildingData.features.map(function (value) {
@@ -26150,7 +26134,7 @@ function (_Component) {
             key: index,
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 254
+              lineNumber: 247
             },
             __self: this
           }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
@@ -26176,7 +26160,7 @@ function (_Component) {
             },
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 259
+              lineNumber: 252
             },
             __self: this
           }));
@@ -26189,7 +26173,7 @@ function (_Component) {
             key: index,
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 291
+              lineNumber: 285
             },
             __self: this
           }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
@@ -26198,7 +26182,7 @@ function (_Component) {
             height: "17",
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 296
+              lineNumber: 290
             },
             __self: this
           }));
@@ -26210,11 +26194,11 @@ function (_Component) {
           key: index,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 309
+            lineNumber: 303
           },
           __self: this
         }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
-          src: "../static/img/river.png",
+          src: "../static/img/rivers.png",
           width: "17",
           height: "17",
           onClick: function onClick() {
@@ -26240,7 +26224,7 @@ function (_Component) {
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 314
+            lineNumber: 308
           },
           __self: this
         }));
@@ -26249,7 +26233,7 @@ function (_Component) {
         style: navStyle,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 347
+          lineNumber: 341
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_map_gl__WEBPACK_IMPORTED_MODULE_3__["NavigationControl"], {
@@ -26260,61 +26244,62 @@ function (_Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 348
+          lineNumber: 342
         },
         __self: this
       })), this.renderPopup()))))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("footer", {
+        className: "footer",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 358
+          lineNumber: 352
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "container",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 359
+          lineNumber: 353
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("center", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 360
+          lineNumber: 354
         },
         __self: this
       }, "Powered by:"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "row justify-content-center",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 361
+          lineNumber: 355
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("ul", {
         className: "list-inline py-2",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 362
+          lineNumber: 356
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
         className: "list-inline-item",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 363
+          lineNumber: 357
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
         href: "http://mobilewebghana.org/",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 364
+          lineNumber: 358
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
         target: "_blank",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 365
+          lineNumber: 359
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
@@ -26322,28 +26307,28 @@ function (_Component) {
         className: "partner",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 366
+          lineNumber: 360
         },
         __self: this
       })))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
         className: "list-inline-item",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 373
+          lineNumber: 367
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
         href: "https://www.osmghana.org/",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 374
+          lineNumber: 368
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
         target: "_blank",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 375
+          lineNumber: 369
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
@@ -26351,28 +26336,28 @@ function (_Component) {
         className: "partner",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 376
+          lineNumber: 370
         },
         __self: this
       })))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
         className: "list-inline-item",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 383
+          lineNumber: 377
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
         href: "https://www.hotosm.org/",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 384
+          lineNumber: 378
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
         target: "_blank",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 385
+          lineNumber: 379
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
@@ -26380,7 +26365,7 @@ function (_Component) {
         className: "partner",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 386
+          lineNumber: 380
         },
         __self: this
       })))))))));

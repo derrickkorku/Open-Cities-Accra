@@ -9962,5 +9962,12 @@ textarea.form-control {
   margin-top: 18px;
 }
 
+.index-pg>.col-sm-3 {
+  max-width: 20.666667%;
+}
+
+.index-pg>.col-sm-9 {
+  max-width: 79.444443%;
+}
 
 /*# sourceMappingURL=styles.chunk.css.map*/

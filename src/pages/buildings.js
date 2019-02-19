@@ -143,7 +143,7 @@ class Buildings extends Component {
                     <a className="btn btn-active">Buildings</a>
                   </Link>
                   <Link href="/flood-history">
-                    <a className="btn btn-n1">Food History</a>
+                    <a className="btn btn-n1">Flood History</a>
                   </Link>
                   <Link href="/drainage">
                     <a className="btn btn-n2">Drainage</a>
