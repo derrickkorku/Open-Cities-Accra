@@ -36,8 +36,12 @@ select.form-control option {
 }
 
 .home-link {
-  text-decoration: underline;
+  text-decoration: none;
   color: rgb(49, 49, 49);
+  font-size: 23px;
+  font-weight: bold;
+  margin-bottom: 12px;
+
 }
 
 .map-border {
@@ -66,4 +70,7 @@ textarea.form-control {
 
 .btn-n2 {
   background-color: #d8e8b9;
+}
+.footer{
+  margin-top: 18px;
 }

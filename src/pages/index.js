@@ -8,7 +8,7 @@ const navStyle = {
   padding: "20px"
 };
 import fetch from "isomorphic-unfetch";
-const base_url =  "http://localhost:5000" || "https://ocav1-app.herokuapp.com" 
+const base_url = "https://ocav1-app.herokuapp.com" || "http://localhost:5000" 
 
 class Index extends Component {
   constructor(props) {
@@ -17,21 +17,32 @@ class Index extends Component {
       viewport: {
         width: "inherit",
         height: "inherit",
-        latitude: 5.63689,
+        latitude: 5.63589,
         longitude: -0.23602,
         zoom: 15.6
       },
       popupInfo: null,
-      placeInfo: null
+      floodPopupInfo:null,
+      placeInfo: null,
+      floodPlaceInfo:null
     };
     this.renderPopup = this.renderPopup.bind(this);
   }
 
   static async getInitialProps() {
+    const drainageRes = await fetch(
+      base_url + "/static/data/alogboshie_waterways.geojson"
+    );
+    const drainageData = await drainageRes.json();
     const buildingsRes = await fetch(base_url + "/static/data/derrick.json");
     const buildingData = await buildingsRes.json();
+
+    const floodRes = await fetch(
+      base_url + "/static/data/alogboshie_flod_history.geojson"
+    );
+    const floodData = await floodRes.json();
     // console.log(InduestryData);
-    return { buildingData };
+    return { buildingData, drainageData, floodData };
   }
 
   renderPopup() {
@@ -73,10 +84,89 @@ class Index extends Component {
     );
   }
 
+  renderFloodPopup() {
+    
+    return (
+      this.state.floodPopupInfo && (
+        <Popup
+          tipSize={10}
+          anchor="bottom-right"
+          longitude={this.state.floodPopupInfo.state.longitude}
+          latitude={this.state.floodPopupInfo.state.latitude}
+          onClose={() => this.setState({ floodPopupInfo: null })}
+          closeOnClick={true}
+        >
+          <table width="400">
+            <tbody>
+              <tr>
+                <th>experienced_flood</th>
+                <td style={{ paddingLeft: "5px" }}>
+                  {this.state.floodPlaceInfo.experienced_flood}
+                </td>
+              </tr>
+              <tr>
+                <th tyle={{ width: "80px" }}>suburb</th>
+                <td style={{ paddingLeft: "5px" }}>
+                  {this.state.floodPlaceInfo.suburb}
+                </td>
+              </tr>
+              <tr>
+                <th>flood_cause</th>
+                <td style={{ paddingLeft: "5px" }}>
+                  {this.state.floodPlaceInfo.flood_cause}
+                </td>
+              </tr>
+              <tr>
+                <th>flood_year</th>
+                <td style={{ paddingLeft: "5px" }}>
+                  {this.state.floodPlaceInfo.flood_year}
+                </td>
+              </tr>
+              <tr>
+                <th>dwelling_type</th>
+                <td style={{ paddingLeft: "5px" }}>
+                  {this.state.floodPlaceInfo.dwelling_type}
+                </td>
+              </tr>
+              <tr>
+                <th>flood_depth</th>
+                <td style={{ paddingLeft: "5px" }}>
+                  {this.state.floodPlaceInfo.flood_depth}
+                </td>
+              </tr>
+              <tr>
+                <th>landmark</th>
+                <td style={{ paddingLeft: "5px" }}>
+                  {this.state.floodPlaceInfo.landmark}
+                </td>
+              </tr>
+              <tr>
+                <th>moved_house</th>
+                <td style={{ paddingLeft: "5px" }}>
+                  {this.state.floodPlaceInfo.moved_house}
+                </td>
+              </tr>
+            {
+                this.state.floodPlaceInfo.moved_house ==="yes" &&
+                <tr>
+                <th>moved_year</th>
+                <td style={{ paddingLeft: "5px" }}>
+                  {this.state.floodPlaceInfo.moved_year}
+                </td>
+              </tr>
+              }
+
+            </tbody>
+          </table>
+        </Popup>
+      )
+    );
+  }
+
   render() {
     return (
       <div>
-        <div className="container mt-3">
+        <div className="container-fluid mt-3 mr-10 ml-10">
           <div className="row">
             <div className="col-sm-3" style={{ marginTop: "0.8em" }}>
               <center>
@@ -86,15 +176,24 @@ class Index extends Component {
               </center>
             </div>
             <div className="col-sm-9">
-              <center>
-                <select className="form-control mb-3 text-center w-50 rounded">
+            <div className="row">
+            <div className="col-md-2"></div>
+            <div className="col-sm-6">
+              <h4 className="font-weight-bold">ALOGBOSHIE</h4>
+              </div>
+              <div className="col-sm-4">
+         
+                <select className="form-control mb-3 mr-3 w-100 rounded" disabled>
                   <option>-- Select Community --</option>
                   <option>Akweteyman</option>
-                  <option>Alogboshie</option>
+                  <option selected>Alogboshie</option>
                   <option>Alajo</option>
                   <option>Nima</option>
                 </select>
-              </center>
+          
+           
+              </div>
+              </div>
             </div>
           </div>
           <div className="row">
@@ -140,7 +239,7 @@ class Index extends Component {
               </Link>
             </div>
             <div className="col-sm-9">
-              <div className="map-border" style={{ height: "650px" }}>
+              <div className="map-border" style={{ height: "700px" }}>
                 <ReactMapGL
                   mapboxApiAccessToken={
                     "pk.eyJ1Ijoid2lzZG9tMDA2MyIsImEiOiJjanI1aWg0cGQwZTByM3dtc3J1OHJ3MGNqIn0.yjtKpgtEmgCkCcLvpH_tJg"
@@ -185,6 +284,65 @@ class Index extends Component {
                       );
                     });
                   })}
+
+{this.props.drainageData.features.map(value => {
+                    return value.geometry.coordinates.map((val, index) => {
+                      return (
+                        <Marker
+                          latitude={val[1]}
+                          longitude={val[0]}
+                          key={index}
+                        >
+                          <img
+                            src="../static/img/river.png"
+                            width="17"
+                            height="17"
+
+                          />
+                        </Marker>
+                      );
+                    });
+                  })}
+
+{this.props.floodData.features.map((value, index)=>{
+                                        return (
+                                          <Marker
+                                            latitude={value.geometry.coordinates[1]}
+                                            longitude={value.geometry.coordinates[0]}
+                                            key={index}
+                                          >
+                                            <img
+                                              src="../static/img/river.png"
+                                              width="17"
+                                              height="17"
+                                              onClick={() => {
+                                              
+                                                this.setState({
+                                                  floodPopupInfo: {
+                                                    state: {
+                                                      longitude: value.geometry.coordinates[0],
+                                                      latitude: value.geometry.coordinates[1]
+                                                    }
+                                                  },
+                                                  floodPlaceInfo: {
+                                                    experienced_flood: value.properties["experienced_flood"],
+                                                    suburb:
+                                                      value.properties["address.suburb"] ||
+                                                      null,
+                                                    flood_cause:
+                                                      value.properties["flood_history.flood_cause"] || null,
+                                                      flood_year:value.properties["flood_history.flood_event.flood_year"] || null,
+                                                      dwelling_type:value.properties["dwelling_type"] || null,
+                                                      flood_depth:value.properties["flood_history.flood_depth"]||null,
+                                                      landmark:value.properties["address.landmark"] || null,
+                                                      moved_house:value.properties["moved_house"] || null,
+                                                      moved_year:value.properties["moved_year"] || null
+                                                  }
+                                                });
+                                              }}
+                                            />
+                                          </Marker>
+                                        )})}
 
                   <div className="nav" style={navStyle}>
                     <NavigationControl

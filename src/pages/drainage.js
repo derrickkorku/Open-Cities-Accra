@@ -8,7 +8,7 @@ const navStyle = {
   padding: "20px"
 };
 import fetch from "isomorphic-unfetch";
-const base_url =  "http://localhost:5000" || "https://ocav1-app.herokuapp.com" 
+const base_url = "https://ocav1-app.herokuapp.com" || "http://localhost:5000" 
 
 
 class Drainage extends Component {
@@ -49,7 +49,24 @@ class Drainage extends Component {
               </center>
             </div>
             <div className="col-sm-9">
-              <h2 className="font-weight-bold text-center">DRAINAGE</h2>
+            <div className="row">
+            <div className="col-md-2"></div>
+            <div className="col-sm-6">
+              <h4 className="font-weight-bold">DRAINAGE-ALOGBOSHIE</h4>
+              </div>
+              <div className="col-sm-4">
+         
+                <select className="form-control mb-3 mr-3 w-100 rounded" disabled>
+                  <option>-- Select Community --</option>
+                  <option>Akweteyman</option>
+                  <option selected>Alogboshie</option>
+                  <option>Alajo</option>
+                  <option>Nima</option>
+                </select>
+          
+           
+              </div>
+              </div>
             </div>
           </div>
           <div className="row">
@@ -111,13 +128,7 @@ class Drainage extends Component {
                             src="../static/img/river.png"
                             width="17"
                             height="17"
-                            onClick={() => {
-                              return window.alert(
-                                `latitude is ${val[1]} and longitude is ${
-                                  val[0]
-                                }`
-                              );
-                            }}
+
                           />
                         </Marker>
                       );
@@ -134,7 +145,7 @@ class Drainage extends Component {
             </div>
           </div>
         </div>
-        <footer>
+        <footer className="footer">
           <div className="container">
             <center>Powered by:</center>
             <div className="row justify-content-center">

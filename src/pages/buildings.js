@@ -8,7 +8,7 @@ const navStyle = {
   padding: "20px"
 };
 import fetch from "isomorphic-unfetch";
-const base_url =  "http://localhost:5000" || "https://ocav1-app.herokuapp.com" 
+const base_url = "https://ocav1-app.herokuapp.com" || "http://localhost:5000" 
 class Buildings extends Component {
   constructor(props) {
     super(props);
@@ -16,9 +16,12 @@ class Buildings extends Component {
       viewport: {
         width: "inherit",
         height: "inherit",
-        latitude: 5.63689,
-        longitude: -0.23602,
-        zoom: 15.6
+        latitude: 5.63629,
+        longitude: -0.23600,
+        zoom: 15.6,
+        bearing: 9.6,
+        
+    
       },
       popupInfo: null,
       placeInfo: null
@@ -65,6 +68,30 @@ class Buildings extends Component {
                   {this.state.placeInfo.roof_material}
                 </td>
               </tr>
+              <tr>
+                <th>Building</th>
+                <td style={{ paddingLeft: "5px" }}>
+                  {this.state.placeInfo.building}
+                </td>
+              </tr>
+              <tr>
+                <th>suburb</th>
+                <td style={{ paddingLeft: "5px" }}>
+                  {this.state.placeInfo.suburb}
+                </td>
+              </tr>
+              <tr>
+                <th>street</th>
+                <td style={{ paddingLeft: "5px" }}>
+                  {this.state.placeInfo.street}
+                </td>
+              </tr>
+              <tr>
+                <th>City</th>
+                <td style={{ paddingLeft: "5px" }}>
+                  {this.state.placeInfo.city}
+                </td>
+              </tr>
             </tbody>
           </table>
         </Popup>
@@ -85,7 +112,24 @@ class Buildings extends Component {
               </center>
             </div>
             <div className="col-sm-9">
-              <h2 className="font-weight-bold text-center">BUILDINGS</h2>
+            <div className="row">
+            <div className="col-md-2"></div>
+            <div className="col-sm-6">
+              <h4 className="font-weight-bold">BUILDINGS-ALOGBOSHIE</h4>
+              </div>
+              <div className="col-sm-4">
+         
+                <select className="form-control mb-3 mr-3 w-100 rounded" disabled>
+                  <option>-- Select Community --</option>
+                  <option>Akweteyman</option>
+                  <option selected>Alogboshie</option>
+                  <option>Alajo</option>
+                  <option>Nima</option>
+                </select>
+          
+           
+              </div>
+              </div>
             </div>
           </div>
           <div className="row">
@@ -162,7 +206,13 @@ class Buildings extends Component {
                                     value.properties["building:material"] ||
                                     null,
                                   roof_material:
-                                    value.properties["roof:material"] || null
+                                    value.properties["roof:material"] || null,
+                                    street: value.properties["addr:street"] || null,
+                                    suburb:value.properties["addr:suburb"] || null,
+                                    building:value.properties["building"] || null,
+                                    city:value.properties["addr:city"] || null
+
+
                                 }
                               });
                             }}
@@ -183,7 +233,7 @@ class Buildings extends Component {
             </div>
           </div>
         </div>
-        <footer>
+        <footer className="footer">
           <div className="container">
             <center>Powered by:</center>
             <div className="row justify-content-center">

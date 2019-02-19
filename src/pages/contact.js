@@ -1,7 +1,7 @@
 import { Component } from "react";
 import Link from "next/link";
 import fetch from "isomorphic-unfetch";
-const base_url =  "http://localhost:5000" || "https://ocav1-app.herokuapp.com" 
+const base_url = "https://ocav1-app.herokuapp.com" || "http://localhost:5000" 
 class Contact extends Component {
   constructor(props) {
     super(props);

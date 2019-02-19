@@ -1,8 +1,119 @@
-import { Component } from "react";
 import Link from "next/link";
+import {Component} from "react"
+import ReactMapGL, { Marker, Popup, NavigationControl } from "react-map-gl";
+const navStyle = {
+  position: "absolute",
+  top: 0,
+  left: 0,
+  padding: "20px"
+};
+import fetch from "isomorphic-unfetch";
+const base_url = "https://ocav1-app.herokuapp.com" || "http://localhost:5000" 
 class FloodHistory extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      viewport: {
+        width: "inherit",
+        height: "inherit",
+        latitude: 5.6239636,
+        longitude: -0.2332194,
+        zoom: 15.6,
+        bearing: 9.6,
+        pitch: 60,
+        opacity: 1
+      },
+      popupInfo: null,
+      placeInfo: null
+    };
+    this.renderPopup = this.renderPopup.bind(this)
+  }
+
+  static async getInitialProps() {
+    const floodRes = await fetch(
+      base_url + "/static/data/alogboshie_flod_history.geojson"
+    );
+    const floodData = await floodRes.json();
+    return { floodData };
+  }
+
+  renderPopup() {
+    console.log(this.state.placeInfo);
+    return (
+      this.state.popupInfo && (
+        <Popup
+          tipSize={10}
+          anchor="bottom-right"
+          longitude={this.state.popupInfo.state.longitude}
+          latitude={this.state.popupInfo.state.latitude}
+          onClose={() => this.setState({ popupInfo: null })}
+          closeOnClick={true}
+        >
+          <table width="400">
+            <tbody>
+              <tr>
+                <th>experienced_flood</th>
+                <td style={{ paddingLeft: "5px" }}>
+                  {this.state.placeInfo.experienced_flood}
+                </td>
+              </tr>
+              <tr>
+                <th tyle={{ width: "80px" }}>suburb</th>
+                <td style={{ paddingLeft: "5px" }}>
+                  {this.state.placeInfo.suburb}
+                </td>
+              </tr>
+              <tr>
+                <th>flood_cause</th>
+                <td style={{ paddingLeft: "5px" }}>
+                  {this.state.placeInfo.flood_cause}
+                </td>
+              </tr>
+              <tr>
+                <th>flood_year</th>
+                <td style={{ paddingLeft: "5px" }}>
+                  {this.state.placeInfo.flood_year}
+                </td>
+              </tr>
+              <tr>
+                <th>dwelling_type</th>
+                <td style={{ paddingLeft: "5px" }}>
+                  {this.state.placeInfo.dwelling_type}
+                </td>
+              </tr>
+              <tr>
+                <th>flood_depth</th>
+                <td style={{ paddingLeft: "5px" }}>
+                  {this.state.placeInfo.flood_depth}
+                </td>
+              </tr>
+              <tr>
+                <th>landmark</th>
+                <td style={{ paddingLeft: "5px" }}>
+                  {this.state.placeInfo.landmark}
+                </td>
+              </tr>
+              <tr>
+                <th>moved_house</th>
+                <td style={{ paddingLeft: "5px" }}>
+                  {this.state.placeInfo.moved_house}
+                </td>
+              </tr>
+            {
+                this.state.placeInfo.moved_house ==="yes" &&
+                <tr>
+                <th>moved_year</th>
+                <td style={{ paddingLeft: "5px" }}>
+                  {this.state.placeInfo.moved_year}
+                </td>
+              </tr>
+              }
+
+            </tbody>
+          </table>
+        </Popup>
+      )
+    );
   }
 
   render() {
@@ -18,11 +129,28 @@ class FloodHistory extends Component {
               </center>
             </div>
             <div className="col-sm-9">
-              <h2 className="font-weight-bold text-center">FLOOD HISTORY</h2>
+            <div className="row">
+            <div className="col-md-2"></div>
+            <div className="col-sm-6">
+              <h4 className="font-weight-bold">FLOOD HISTORY-ALOGBOSHIE</h4>
+              </div>
+              <div className="col-sm-4">
+         
+                <select className="form-control mb-3 mr-3 w-100 rounded" disabled>
+                  <option>-- Select Community --</option>
+                  <option>Akweteyman</option>
+                  <option selected>Alogboshie</option>
+                  <option>Alajo</option>
+                  <option>Nima</option>
+                </select>
+          
+           
+              </div>
+              </div>
             </div>
           </div>
           <div className="row">
-            <div className="col-sm-5">
+            <div className="col-sm-4">
               <ul className="list-unstyled rounded bg-sidebar shadow">
                 <div
                   className="btn-group btn-group-lg w-100 rounded"
@@ -58,14 +186,67 @@ class FloodHistory extends Component {
                 </Link>
               </center>
             </div>
-            <div className="col-sm-7">
+            <div className="col-sm-8">
               <div className="map-border" style={{ height: "600px" }}>
-                Map content here
+              <ReactMapGL
+                  mapboxApiAccessToken={
+                    "pk.eyJ1Ijoid2lzZG9tMDA2MyIsImEiOiJjanI1aWg0cGQwZTByM3dtc3J1OHJ3MGNqIn0.yjtKpgtEmgCkCcLvpH_tJg"
+                  }
+                  {...this.state.viewport}
+                  mapStyle="mapbox://styles/mapbox/streets-v9"
+                  onViewportChange={viewport => this.setState({ viewport })}
+                >
+                {this.props.floodData.features.map((value, index)=>{
+                                        return (
+                                          <Marker
+                                            latitude={value.geometry.coordinates[1]}
+                                            longitude={value.geometry.coordinates[0]}
+                                            key={index}
+                                          >
+                                            <img
+                                              src="../static/img/river.png"
+                                              width="17"
+                                              height="17"
+                                              onClick={() => {
+                                              
+                                                this.setState({
+                                                  popupInfo: {
+                                                    state: {
+                                                      longitude: value.geometry.coordinates[0],
+                                                      latitude: value.geometry.coordinates[1]
+                                                    }
+                                                  },
+                                                  placeInfo: {
+                                                    experienced_flood: value.properties["experienced_flood"],
+                                                    suburb:
+                                                      value.properties["address.suburb"] ||
+                                                      null,
+                                                    flood_cause:
+                                                      value.properties["flood_history.flood_cause"] || null,
+                                                      flood_year:value.properties["flood_history.flood_event.flood_year"] || null,
+                                                      dwelling_type:value.properties["dwelling_type"] || null,
+                                                      flood_depth:value.properties["flood_history.flood_depth"]||null,
+                                                      landmark:value.properties["address.landmark"] || null,
+                                                      moved_house:value.properties["moved_house"] || null,
+                                                      moved_year:value.properties["moved_year"] || null
+                                                  }
+                                                });
+                                              }}
+                                            />
+                                          </Marker>
+                                        )})}
+                    <div className="nav" style={navStyle}>
+                    <NavigationControl
+                      onViewportChange={viewport => this.setState({ viewport })}
+                    />
+                  </div>
+                  {this.renderPopup()}
+                </ReactMapGL>
               </div>
             </div>
           </div>
         </div>
-        <footer>
+        <footer className="footer">
           <div className="container">
             <center>Powered by:</center>
             <div className="row justify-content-center">
