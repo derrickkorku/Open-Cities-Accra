@@ -15,6 +15,7 @@ class Drainage extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      drainageData:null,
       viewport: {
         width: "inherit",
         height: "inherit",
@@ -28,13 +29,16 @@ class Drainage extends Component {
     };
   }
 
-  static async getInitialProps() {
-    const drainageRes = await fetch(
+
+
+  componentDidMount(){
+    return  fetch(
       base_url + "/static/data/alogboshie_waterways.geojson"
-    );
-    const drainageData = await drainageRes.json();
-    return { drainageData };
-  }
+     ).then(drainageRes=>drainageRes.json() ).then(drainageData=>{this.setState({drainageData})
+        })
+   
+     
+   }
 
   render() {
     return (
@@ -116,7 +120,7 @@ class Drainage extends Component {
                   mapStyle="mapbox://styles/mapbox/streets-v9"
                   onViewportChange={viewport => this.setState({ viewport })}
                 >
-                  {this.props.drainageData.features.map(value => {
+                  {this.state.drainageData && this.state.drainageData.features.map(value => {
                     return value.geometry.coordinates.map((val, index) => {
                       return (
                         <Marker

@@ -34,16 +34,9 @@ class FloodHistory extends Component {
 
   componentDidMount(){
    return  fetch(
-      base_url + "/static/data/alogboshie_flod_history.geojson", {
-        Accept:"application/geojson",
-        "Content-Type":"application/geojson",
-        'Access-Control-Allow-Credentials' : true,
-        'Access-Control-Allow-Origin':'*',
-        'Access-Control-Allow-Methods':'GET',
-        'Access-Control-Allow-Headers':'application/geojson',
-      }
+      base_url + "/static/data/alogboshie_flod_history.geojson"
     ).then(floodRes=>floodRes.json() ).then(floodData=>{this.setState({floodData})
-       window.alert("heee flooddata")})
+       })
   
     
   }

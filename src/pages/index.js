@@ -8,12 +8,15 @@ const navStyle = {
   padding: "20px"
 };
 import fetch from "isomorphic-unfetch";
-const base_url = "https://ocav1-app.herokuapp.com" || "http://localhost:5000" 
+const base_url = "http://localhost:5000" 
 
 class Index extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      floodData:null,
+      buildingData:null,
+      drainageData:null,
       viewport: {
         width: "inherit",
         height: "inherit",
@@ -29,21 +32,47 @@ class Index extends Component {
     this.renderPopup = this.renderPopup.bind(this);
   }
 
-  static async getInitialProps() {
-    const drainageRes = await fetch(
-      base_url + "/static/data/alogboshie_waterways.geojson"
-    );
-    const drainageData = await drainageRes.json();
-    const buildingsRes = await fetch(base_url + "/static/data/derrick.json");
-    const buildingData = await buildingsRes.json();
 
-    const floodRes = await fetch(
-      base_url + "/static/data/alogboshie_flod_history.geojson"
-    );
-    const floodData = await floodRes.json();
-    // console.log(InduestryData);
-    return { buildingData, drainageData, floodData };
-  }
+
+  componentDidMount(){
+      fetch(
+        base_url + "/static/data/derrick.json", {
+         Accept:"application/geojson",
+         "Content-Type":"application/geojson",
+         'Access-Control-Allow-Credentials' : true,
+         'Access-Control-Allow-Origin':'*',
+         'Access-Control-Allow-Methods':'GET',
+         'Access-Control-Allow-Headers':'application/geojson',
+       }
+     ).then(buildingsRes=>buildingsRes.json() ).then(buildingData=>{this.setState({buildingData})
+        })
+
+          fetch(
+          base_url + "/static/data/alogboshie_waterways.geojson", {
+             Accept:"application/geojson",
+             "Content-Type":"application/geojson",
+             'Access-Control-Allow-Credentials' : true,
+             'Access-Control-Allow-Origin':'*',
+             'Access-Control-Allow-Methods':'GET',
+             'Access-Control-Allow-Headers':'application/geojson',
+           }
+         ).then(drainageRes=>drainageRes.json() ).then(drainageData=>{this.setState({drainageData})
+            })
+
+            fetch(
+              base_url + "/static/data/alogboshie_flod_history.geojson", {
+                Accept:"application/geojson",
+                "Content-Type":"application/geojson",
+                'Access-Control-Allow-Credentials' : true,
+                'Access-Control-Allow-Origin':'*',
+                'Access-Control-Allow-Methods':'GET',
+                'Access-Control-Allow-Headers':'application/geojson',
+              }
+            ).then(floodRes=>floodRes.json() ).then(floodData=>{this.setState({floodData})
+               })
+   
+     
+   }
 
   renderPopup() {
     console.log(this.state.placeInfo);
@@ -265,7 +294,7 @@ class Index extends Component {
                   mapStyle="mapbox://styles/mapbox/streets-v9"
                   onViewportChange={viewport => this.setState({ viewport })}
                 >
-                  {this.props.buildingData.features.map(value => {
+                  {this.state.buildingData && this.state.buildingData.features.map(value => {
                     return value.geometry.coordinates.map((val, index) => {
                       return (
                         <Marker
@@ -309,7 +338,7 @@ class Index extends Component {
                     });
                   })}
 
-{this.props.drainageData.features.map(value => {
+{this.state.drainageData && this.state.drainageData.features.map(value => {
                     return value.geometry.coordinates.map((val, index) => {
                       return (
                         <Marker
@@ -328,7 +357,7 @@ class Index extends Component {
                     });
                   })}
 
-{this.props.floodData.features.map((value, index)=>{
+{this.state.floodData && this.state.floodData.features.map((value, index)=>{
                                         return (
                                           <Marker
                                             latitude={value.geometry.coordinates[1]}

@@ -13,6 +13,7 @@ class Buildings extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      buildingData:null,
       viewport: {
         width: "inherit",
         height: "inherit",
@@ -29,12 +30,17 @@ class Buildings extends Component {
     this.renderPopup = this.renderPopup.bind(this);
   }
 
-  static async getInitialProps() {
-    const buildingsRes = await fetch(base_url + "/static/data/derrick.json");
-    const buildingData = await buildingsRes.json();
-    // console.log(InduestryData);
-    return { buildingData };
-  }
+
+  componentDidMount(){
+    return  fetch(
+      base_url + "/static/data/derrick.json", 
+     ).then(buildingsRes=>buildingsRes.json() ).then(buildingData=>{this.setState({buildingData})
+        })
+   
+     
+   }
+
+  
 
   renderPopup() {
     console.log(this.state.placeInfo);
@@ -179,7 +185,7 @@ class Buildings extends Component {
                   mapStyle="mapbox://styles/mapbox/streets-v9"
                   onViewportChange={viewport => this.setState({ viewport })}
                 >
-                  {this.props.buildingData.features.map(value => {
+                  {this.state.buildingData && this.state.buildingData.features.map(value => {
                     return value.geometry.coordinates.map((val, index) => {
                       return (
                         <Marker

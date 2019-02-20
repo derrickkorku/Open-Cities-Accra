@@ -1,97 +1,4 @@
-module.exports =
-/******/ (function(modules) { // webpackBootstrap
-/******/ 	// The module cache
-/******/ 	var installedModules = require('../../../ssr-module-cache.js');
-/******/
-/******/ 	// The require function
-/******/ 	function __webpack_require__(moduleId) {
-/******/
-/******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId]) {
-/******/ 			return installedModules[moduleId].exports;
-/******/ 		}
-/******/ 		// Create a new module (and put it into the cache)
-/******/ 		var module = installedModules[moduleId] = {
-/******/ 			i: moduleId,
-/******/ 			l: false,
-/******/ 			exports: {}
-/******/ 		};
-/******/
-/******/ 		// Execute the module function
-/******/ 		var threw = true;
-/******/ 		try {
-/******/ 			modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-/******/ 			threw = false;
-/******/ 		} finally {
-/******/ 			if(threw) delete installedModules[moduleId];
-/******/ 		}
-/******/
-/******/ 		// Flag the module as loaded
-/******/ 		module.l = true;
-/******/
-/******/ 		// Return the exports of the module
-/******/ 		return module.exports;
-/******/ 	}
-/******/
-/******/
-/******/ 	// expose the modules object (__webpack_modules__)
-/******/ 	__webpack_require__.m = modules;
-/******/
-/******/ 	// expose the module cache
-/******/ 	__webpack_require__.c = installedModules;
-/******/
-/******/ 	// define getter function for harmony exports
-/******/ 	__webpack_require__.d = function(exports, name, getter) {
-/******/ 		if(!__webpack_require__.o(exports, name)) {
-/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
-/******/ 		}
-/******/ 	};
-/******/
-/******/ 	// define __esModule on exports
-/******/ 	__webpack_require__.r = function(exports) {
-/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
-/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
-/******/ 		}
-/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
-/******/ 	};
-/******/
-/******/ 	// create a fake namespace object
-/******/ 	// mode & 1: value is a module id, require it
-/******/ 	// mode & 2: merge all properties of value into the ns
-/******/ 	// mode & 4: return value when already ns object
-/******/ 	// mode & 8|1: behave like require
-/******/ 	__webpack_require__.t = function(value, mode) {
-/******/ 		if(mode & 1) value = __webpack_require__(value);
-/******/ 		if(mode & 8) return value;
-/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
-/******/ 		var ns = Object.create(null);
-/******/ 		__webpack_require__.r(ns);
-/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
-/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
-/******/ 		return ns;
-/******/ 	};
-/******/
-/******/ 	// getDefaultExport function for compatibility with non-harmony modules
-/******/ 	__webpack_require__.n = function(module) {
-/******/ 		var getter = module && module.__esModule ?
-/******/ 			function getDefault() { return module['default']; } :
-/******/ 			function getModuleExports() { return module; };
-/******/ 		__webpack_require__.d(getter, 'a', getter);
-/******/ 		return getter;
-/******/ 	};
-/******/
-/******/ 	// Object.prototype.hasOwnProperty.call
-/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
-/******/
-/******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
-/******/
-/******/
-/******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
-/******/ })
-/************************************************************************/
-/******/ ({
+webpackHotUpdate("static/development/pages/index.js",{
 
 /***/ "./pages/index.js":
 /*!************************!*\
@@ -102,18 +9,24 @@ module.exports =
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/link */ "next/link");
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react_map_gl__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-map-gl */ "react-map-gl");
-/* harmony import */ var react_map_gl__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_map_gl__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! isomorphic-unfetch */ "isomorphic-unfetch");
-/* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_3__);
+/* WEBPACK VAR INJECTION */(function(module) {/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "../node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "../node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/link */ "../node_modules/next/link.js");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_map_gl__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-map-gl */ "../node_modules/react-map-gl/dist/esm/index.js");
+/* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! isomorphic-unfetch */ "../node_modules/isomorphic-unfetch/browser.js");
+/* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_4__);
+
 var _jsxFileName = "/home/wisdom/Documents/OCA/Open-Cities-Accra-master/src/pages/index.js";
 
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
@@ -181,7 +94,7 @@ function (_Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_3___default()(base_url + "/static/data/derrick.json", {
+      isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_4___default()(base_url + "/static/data/alogboshie_waterways.geojson", {
         Accept: "application/geojson",
         "Content-Type": "application/geojson",
         'Access-Control-Allow-Credentials': true,
@@ -195,7 +108,7 @@ function (_Component) {
           buildingData: buildingData
         });
       });
-      isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_3___default()(base_url + "/static/data/alogboshie_waterways.geojson", {
+      isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_4___default()(base_url + "/static/data/alogboshie_waterways.geojson", {
         Accept: "application/geojson",
         "Content-Type": "application/geojson",
         'Access-Control-Allow-Credentials': true,
@@ -209,7 +122,7 @@ function (_Component) {
           drainageData: drainageData
         });
       });
-      isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_3___default()(base_url + "/static/data/alogboshie_flod_history.geojson", {
+      isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_4___default()(base_url + "/static/data/alogboshie_flod_history.geojson", {
         Accept: "application/geojson",
         "Content-Type": "application/geojson",
         'Access-Control-Allow-Credentials': true,
@@ -230,7 +143,7 @@ function (_Component) {
       var _this3 = this;
 
       console.log(this.state.placeInfo);
-      return this.state.popupInfo && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_map_gl__WEBPACK_IMPORTED_MODULE_2__["Popup"], {
+      return this.state.popupInfo && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_map_gl__WEBPACK_IMPORTED_MODULE_3__["Popup"], {
         tipSize: 10,
         anchor: "bottom-right",
         longitude: this.state.popupInfo.state.longitude,
@@ -243,170 +156,170 @@ function (_Component) {
         closeOnClick: true,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 81
+          lineNumber: 95
         },
         __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("table", {
         width: "300",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 89
-        },
-        __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 90
-        },
-        __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 91
-        },
-        __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 92
-        },
-        __self: this
-      }, "Community"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-        style: {
-          paddingLeft: "5px"
-        },
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 93
-        },
-        __self: this
-      }, this.state.placeInfo.community)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 97
-        },
-        __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        tyle: {
-          width: "80px"
-        },
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 98
-        },
-        __self: this
-      }, "Building material"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-        style: {
-          paddingLeft: "5px"
-        },
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 99
-        },
-        __self: this
-      }, this.state.placeInfo.building_material)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
         __source: {
           fileName: _jsxFileName,
           lineNumber: 103
         },
         __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tbody", {
         __source: {
           fileName: _jsxFileName,
           lineNumber: 104
         },
         __self: this
-      }, "Roof material"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-        style: {
-          paddingLeft: "5px"
-        },
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", {
         __source: {
           fileName: _jsxFileName,
           lineNumber: 105
         },
         __self: this
-      }, this.state.placeInfo.roof_material)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 109
+          lineNumber: 106
         },
         __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 110
-        },
-        __self: this
-      }, "Building"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+      }, "Community"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", {
         style: {
           paddingLeft: "5px"
         },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 107
+        },
+        __self: this
+      }, this.state.placeInfo.community)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", {
         __source: {
           fileName: _jsxFileName,
           lineNumber: 111
         },
         __self: this
-      }, this.state.placeInfo.building)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", {
+        tyle: {
+          width: "80px"
+        },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 115
+          lineNumber: 112
         },
         __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 116
-        },
-        __self: this
-      }, "suburb"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+      }, "Building material"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", {
         style: {
           paddingLeft: "5px"
         },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 113
+        },
+        __self: this
+      }, this.state.placeInfo.building_material)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", {
         __source: {
           fileName: _jsxFileName,
           lineNumber: 117
         },
         __self: this
-      }, this.state.placeInfo.suburb)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 121
+          lineNumber: 118
         },
         __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 122
-        },
-        __self: this
-      }, "street"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+      }, "Roof material"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", {
         style: {
           paddingLeft: "5px"
         },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 119
+        },
+        __self: this
+      }, this.state.placeInfo.roof_material)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", {
         __source: {
           fileName: _jsxFileName,
           lineNumber: 123
         },
         __self: this
-      }, this.state.placeInfo.street)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 127
+          lineNumber: 124
         },
         __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 128
-        },
-        __self: this
-      }, "City"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+      }, "Building"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", {
         style: {
           paddingLeft: "5px"
         },
         __source: {
           fileName: _jsxFileName,
+          lineNumber: 125
+        },
+        __self: this
+      }, this.state.placeInfo.building)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", {
+        __source: {
+          fileName: _jsxFileName,
           lineNumber: 129
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 130
+        },
+        __self: this
+      }, "suburb"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", {
+        style: {
+          paddingLeft: "5px"
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 131
+        },
+        __self: this
+      }, this.state.placeInfo.suburb)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 135
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 136
+        },
+        __self: this
+      }, "street"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", {
+        style: {
+          paddingLeft: "5px"
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 137
+        },
+        __self: this
+      }, this.state.placeInfo.street)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 141
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 142
+        },
+        __self: this
+      }, "City"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", {
+        style: {
+          paddingLeft: "5px"
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 143
         },
         __self: this
       }, this.state.placeInfo.city)))));
@@ -416,7 +329,7 @@ function (_Component) {
     value: function renderFloodPopup() {
       var _this4 = this;
 
-      return this.state.floodPopupInfo && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_map_gl__WEBPACK_IMPORTED_MODULE_2__["Popup"], {
+      return this.state.floodPopupInfo && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_map_gl__WEBPACK_IMPORTED_MODULE_3__["Popup"], {
         tipSize: 10,
         anchor: "bottom-right",
         longitude: this.state.floodPopupInfo.state.longitude,
@@ -429,212 +342,212 @@ function (_Component) {
         closeOnClick: true,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 144
+          lineNumber: 158
         },
         __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("table", {
         width: "400",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 152
-        },
-        __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 153
-        },
-        __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 154
-        },
-        __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 155
-        },
-        __self: this
-      }, "experienced_flood"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-        style: {
-          paddingLeft: "5px"
-        },
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 156
-        },
-        __self: this
-      }, this.state.floodPlaceInfo.experienced_flood)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 160
-        },
-        __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        tyle: {
-          width: "80px"
-        },
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 161
-        },
-        __self: this
-      }, "suburb"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-        style: {
-          paddingLeft: "5px"
-        },
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 162
-        },
-        __self: this
-      }, this.state.floodPlaceInfo.suburb)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
         __source: {
           fileName: _jsxFileName,
           lineNumber: 166
         },
         __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tbody", {
         __source: {
           fileName: _jsxFileName,
           lineNumber: 167
         },
         __self: this
-      }, "flood_cause"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-        style: {
-          paddingLeft: "5px"
-        },
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", {
         __source: {
           fileName: _jsxFileName,
           lineNumber: 168
         },
         __self: this
-      }, this.state.floodPlaceInfo.flood_cause)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 172
+          lineNumber: 169
         },
         __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 173
-        },
-        __self: this
-      }, "flood_year"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+      }, "experienced_flood"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", {
         style: {
           paddingLeft: "5px"
         },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 170
+        },
+        __self: this
+      }, this.state.floodPlaceInfo.experienced_flood)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", {
         __source: {
           fileName: _jsxFileName,
           lineNumber: 174
         },
         __self: this
-      }, this.state.floodPlaceInfo.flood_year)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", {
+        tyle: {
+          width: "80px"
+        },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 178
+          lineNumber: 175
         },
         __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 179
-        },
-        __self: this
-      }, "dwelling_type"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+      }, "suburb"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", {
         style: {
           paddingLeft: "5px"
         },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 176
+        },
+        __self: this
+      }, this.state.floodPlaceInfo.suburb)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", {
         __source: {
           fileName: _jsxFileName,
           lineNumber: 180
         },
         __self: this
-      }, this.state.floodPlaceInfo.dwelling_type)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 184
+          lineNumber: 181
         },
         __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 185
-        },
-        __self: this
-      }, "flood_depth"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+      }, "flood_cause"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", {
         style: {
           paddingLeft: "5px"
         },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 182
+        },
+        __self: this
+      }, this.state.floodPlaceInfo.flood_cause)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", {
         __source: {
           fileName: _jsxFileName,
           lineNumber: 186
         },
         __self: this
-      }, this.state.floodPlaceInfo.flood_depth)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 190
+          lineNumber: 187
         },
         __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 191
-        },
-        __self: this
-      }, "landmark"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+      }, "flood_year"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", {
         style: {
           paddingLeft: "5px"
         },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 188
+        },
+        __self: this
+      }, this.state.floodPlaceInfo.flood_year)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", {
         __source: {
           fileName: _jsxFileName,
           lineNumber: 192
         },
         __self: this
-      }, this.state.floodPlaceInfo.landmark)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 196
+          lineNumber: 193
         },
         __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 197
-        },
-        __self: this
-      }, "moved_house"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+      }, "dwelling_type"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", {
         style: {
           paddingLeft: "5px"
         },
         __source: {
           fileName: _jsxFileName,
+          lineNumber: 194
+        },
+        __self: this
+      }, this.state.floodPlaceInfo.dwelling_type)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", {
+        __source: {
+          fileName: _jsxFileName,
           lineNumber: 198
         },
         __self: this
-      }, this.state.floodPlaceInfo.moved_house)), this.state.floodPlaceInfo.moved_house === "yes" && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 199
+        },
+        __self: this
+      }, "flood_depth"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", {
+        style: {
+          paddingLeft: "5px"
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 200
+        },
+        __self: this
+      }, this.state.floodPlaceInfo.flood_depth)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", {
         __source: {
           fileName: _jsxFileName,
           lineNumber: 204
         },
         __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", {
         __source: {
           fileName: _jsxFileName,
           lineNumber: 205
         },
         __self: this
-      }, "moved_year"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+      }, "landmark"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", {
         style: {
           paddingLeft: "5px"
         },
         __source: {
           fileName: _jsxFileName,
           lineNumber: 206
+        },
+        __self: this
+      }, this.state.floodPlaceInfo.landmark)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 210
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 211
+        },
+        __self: this
+      }, "moved_house"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", {
+        style: {
+          paddingLeft: "5px"
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 212
+        },
+        __self: this
+      }, this.state.floodPlaceInfo.moved_house)), this.state.floodPlaceInfo.moved_house === "yes" && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("tr", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 218
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("th", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 219
+        },
+        __self: this
+      }, "moved_year"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("td", {
+        style: {
+          paddingLeft: "5px"
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 220
         },
         __self: this
       }, this.state.floodPlaceInfo.moved_year)))));
@@ -644,292 +557,292 @@ function (_Component) {
     value: function render() {
       var _this5 = this;
 
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 221
+          lineNumber: 235
         },
         __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "container-fluid mt-3 mr-10 ml-10",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 222
+          lineNumber: 236
         },
         __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "row",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 223
+          lineNumber: 237
         },
         __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "col-sm-3",
         style: {
           marginTop: "0.8em"
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 224
+          lineNumber: 238
         },
         __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("center", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 225
-        },
-        __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
-        href: "/",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 226
-        },
-        __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        className: "home-link",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 227
-        },
-        __self: this
-      }, "HOME")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-sm-9",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 231
-        },
-        __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 232
-        },
-        __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-md-2",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 233
-        },
-        __self: this
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-sm-6",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 234
-        },
-        __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
-        className: "font-weight-bold",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 235
-        },
-        __self: this
-      }, "ALOGBOSHIE")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-sm-4",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 237
-        },
-        __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
-        className: "form-control mb-3 mr-3 w-100 rounded",
-        disabled: true,
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("center", {
         __source: {
           fileName: _jsxFileName,
           lineNumber: 239
         },
         __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
+        href: "/",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 240
         },
         __self: this
-      }, "-- Select Community --"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
+        className: "home-link",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 241
         },
         __self: this
-      }, "Akweteyman"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        selected: true,
+      }, "HOME")))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "col-sm-9",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 242
+          lineNumber: 245
         },
         __self: this
-      }, "Alogboshie"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "row",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 243
+          lineNumber: 246
         },
         __self: this
-      }, "Alajo"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "col-md-2",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 244
+          lineNumber: 247
         },
         __self: this
-      }, "Nima")))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row index-pg",
+      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "col-sm-6",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 252
+          lineNumber: 248
         },
         __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-sm-3",
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h4", {
+        className: "font-weight-bold",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 249
+        },
+        __self: this
+      }, "ALOGBOSHIE")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "col-sm-4",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 251
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("select", {
+        className: "form-control mb-3 mr-3 w-100 rounded",
+        disabled: true,
         __source: {
           fileName: _jsxFileName,
           lineNumber: 253
         },
         __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "list-unstyled px-3 py-3 rounded bg-sidebar shadow",
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
         __source: {
           fileName: _jsxFileName,
           lineNumber: 254
         },
         __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "mb-3",
+      }, "-- Select Community --"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
         __source: {
           fileName: _jsxFileName,
           lineNumber: 255
         },
         __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
-        href: "/buildings",
+      }, "Akweteyman"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
+        selected: true,
         __source: {
           fileName: _jsxFileName,
           lineNumber: 256
         },
         __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        className: "btn btn-lg btn-block btn-light rounded p-home-btn",
+      }, "Alogboshie"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
         __source: {
           fileName: _jsxFileName,
           lineNumber: 257
         },
         __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-home fa-2x fa-color",
+      }, "Alajo"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
         __source: {
           fileName: _jsxFileName,
           lineNumber: 258
         },
         __self: this
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 259
-        },
-        __self: this
-      }), "Building"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "mb-3",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 264
-        },
-        __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
-        href: "/flood-history",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 265
-        },
-        __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        className: "btn btn-lg btn-block btn-light rounded p-home-btn",
+      }, "Nima")))))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "row index-pg",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 266
         },
         __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fab fa-fort-awesome-alt fa-2x fa-color",
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "col-sm-3",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 267
         },
         __self: this
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("ul", {
+        className: "list-unstyled px-3 py-3 rounded bg-sidebar shadow",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 268
         },
         __self: this
-      }), "Flood History"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "",
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
+        className: "mb-3",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 269
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
+        href: "/buildings",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 270
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
+        className: "btn btn-lg btn-block btn-light rounded p-home-btn",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 271
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("i", {
+        className: "fas fa-home fa-2x fa-color",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 272
+        },
+        __self: this
+      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", {
         __source: {
           fileName: _jsxFileName,
           lineNumber: 273
         },
         __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
-        href: "/drainage",
+      }), "Building"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
+        className: "mb-3",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 274
+          lineNumber: 278
         },
         __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        className: "btn btn-lg btn-block btn-lg btn-light rounded p-home-btn",
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
+        href: "/flood-history",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 275
+          lineNumber: 279
         },
         __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fab fa-schlix fa-2x fa-color",
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
+        className: "btn btn-lg btn-block btn-light rounded p-home-btn",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 276
+          lineNumber: 280
         },
         __self: this
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("i", {
+        className: "fab fa-fort-awesome-alt fa-2x fa-color",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 277
+          lineNumber: 281
         },
         __self: this
-      }), "Drainage Points")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
-        href: "/contact",
+      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 283
+          lineNumber: 282
         },
         __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        className: "btn btn-dark btn-block",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 284
-        },
-        __self: this
-      }, "Contact"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-sm-9",
+      }), "Flood History"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
+        className: "",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 287
         },
         __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
+        href: "/drainage",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 288
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
+        className: "btn btn-lg btn-block btn-lg btn-light rounded p-home-btn",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 289
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("i", {
+        className: "fab fa-schlix fa-2x fa-color",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 290
+        },
+        __self: this
+      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 291
+        },
+        __self: this
+      }), "Drainage Points")))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
+        href: "/contact",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 297
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
+        className: "btn btn-dark btn-block",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 298
+        },
+        __self: this
+      }, "Contact"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "col-sm-9",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 301
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "map-border",
         style: {
           height: "700px"
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 288
+          lineNumber: 302
         },
         __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_map_gl__WEBPACK_IMPORTED_MODULE_2___default.a, _extends({
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_map_gl__WEBPACK_IMPORTED_MODULE_3__["default"], _extends({
         mapboxApiAccessToken: "pk.eyJ1Ijoid2lzZG9tMDA2MyIsImEiOiJjanI1aWg0cGQwZTByM3dtc3J1OHJ3MGNqIn0.yjtKpgtEmgCkCcLvpH_tJg"
       }, this.state.viewport, {
         mapStyle: "mapbox://styles/mapbox/streets-v9",
@@ -940,21 +853,21 @@ function (_Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 289
+          lineNumber: 303
         },
         __self: this
       }), this.state.buildingData && this.state.buildingData.features.map(function (value) {
         return value.geometry.coordinates.map(function (val, index) {
-          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_map_gl__WEBPACK_IMPORTED_MODULE_2__["Marker"], {
+          return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_map_gl__WEBPACK_IMPORTED_MODULE_3__["Marker"], {
             latitude: val[index][1],
             longitude: val[index][0],
             key: index,
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 300
+              lineNumber: 314
             },
             __self: this
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
             src: "../static/img/home.png",
             width: "20",
             height: "20",
@@ -981,44 +894,44 @@ function (_Component) {
             },
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 305
+              lineNumber: 319
             },
             __self: this
           }));
         });
       }), this.state.drainageData && this.state.drainageData.features.map(function (value) {
         return value.geometry.coordinates.map(function (val, index) {
-          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_map_gl__WEBPACK_IMPORTED_MODULE_2__["Marker"], {
+          return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_map_gl__WEBPACK_IMPORTED_MODULE_3__["Marker"], {
             latitude: val[1],
             longitude: val[0],
             key: index,
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 344
+              lineNumber: 358
             },
             __self: this
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
             src: "../static/img/river.png",
             width: "17",
             height: "17",
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 349
+              lineNumber: 363
             },
             __self: this
           }));
         });
       }), this.state.floodData && this.state.floodData.features.map(function (value, index) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_map_gl__WEBPACK_IMPORTED_MODULE_2__["Marker"], {
+        return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_map_gl__WEBPACK_IMPORTED_MODULE_3__["Marker"], {
           latitude: value.geometry.coordinates[1],
           longitude: value.geometry.coordinates[0],
           key: index,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 362
+            lineNumber: 376
           },
           __self: this
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
           src: "../static/img/flood.png",
           style: {
             backgroundColor: "gray"
@@ -1048,19 +961,19 @@ function (_Component) {
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 367
+            lineNumber: 381
           },
           __self: this
         }));
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "nav",
         style: navStyle,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 401
+          lineNumber: 415
         },
         __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_map_gl__WEBPACK_IMPORTED_MODULE_2__["NavigationControl"], {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_map_gl__WEBPACK_IMPORTED_MODULE_3__["NavigationControl"], {
         onViewportChange: function onViewportChange(viewport) {
           return _this5.setState({
             viewport: viewport
@@ -1068,196 +981,220 @@ function (_Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 402
-        },
-        __self: this
-      })), this.renderPopup(), this.renderFloodPopup()))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", {
-        className: "footer",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 413
-        },
-        __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "container",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 414
-        },
-        __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("center", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 415
-        },
-        __self: this
-      }, "Powered by:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row justify-content-center",
-        __source: {
-          fileName: _jsxFileName,
           lineNumber: 416
         },
         __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "list-inline py-2",
+      })), this.renderPopup(), this.renderFloodPopup()))))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("footer", {
+        className: "footer",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 417
+          lineNumber: 427
         },
         __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "list-inline-item",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 418
-        },
-        __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
-        href: "http://mobilewebghana.org/",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 419
-        },
-        __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        target: "_blank",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 420
-        },
-        __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "../static/img/partners/mwg.png",
-        className: "partner",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 421
-        },
-        __self: this
-      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "list-inline-item",
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "container",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 428
         },
         __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
-        href: "https://www.osmghana.org/",
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("center", {
         __source: {
           fileName: _jsxFileName,
           lineNumber: 429
         },
         __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        target: "_blank",
+      }, "Powered by:"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "row justify-content-center",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 430
         },
         __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "../static/img/partners/osmghana.png",
-        className: "partner",
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("ul", {
+        className: "list-inline py-2",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 431
         },
         __self: this
-      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
         className: "list-inline-item",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 438
+          lineNumber: 432
         },
         __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
-        href: "https://www.hotosm.org/",
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
+        href: "http://mobilewebghana.org/",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 439
+          lineNumber: 433
         },
         __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
         target: "_blank",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 440
+          lineNumber: 434
         },
         __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
+        src: "../static/img/partners/mwg.png",
+        className: "partner",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 435
+        },
+        __self: this
+      })))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
+        className: "list-inline-item",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 442
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
+        href: "https://www.osmghana.org/",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 443
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
+        target: "_blank",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 444
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
+        src: "../static/img/partners/osmghana.png",
+        className: "partner",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 445
+        },
+        __self: this
+      })))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
+        className: "list-inline-item",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 452
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
+        href: "https://www.hotosm.org/",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 453
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
+        target: "_blank",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 454
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
         src: "../static/img/partners/hot.png",
         className: "partner",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 441
+          lineNumber: 455
         },
         __self: this
       })))))))));
     }
+  }], [{
+    key: "getInitialProps",
+    value: function () {
+      var _getInitialProps = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        var drainageRes, drainageData, buildingsRes, buildingData, floodRes, floodData;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_4___default()(base_url + "/static/data/alogboshie_waterways.geojson");
+
+              case 2:
+                drainageRes = _context.sent;
+                _context.next = 5;
+                return drainageRes.json();
+
+              case 5:
+                drainageData = _context.sent;
+                _context.next = 8;
+                return isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_4___default()(base_url + "/static/data/derrick.json");
+
+              case 8:
+                buildingsRes = _context.sent;
+                _context.next = 11;
+                return buildingsRes.json();
+
+              case 11:
+                buildingData = _context.sent;
+                _context.next = 14;
+                return isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_4___default()(base_url + "/static/data/alogboshie_flod_history.geojson");
+
+              case 14:
+                floodRes = _context.sent;
+                _context.next = 17;
+                return floodRes.json();
+
+              case 17:
+                floodData = _context.sent;
+                return _context.abrupt("return", {
+                  buildingData: buildingData,
+                  drainageData: drainageData,
+                  floodData: floodData
+                });
+
+              case 19:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+
+      function getInitialProps() {
+        return _getInitialProps.apply(this, arguments);
+      }
+
+      return getInitialProps;
+    }()
   }]);
 
   return Index;
-}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+}(react__WEBPACK_IMPORTED_MODULE_1__["Component"]);
 
 /* harmony default export */ __webpack_exports__["default"] = (Index);
+    (function (Component, route) {
+      if(!Component) return
+      if (false) {}
+      module.hot.accept()
+      Component.__route = route
 
-/***/ }),
+      if (module.hot.status() === 'idle') return
 
-/***/ 3:
-/*!******************************!*\
-  !*** multi ./pages/index.js ***!
-  \******************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+      var components = next.router.components
+      for (var r in components) {
+        if (!components.hasOwnProperty(r)) continue
 
-module.exports = __webpack_require__(/*! ./pages/index.js */"./pages/index.js");
-
-
-/***/ }),
-
-/***/ "isomorphic-unfetch":
-/*!*************************************!*\
-  !*** external "isomorphic-unfetch" ***!
-  \*************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("isomorphic-unfetch");
-
-/***/ }),
-
-/***/ "next/link":
-/*!****************************!*\
-  !*** external "next/link" ***!
-  \****************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("next/link");
-
-/***/ }),
-
-/***/ "react":
-/*!************************!*\
-  !*** external "react" ***!
-  \************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("react");
-
-/***/ }),
-
-/***/ "react-map-gl":
-/*!*******************************!*\
-  !*** external "react-map-gl" ***!
-  \*******************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("react-map-gl");
+        if (components[r].Component.__route === route) {
+          next.router.update(r, Component)
+        }
+      }
+    })(typeof __webpack_exports__ !== 'undefined' ? __webpack_exports__.default : (module.exports.default || module.exports), "/")
+  
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../node_modules/webpack/buildin/harmony-module.js */ "../node_modules/webpack/buildin/harmony-module.js")(module)))
 
 /***/ })
 
-/******/ });
-//# sourceMappingURL=index.js.map
+})
+//# sourceMappingURL=index.js.b49854469099a42cbe38.hot-update.js.map
