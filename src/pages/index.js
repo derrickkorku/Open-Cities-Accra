@@ -8,7 +8,7 @@ const navStyle = {
   padding: "20px"
 };
 import fetch from "isomorphic-unfetch";
-const base_url = "http://localhost:5000" 
+const base_url ="https://ocav1-app.herokuapp.com" || "http://localhost:5000"  
 
 class Index extends Component {
   constructor(props) {
@@ -36,38 +36,17 @@ class Index extends Component {
 
   componentDidMount(){
       fetch(
-        base_url + "/static/data/derrick.json", {
-         Accept:"application/geojson",
-         "Content-Type":"application/geojson",
-         'Access-Control-Allow-Credentials' : true,
-         'Access-Control-Allow-Origin':'*',
-         'Access-Control-Allow-Methods':'GET',
-         'Access-Control-Allow-Headers':'application/geojson',
-       }
+        base_url + "/static/data/derrick.json"
      ).then(buildingsRes=>buildingsRes.json() ).then(buildingData=>{this.setState({buildingData})
         })
 
           fetch(
-          base_url + "/static/data/alogboshie_waterways.geojson", {
-             Accept:"application/geojson",
-             "Content-Type":"application/geojson",
-             'Access-Control-Allow-Credentials' : true,
-             'Access-Control-Allow-Origin':'*',
-             'Access-Control-Allow-Methods':'GET',
-             'Access-Control-Allow-Headers':'application/geojson',
-           }
+          base_url + "/static/data/alogboshie_waterways.geojson"
          ).then(drainageRes=>drainageRes.json() ).then(drainageData=>{this.setState({drainageData})
             })
 
             fetch(
-              base_url + "/static/data/alogboshie_flod_history.geojson", {
-                Accept:"application/geojson",
-                "Content-Type":"application/geojson",
-                'Access-Control-Allow-Credentials' : true,
-                'Access-Control-Allow-Origin':'*',
-                'Access-Control-Allow-Methods':'GET',
-                'Access-Control-Allow-Headers':'application/geojson',
-              }
+              base_url + "/static/data/alogboshie_flod_history.geojson"
             ).then(floodRes=>floodRes.json() ).then(floodData=>{this.setState({floodData})
                })
    
