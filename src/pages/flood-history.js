@@ -13,6 +13,7 @@ class FloodHistory extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      floodData:null,
       viewport: {
         width: "inherit",
         height: "inherit",
@@ -29,12 +30,22 @@ class FloodHistory extends Component {
     this.renderPopup = this.renderPopup.bind(this)
   }
 
-  static async getInitialProps() {
-    const floodRes = await fetch(
-      base_url + "/static/data/alogboshie_flod_history.geojson"
-    );
-    const floodData = await floodRes.json();
-    return { floodData };
+
+
+  componentDidMount(){
+   return  fetch(
+      base_url + "/static/data/alogboshie_flod_history.geojson", {
+        Accept:"application/geojson",
+        "Content-Type":"application/geojson",
+        'Access-Control-Allow-Credentials' : true,
+        'Access-Control-Allow-Origin':'*',
+        'Access-Control-Allow-Methods':'GET',
+        'Access-Control-Allow-Headers':'application/geojson',
+      }
+    ).then(floodRes=>floodRes.json() ).then(floodData=>{this.setState({floodData})
+       window.alert("heee flooddata")})
+  
+    
   }
 
   renderPopup() {
@@ -196,7 +207,7 @@ class FloodHistory extends Component {
                   mapStyle="mapbox://styles/mapbox/streets-v9"
                   onViewportChange={viewport => this.setState({ viewport })}
                 >
-                {this.props.floodData.features.map((value, index)=>{
+                {this.state.floodData && this.state.floodData.features.map((value, index)=>{
                                         return (
                                           <Marker
                                             latitude={value.geometry.coordinates[1]}
@@ -204,9 +215,10 @@ class FloodHistory extends Component {
                                             key={index}
                                           >
                                             <img
-                                              src="../static/img/river.png"
+                                              src="../static/img/flood.png"
                                               width="17"
-                                              height="17"
+                                              height="15"
+                                              style={{backgroundColor:"gray"}}
                                               onClick={() => {
                                               
                                                 this.setState({

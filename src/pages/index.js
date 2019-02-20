@@ -66,7 +66,7 @@ class Index extends Component {
                 </td>
               </tr>
               <tr>
-                <th tyle={{ width: "130px" }}>Building material</th>
+                <th tyle={{ width: "80px" }}>Building material</th>
                 <td style={{ paddingLeft: "5px" }}>
                   {this.state.placeInfo.building_material}
                 </td>
@@ -75,6 +75,30 @@ class Index extends Component {
                 <th>Roof material</th>
                 <td style={{ paddingLeft: "5px" }}>
                   {this.state.placeInfo.roof_material}
+                </td>
+              </tr>
+              <tr>
+                <th>Building</th>
+                <td style={{ paddingLeft: "5px" }}>
+                  {this.state.placeInfo.building}
+                </td>
+              </tr>
+              <tr>
+                <th>suburb</th>
+                <td style={{ paddingLeft: "5px" }}>
+                  {this.state.placeInfo.suburb}
+                </td>
+              </tr>
+              <tr>
+                <th>street</th>
+                <td style={{ paddingLeft: "5px" }}>
+                  {this.state.placeInfo.street}
+                </td>
+              </tr>
+              <tr>
+                <th>City</th>
+                <td style={{ paddingLeft: "5px" }}>
+                  {this.state.placeInfo.city}
                 </td>
               </tr>
             </tbody>
@@ -269,7 +293,13 @@ class Index extends Component {
                                     value.properties["building:material"] ||
                                     null,
                                   roof_material:
-                                    value.properties["roof:material"] || null
+                                    value.properties["roof:material"] || null,
+                                    street: value.properties["addr:street"] || null,
+                                    suburb:value.properties["addr:suburb"] || null,
+                                    building:value.properties["building"] || null,
+                                    city:value.properties["addr:city"] || null
+
+
                                 }
                               });
                             }}
@@ -306,9 +336,10 @@ class Index extends Component {
                                             key={index}
                                           >
                                             <img
-                                              src="../static/img/rivers.png"
+                                              src="../static/img/flood.png"
+                                              style={{backgroundColor:"gray"}}
                                               width="17"
-                                              height="17"
+                                              height="15"
                                               onClick={() => {
                                               
                                                 this.setState({
@@ -344,6 +375,7 @@ class Index extends Component {
                     />
                   </div>
                   {this.renderPopup()}
+                  {this.renderFloodPopup()}
                 </ReactMapGL>
               </div>
             </div>
