@@ -40,10 +40,10 @@ class Buildings extends Component {
       viewport: {
         width: "inherit",
         height: "inherit",
-        latitude: 5.62420,
+        latitude: 5.62620,
         longitude: -0.23250,
-        zoom: 15.6,
-        container: 'map',
+       
+        zoom: 17.0
        
 
         
@@ -319,12 +319,12 @@ this.setState({render:true})
                     </a>
                   </Link>
                 </li>
-                <li className="list-inline-item">
+                <li className="list-inline-item"  >
                   <Link href="https://www.hotosm.org/">
-                    <a target="_blank">
+                    <a target="_blank" style={{width:"800px !important"}}>
                       <img
-                        src="../static/img/partners/hot.png"
-                        className="partner"
+                        src="../static/img/hot.png" 
+                        className="hot"
                       />
                     </a>
                   </Link>

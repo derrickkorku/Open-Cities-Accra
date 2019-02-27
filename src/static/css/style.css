@@ -27,8 +27,8 @@ body {
 }
 
 .partner {
-  height: 80px;
-  width: 120px;
+  height: 100px;
+  width: 140px;
 }
 
 select.form-control option {
@@ -81,4 +81,9 @@ textarea.form-control {
 
 .index-pg>.col-sm-9 {
   max-width: 78.444443% !important;
+}
+.hot{
+  height: 100px;
+  width:260px !important;
+  margin-left:12px
 }

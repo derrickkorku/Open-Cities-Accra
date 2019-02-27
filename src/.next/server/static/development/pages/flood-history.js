@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -142,9 +142,8 @@ var navStyle = {
   left: 0,
   padding: "20px"
 };
- //const base_url = "https://ocav1-app.herokuapp.com" || "http://localhost:5000" 
 
-var base_url = "http://localhost:5000" || "https://ocav1-app.herokuapp.com";
+var base_url = "https://ocav1-app.herokuapp.com" || "http://localhost:5000"; //const base_url = "http://localhost:5000" || "https://ocav1-app.herokuapp.com" 
 
 var FloodHistory =
 /*#__PURE__*/
@@ -918,14 +917,17 @@ function (_Component) {
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         target: "_blank",
+        style: {
+          width: "800px !important"
+        },
         __source: {
           fileName: _jsxFileName,
           lineNumber: 313
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "../static/img/partners/hot.png",
-        className: "partner",
+        src: "../static/img/hot.png",
+        className: "hot",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 314
@@ -942,7 +944,7 @@ function (_Component) {
 
 /***/ }),
 
-/***/ 4:
+/***/ 5:
 /*!**************************************!*\
   !*** multi ./pages/flood-history.js ***!
   \**************************************/

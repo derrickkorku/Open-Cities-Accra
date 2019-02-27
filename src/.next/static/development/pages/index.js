@@ -31311,9 +31311,9 @@ var navStyle = {
   left: 0,
   padding: "20px"
 };
- //const base_url ="https://ocav1-app.herokuapp.com" || "http://localhost:5000"  
 
-var base_url = "http://localhost:5000" || "https://ocav1-app.herokuapp.com";
+var base_url = "https://ocav1-app.herokuapp.com" || "http://localhost:5000"; //const base_url = "http://localhost:5000" || "https://ocav1-app.herokuapp.com" 
+
 var mapStyle = Object(immutable__WEBPACK_IMPORTED_MODULE_3__["fromJS"])({
   version: 8,
   style: 'mapbox://styles/mapbox/streets-v9',
@@ -32285,14 +32285,17 @@ function (_Component) {
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         target: "_blank",
+        style: {
+          width: "800px !important"
+        },
         __source: {
           fileName: _jsxFileName,
           lineNumber: 508
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "../static/img/partners/hot.png",
-        className: "partner",
+        src: "../static/img/hot.png",
+        className: "hot",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 509

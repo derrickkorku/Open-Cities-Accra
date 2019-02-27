@@ -308,12 +308,12 @@ class FloodHistory extends Component {
                     </a>
                   </Link>
                 </li>
-                <li className="list-inline-item">
+                <li className="list-inline-item"  >
                   <Link href="https://www.hotosm.org/">
-                    <a target="_blank">
+                    <a target="_blank" style={{width:"800px !important"}}>
                       <img
-                        src="../static/img/partners/hot.png"
-                        className="partner"
+                        src="../static/img/hot.png" 
+                        className="hot"
                       />
                     </a>
                   </Link>
