@@ -1,6 +1,7 @@
 import { Component } from "react";
 import Link from "next/link";
-import ReactMapGL, { NavigationControl, Marker, Popup } from "react-map-gl";
+import ReactMapGL, { NavigationControl, Marker, Popup, } from "react-map-gl";
+import {fromJS} from "immutable"
 const navStyle = {
   position: "absolute",
   top: 0,
@@ -8,8 +9,45 @@ const navStyle = {
   padding: "20px"
 };
 import fetch from "isomorphic-unfetch";
-const base_url ="https://ocav1-app.herokuapp.com" || "http://localhost:5000"  
+//const base_url ="https://ocav1-app.herokuapp.com" || "http://localhost:5000"  
+const base_url = "http://localhost:5000" || "https://ocav1-app.herokuapp.com" 
 
+const mapStyle = fromJS({
+  version: 8,
+  style: 'mapbox://styles/mapbox/streets-v9',
+  sources: {
+      building: {
+          type: 'geojson',
+          data:  base_url + "/static/data/alobgoshie-buildings.geojson", 
+      },   
+         water: {
+        type: 'geojson',
+        data:  base_url + "/static/data/alogboshie_waterways.geojson", 
+    }
+  },
+  layers: [
+      {
+          id: 'my-layer',
+          source: 'building',
+          type: "fill",
+          'paint': {
+       "fill-color":"gray"
+            }
+      
+      },
+      {
+        id: 'm-layer',
+        source: 'water',
+        type: "line",
+        'paint': {
+     "line-color":"blue",
+     "line-width":3
+          }
+
+    
+    }
+  ]
+});
 class Index extends Component {
   constructor(props) {
     super(props);
@@ -17,12 +55,14 @@ class Index extends Component {
       floodData:null,
       buildingData:null,
       drainageData:null,
+      render:false,
       viewport: {
         width: "inherit",
         height: "inherit",
-        latitude: 5.63589,
-        longitude: -0.23602,
-        zoom: 15.6
+        latitude: 5.62620,
+        longitude: -0.23250,
+       
+        zoom: 17.0
       },
       popupInfo: null,
       floodPopupInfo:null,
@@ -32,23 +72,26 @@ class Index extends Component {
     this.renderPopup = this.renderPopup.bind(this);
   }
 
+ 
+
 
 
   componentDidMount(){
-      fetch(
-        base_url + "/static/data/derrick.json"
-     ).then(buildingsRes=>buildingsRes.json() ).then(buildingData=>{this.setState({buildingData})
-        })
+    this.setState({render:true})
+    //   fetch(
+    //     base_url + "/static/data/derrick.json"
+    //  ).then(buildingsRes=>buildingsRes.json() ).then(buildingData=>{this.setState({buildingData})
+    //     })
 
-          fetch(
-          base_url + "/static/data/alogboshie_waterways.geojson"
-         ).then(drainageRes=>drainageRes.json() ).then(drainageData=>{this.setState({drainageData})
-            })
+    //       fetch(
+    //       base_url + "/static/data/alogboshie_waterways.geojson"
+    //      ).then(drainageRes=>drainageRes.json() ).then(drainageData=>{this.setState({drainageData})
+    //         })
 
-            fetch(
-              base_url + "/static/data/alogboshie_flod_history.geojson"
-            ).then(floodRes=>floodRes.json() ).then(floodData=>{this.setState({floodData})
-               })
+    //         fetch(
+    //           base_url + "/static/data/alogboshie_flod_history.geojson"
+    //         ).then(floodRes=>floodRes.json() ).then(floodData=>{this.setState({floodData})
+    //            })
    
      
    }
@@ -196,6 +239,51 @@ class Index extends Component {
   }
 
   render() {
+
+    const myMap =this.state.render && this.mapRef.getMap()
+    this.state.render && myMap.on("load", function () {
+        // Add a layer showing the state polygons.
+        myMap.addLayer({
+        'id': 'states-layers',
+        'type': 'fill',
+        'source': {
+        'type': 'geojson',
+        'data': base_url + "/static/data/alobgoshie-buildings.geojson"
+        },
+        'layout': {},
+        'paint': {
+        'fill-color': '#088',
+        'fill-opacity': 0.2
+        }
+        });
+
+        myMap.addLayer({
+          'id': 'states-layer',
+          'type': 'line',
+          'source': {
+          'type': 'geojson',
+          'data': base_url + "/static/data/alogboshie_waterways.geojson"
+          },
+          'paint': {
+                  "line-color":"blue",
+                  "line-width":3
+                         }
+          });
+
+          myMap.addLayer({
+            'id': 'flood',
+            'type': 'circle',
+            'source': {
+            'type': 'geojson',
+            'data': base_url + "/static/data/alogboshie_flod_history.geojson"
+            },
+            'paint': {
+                    "circle-color":"gray",
+                    "circle-radius":10
+                           }
+            });
+      
+    })
     return (
       <div>
         <div className="container-fluid mt-3 mr-10 ml-10">
@@ -266,6 +354,7 @@ class Index extends Component {
             <div className="col-sm-9">
               <div className="map-border" style={{ height: "700px" }}>
                 <ReactMapGL
+                  ref={ map => this.mapRef = map }
                   mapboxApiAccessToken={
                     "pk.eyJ1Ijoid2lzZG9tMDA2MyIsImEiOiJjanI1aWg0cGQwZTByM3dtc3J1OHJ3MGNqIn0.yjtKpgtEmgCkCcLvpH_tJg"
                   }
@@ -273,7 +362,7 @@ class Index extends Component {
                   mapStyle="mapbox://styles/mapbox/streets-v9"
                   onViewportChange={viewport => this.setState({ viewport })}
                 >
-                  {this.state.buildingData && this.state.buildingData.features.map(value => {
+                  {/* {this.state.buildingData && this.state.buildingData.features.map(value => {
                     return value.geometry.coordinates.map((val, index) => {
                       return (
                         <Marker
@@ -375,7 +464,7 @@ class Index extends Component {
                                               }}
                                             />
                                           </Marker>
-                                        )})}
+                                        )})} */}
 
                   <div className="nav" style={navStyle}>
                     <NavigationControl

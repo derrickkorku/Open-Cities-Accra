@@ -1,6 +1,7 @@
 import { Component } from "react";
 import Link from "next/link";
 import ReactMapGL, { Marker, Popup, NavigationControl } from "react-map-gl";
+import {fromJS} from 'immutable';
 const navStyle = {
   position: "absolute",
   top: 0,
@@ -8,19 +9,43 @@ const navStyle = {
   padding: "20px"
 };
 import fetch from "isomorphic-unfetch";
-const base_url = "https://ocav1-app.herokuapp.com" || "http://localhost:5000" 
+//const base_url = "https://ocav1-app.herokuapp.com" || "http://localhost:5000" 
+const base_url = "http://localhost:5000" || "https://ocav1-app.herokuapp.com" 
+const mapStyle = fromJS({
+  version: 8,
+  sources: {
+      building: {
+          type: 'geojson',
+          data:  base_url + "/static/data/alobgoshie-buildings.geojson", 
+      }
+  },
+  layers: [
+      {
+          id: 'my-layer',
+          source: 'building',
+          type: "fill",
+          'paint': {
+       "fill-color":"blue"
+            }
+      
+      }
+  ]
+});
 class Buildings extends Component {
   constructor(props) {
     super(props);
     this.state = {
       buildingData:null,
+      render:false,
       viewport: {
         width: "inherit",
         height: "inherit",
-        latitude: 5.63629,
-        longitude: -0.23600,
+        latitude: 5.62420,
+        longitude: -0.23250,
         zoom: 15.6,
-        bearing: 9.6,
+        container: 'map',
+       
+
         
     
       },
@@ -33,8 +58,8 @@ class Buildings extends Component {
 
   componentDidMount(){
     return  fetch(
-      base_url + "/static/data/derrick.json", 
-     ).then(buildingsRes=>buildingsRes.json() ).then(buildingData=>{this.setState({buildingData})
+      base_url + "/static/data/alobgoshie-buildings.geojson", 
+     ).then(buildingsRes=>buildingsRes.json() ).then(buildingData=>{this.setState({buildingData, render:true})
         })
    
      
@@ -106,6 +131,41 @@ class Buildings extends Component {
   }
 
   render() {
+
+    const myMap =this.state.render && this.mapRef.getMap()
+    this.state.render && myMap.on('mousemove', function (e) {
+    //  var features = map.queryRenderedFeatures(e.point);
+     window.alert("hello")
+      });
+    this.state.render && myMap.on("load", function () {
+        // Add a layer showing the state polygons.
+        myMap.addLayer({
+        'id': 'states-layer',
+        'type': 'fill',
+        'source': {
+        'type': 'geojson',
+        'data': base_url + "/static/data/alobgoshie-buildings.geojson"
+        },
+        'layout': {},
+        'paint': {
+        'fill-color': '#088',
+        'fill-opacity': 0.2
+        }
+        });
+
+        myMap.on('click', 'states-layer', function (e) {
+          window.alert("hello")
+          // new mapboxgl.Popup()
+          // .setLngLat(e.lngLat)
+          // .setHTML(e.features[0].properties.name)
+          // .addTo(map);
+          });
+
+          myMap.on('mouseenter', 'states-layer', function () {
+            myMap.getCanvas().style.cursor = 'pointer';
+            });
+      
+    })
     return (
       <div>
         <div className="container-fluid mt-3">
@@ -178,6 +238,7 @@ class Buildings extends Component {
             <div className="col-sm-8">
               <div className="map-border" style={{ height: "750px" }}>
                 <ReactMapGL
+                  ref={ map => this.mapRef = map }
                   mapboxApiAccessToken={
                     "pk.eyJ1Ijoid2lzZG9tMDA2MyIsImEiOiJjanI1aWg0cGQwZTByM3dtc3J1OHJ3MGNqIn0.yjtKpgtEmgCkCcLvpH_tJg"
                   }
@@ -185,7 +246,7 @@ class Buildings extends Component {
                   mapStyle="mapbox://styles/mapbox/streets-v9"
                   onViewportChange={viewport => this.setState({ viewport })}
                 >
-                  {this.state.buildingData && this.state.buildingData.features.map(value => {
+                  {/* {this.state.buildingData && this.state.buildingData.features.map(value => {
                     return value.geometry.coordinates.map((val, index) => {
                       return (
                         <Marker
@@ -193,10 +254,7 @@ class Buildings extends Component {
                           longitude={val[index][0]}
                           key={index}
                         >
-                          <img
-                            src="../static/img/home.png"
-                            width="20"
-                            height="20"
+                          <div style ={{width:"10px", height:"10px"}}
                             onClick={() => {
                               console.log("hhhheheheheh");
                               this.setState({
@@ -226,7 +284,7 @@ class Buildings extends Component {
                         </Marker>
                       );
                     });
-                  })}
+                  })} */}
 
                   <div className="nav" style={navStyle}>
                     <NavigationControl

@@ -1,30 +1,54 @@
 import { Component } from "react";
 import Link from "next/link";
 import ReactMapGL, { Marker, Popup, NavigationControl } from "react-map-gl";
+import {fromJS} from 'immutable';
+import fetch from "isomorphic-unfetch";
+//const base_url = "https://ocav1-app.herokuapp.com" || "http://localhost:5000" 
+const base_url = "http://localhost:5000" || "https://ocav1-app.herokuapp.com" 
 const navStyle = {
   position: "absolute",
   top: 0,
   left: 0,
   padding: "20px"
 };
-import fetch from "isomorphic-unfetch";
-const base_url = "https://ocav1-app.herokuapp.com" || "http://localhost:5000" 
+// const mapStyle = fromJS({
+//   version: 8,
+//   sources: {
+//       water: {
+//           type: 'geojson',
+//           data:  base_url + "/static/data/alogboshie_waterways.geojson", 
+//       }
+//   },
+//   layers: [
+//       {
+//           id: 'm-layer',
+//           source: 'water',
+//           type: "line",
+//           'paint': {
+//        "line-color":"blue",
+//        "line-width":3
+//             }
 
-
+      
+//       }
+//   ]
+// });
 class Drainage extends Component {
   constructor(props) {
     super(props);
     this.state = {
       drainageData:null,
+      render:false,
       viewport: {
         width: "inherit",
         height: "inherit",
         latitude: 5.6299636,
         longitude: -0.2302194,
-        zoom: 15.6,
+        zoom: 16.1,
         bearing: 9.6,
         pitch: 60,
-        opacity: 1
+        opacity: 1,
+        boxZoom: false
       }
     };
   }
@@ -34,13 +58,45 @@ class Drainage extends Component {
   componentDidMount(){
     return  fetch(
       base_url + "/static/data/alogboshie_waterways.geojson"
-     ).then(drainageRes=>drainageRes.json() ).then(drainageData=>{this.setState({drainageData})
+     ).then(drainageRes=>drainageRes.json() ).then(drainageData=>{this.setState({drainageData, render:true})
         })
+
    
-     
-   }
+  
+        
+
+  }
 
   render() {
+    const myMap =this.state.render && this.mapRef.getMap()
+    this.state.render && myMap.on("load", function () {
+        // Add a layer showing the state polygons.
+        myMap.addLayer({
+        'id': 'states-layer',
+        'type': 'line',
+        'source': {
+        'type': 'geojson',
+        'data': base_url + "/static/data/alogboshie_waterways.geojson"
+        },
+        'paint': {
+                "line-color":"blue",
+                "line-width":3
+                       }
+        });
+
+        myMap.on('click', 'states-layer', function (e) {
+          window.alert("hello")
+          // new mapboxgl.Popup()
+          // .setLngLat(e.lngLat)
+          // .setHTML(e.features[0].properties.name)
+          // .addTo(map);
+          });
+
+          myMap.on('mouseenter', 'states-layer', function () {
+            myMap.getCanvas().style.cursor = 'pointer';
+            });
+      
+    })
     return (
       <div>
         <div className="container-fluid mt-3">
@@ -113,14 +169,15 @@ class Drainage extends Component {
             <div className="col-sm-8">
               <div className="map-border" style={{ height: "700px" }}>
                 <ReactMapGL
+                ref={ map => this.mapRef = map }
                   mapboxApiAccessToken={
                     "pk.eyJ1Ijoid2lzZG9tMDA2MyIsImEiOiJjanI1aWg0cGQwZTByM3dtc3J1OHJ3MGNqIn0.yjtKpgtEmgCkCcLvpH_tJg"
                   }
                   {...this.state.viewport}
-                  mapStyle="mapbox://styles/mapbox/streets-v9"
+                   mapStyle="mapbox://styles/mapbox/streets-v9"
                   onViewportChange={viewport => this.setState({ viewport })}
                 >
-                  {this.state.drainageData && this.state.drainageData.features.map(value => {
+                  {/* {this.state.drainageData && this.state.drainageData.features.map(value => {
                     return value.geometry.coordinates.map((val, index) => {
                       return (
                         <Marker
@@ -137,7 +194,7 @@ class Drainage extends Component {
                         </Marker>
                       );
                     });
-                  })}
+                  })} */}
 
                   <div className="nav" style={navStyle}>
                     <NavigationControl

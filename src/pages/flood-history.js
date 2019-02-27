@@ -8,21 +8,21 @@ const navStyle = {
   padding: "20px"
 };
 import fetch from "isomorphic-unfetch";
-const base_url = "https://ocav1-app.herokuapp.com" || "http://localhost:5000" 
+//const base_url = "https://ocav1-app.herokuapp.com" || "http://localhost:5000" 
+const base_url = "http://localhost:5000" || "https://ocav1-app.herokuapp.com" 
 class FloodHistory extends Component {
   constructor(props) {
     super(props);
     this.state = {
       floodData:null,
+      render:false,
       viewport: {
         width: "inherit",
         height: "inherit",
-        latitude: 5.6239636,
+        latitude: 5.6249636,
         longitude: -0.2332194,
-        zoom: 15.6,
-        bearing: 9.6,
-        pitch: 60,
-        opacity: 1
+        zoom: 14.6,
+
       },
       popupInfo: null,
       placeInfo: null
@@ -33,10 +33,11 @@ class FloodHistory extends Component {
 
 
   componentDidMount(){
-   return  fetch(
-      base_url + "/static/data/alogboshie_flod_history.geojson"
-    ).then(floodRes=>floodRes.json() ).then(floodData=>{this.setState({floodData})
-       })
+    this.setState({render:true})
+  //  return  fetch(
+  //     base_url + "/static/data/alogboshie_flod_history.geojson"
+  //   ).then(floodRes=>floodRes.json() ).then(floodData=>{this.setState({floodData})
+  //      })
   
     
   }
@@ -121,6 +122,36 @@ class FloodHistory extends Component {
   }
 
   render() {
+
+    const myMap =this.state.render && this.mapRef.getMap()
+    this.state.render && myMap.on("load", function () {
+        // Add a layer showing the state polygons.
+        myMap.addLayer({
+        'id': 'states-layer',
+        'type': 'circle',
+        'source': {
+        'type': 'geojson',
+        'data': base_url + "/static/data/alogboshie_flod_history.geojson"
+        },
+        'paint': {
+                "circle-color":"gray",
+                "circle-radius":10
+                       }
+        });
+
+        myMap.on('click', 'states-layer', function (e) {
+          window.alert("hello")
+          // new mapboxgl.Popup()
+          // .setLngLat(e.lngLat)
+          // .setHTML(e.features[0].properties.name)
+          // .addTo(map);
+          });
+
+          myMap.on('mouseenter', 'states-layer', function () {
+            myMap.getCanvas().style.cursor = 'pointer';
+            });
+      
+    })
     return (
       <div>
         <div className="container-fluid mt-3">
@@ -191,13 +222,14 @@ class FloodHistory extends Component {
               </center>
             </div>
             <div className="col-sm-8">
-              <div className="map-border" style={{ height: "600px" }}>
+              <div className="map-border" style={{ height: "750px" }}>
               <ReactMapGL
-                  mapboxApiAccessToken={
-                    "pk.eyJ1Ijoid2lzZG9tMDA2MyIsImEiOiJjanI1aWg0cGQwZTByM3dtc3J1OHJ3MGNqIn0.yjtKpgtEmgCkCcLvpH_tJg"
-                  }
-                  {...this.state.viewport}
-                  mapStyle="mapbox://styles/mapbox/streets-v9"
+              ref={ map => this.mapRef = map }
+              mapboxApiAccessToken={
+                "pk.eyJ1Ijoid2lzZG9tMDA2MyIsImEiOiJjanI1aWg0cGQwZTByM3dtc3J1OHJ3MGNqIn0.yjtKpgtEmgCkCcLvpH_tJg"
+              }
+              {...this.state.viewport}
+               mapStyle="mapbox://styles/mapbox/streets-v9"
                   onViewportChange={viewport => this.setState({ viewport })}
                 >
                 {this.state.floodData && this.state.floodData.features.map((value, index)=>{
