@@ -57,10 +57,7 @@ class Buildings extends Component {
 
 
   componentDidMount(){
-    return  fetch(
-      base_url + "/static/data/alobgoshie-buildings.geojson", 
-     ).then(buildingsRes=>buildingsRes.json() ).then(buildingData=>{this.setState({buildingData, render:true})
-        })
+this.setState({render:true})
    
      
    }
