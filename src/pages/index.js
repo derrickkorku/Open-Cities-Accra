@@ -9,8 +9,8 @@ const navStyle = {
   padding: "20px"
 };
 import fetch from "isomorphic-unfetch";
-//const base_url ="https://ocav1-app.herokuapp.com" || "http://localhost:5000"  
-const base_url = "http://localhost:5000" || "https://ocav1-app.herokuapp.com" 
+const base_url ="https://ocav1-app.herokuapp.com" || "http://localhost:5000"  
+//const base_url = "http://localhost:5000" || "https://ocav1-app.herokuapp.com" 
 
 const mapStyle = fromJS({
   version: 8,
