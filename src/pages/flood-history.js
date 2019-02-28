@@ -34,10 +34,6 @@ class FloodHistory extends Component {
 
   componentDidMount(){
     this.setState({render:true})
-  //  return  fetch(
-  //     base_url + "/static/data/alogboshie_flod_history.geojson"
-  //   ).then(floodRes=>floodRes.json() ).then(floodData=>{this.setState({floodData})
-  //      })
   
     
   }

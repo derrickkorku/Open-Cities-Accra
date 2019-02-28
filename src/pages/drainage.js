@@ -11,28 +11,8 @@ const navStyle = {
   left: 0,
   padding: "20px"
 };
-// const mapStyle = fromJS({
-//   version: 8,
-//   sources: {
-//       water: {
-//           type: 'geojson',
-//           data:  base_url + "/static/data/alogboshie_waterways.geojson", 
-//       }
-//   },
-//   layers: [
-//       {
-//           id: 'm-layer',
-//           source: 'water',
-//           type: "line",
-//           'paint': {
-//        "line-color":"blue",
-//        "line-width":3
-//             }
 
-      
-//       }
-//   ]
-// });
+
 class Drainage extends Component {
   constructor(props) {
     super(props);
@@ -56,10 +36,9 @@ class Drainage extends Component {
 
 
   componentDidMount(){
-    return  fetch(
-      base_url + "/static/data/alogboshie_waterways.geojson"
-     ).then(drainageRes=>drainageRes.json() ).then(drainageData=>{this.setState({drainageData, render:true})
-        })
+this.setState({render:true})
+mapboxgl.accessToken  = "pk.eyJ1Ijoid2lzZG9tMDA2MyIsImEiOiJjanI1aWg0cGQwZTByM3dtc3J1OHJ3MGNqIn0.yjtKpgtEmgCkCcLvpH_tJg";
+
 
    
   
@@ -68,35 +47,42 @@ class Drainage extends Component {
   }
 
   render() {
-    const myMap =this.state.render && this.mapRef.getMap()
-    this.state.render && myMap.on("load", function () {
-        // Add a layer showing the state polygons.
-        myMap.addLayer({
-        'id': 'states-layer',
-        'type': 'line',
-        'source': {
-        'type': 'geojson',
-        'data': base_url + "/static/data/alogboshie_waterways.geojson"
-        },
-        'paint': {
-                "line-color":"blue",
-                "line-width":3
-                       }
-        });
-
-        myMap.on('click', 'states-layer', function (e) {
-          window.alert("hello")
-          // new mapboxgl.Popup()
-          // .setLngLat(e.lngLat)
-          // .setHTML(e.features[0].properties.name)
-          // .addTo(map);
-          });
-
-          myMap.on('mouseenter', 'states-layer', function () {
-            myMap.getCanvas().style.cursor = 'pointer';
-            });
+    var map = this.state.render && new mapboxgl.Map({
+      container: 'map',
+      style:"mapbox://styles/mapbox/streets-v9",
+      zoom: 17,
+      center: [ -0.23250, 5.62620]     
       
-    })
+      });
+
+      this.state.render && map.on("load", function () {
+          // Add a layer showing the state polygons.
+          map.addLayer({
+              'id': 'drainage',
+              'type': 'line',
+              'source': {
+              'type': 'geojson',
+              'data': base_url + "/static/data/alogboshie_waterways.geojson"
+              },
+              'paint': {
+                      "line-color":"blue",
+                      "line-width":3
+                             }
+              });
+  
+          map.on('click', 'states-layer', function (e) {
+            window.alert("hello")
+            // new mapboxgl.Popup()
+            // .setLngLat(e.lngLat)
+            // .setHTML(e.features[0].properties.name)
+            // .addTo(map);
+            });
+  
+            map.on('mouseenter', 'states-layer', function () {
+              map.getCanvas().style.cursor = 'pointer';
+              });
+        
+      })
     return (
       <div>
         <div className="container-fluid mt-3">
@@ -168,40 +154,7 @@ class Drainage extends Component {
             </div>
             <div className="col-sm-8">
               <div className="map-border" style={{ height: "700px" }}>
-                <ReactMapGL
-                ref={ map => this.mapRef = map }
-                  mapboxApiAccessToken={
-                    "pk.eyJ1Ijoid2lzZG9tMDA2MyIsImEiOiJjanI1aWg0cGQwZTByM3dtc3J1OHJ3MGNqIn0.yjtKpgtEmgCkCcLvpH_tJg"
-                  }
-                  {...this.state.viewport}
-                   mapStyle="mapbox://styles/mapbox/streets-v9"
-                  onViewportChange={viewport => this.setState({ viewport })}
-                >
-                  {/* {this.state.drainageData && this.state.drainageData.features.map(value => {
-                    return value.geometry.coordinates.map((val, index) => {
-                      return (
-                        <Marker
-                          latitude={val[1]}
-                          longitude={val[0]}
-                          key={index}
-                        >
-                          <img
-                            src="../static/img/river.png"
-                            width="17"
-                            height="17"
-
-                          />
-                        </Marker>
-                      );
-                    });
-                  })} */}
-
-                  <div className="nav" style={navStyle}>
-                    <NavigationControl
-                      onViewportChange={viewport => this.setState({ viewport })}
-                    />
-                  </div>
-                </ReactMapGL>
+              <div id="map"></div>
               </div>
             </div>
           </div>

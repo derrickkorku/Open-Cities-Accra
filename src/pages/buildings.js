@@ -1,6 +1,6 @@
 import { Component } from "react";
 import Link from "next/link";
-import ReactMapGL, { Marker, Popup, NavigationControl } from "react-map-gl";
+import ReactMapGL, { Popup, NavigationControl } from "react-map-gl";
 import {fromJS} from 'immutable';
 const navStyle = {
   position: "absolute",
@@ -58,6 +58,7 @@ class Buildings extends Component {
 
   componentDidMount(){
 this.setState({render:true})
+mapboxgl.accessToken  = "pk.eyJ1Ijoid2lzZG9tMDA2MyIsImEiOiJjanI1aWg0cGQwZTByM3dtc3J1OHJ3MGNqIn0.yjtKpgtEmgCkCcLvpH_tJg";
    
      
    }
@@ -129,15 +130,20 @@ this.setState({render:true})
 
   render() {
 
-    const myMap =this.state.render && this.mapRef.getMap()
-    this.state.render && myMap.on('mousemove', function (e) {
-    //  var features = map.queryRenderedFeatures(e.point);
-     window.alert("hello")
+    var map = this.state.render && new mapboxgl.Map({
+      container: 'map',
+      style:"mapbox://styles/mapbox/streets-v9",
+      zoom: 17,
+      center: [ -0.23250, 5.62620]     
+      
       });
-    this.state.render && myMap.on("load", function () {
+
+     this.state.render && map.addControl(new mapboxgl.NavigationControl())
+
+    this.state.render && map.on("load", function () {
         // Add a layer showing the state polygons.
-        myMap.addLayer({
-        'id': 'states-layer',
+        map.addLayer({
+        'id': 'buildings',
         'type': 'fill',
         'source': {
         'type': 'geojson',
@@ -145,22 +151,154 @@ this.setState({render:true})
         },
         'layout': {},
         'paint': {
-        'fill-color': '#088',
+          'fill-color': [
+            'match',
+            ['get', 'building'],
+            'residential', '#088',
+            'commercial', 'red',
+            'commercial;residential', 'pink',
+            'church', 'purple',
+            "school","yellow",
+            /* other */ 'green'
+            ],
         'fill-opacity': 0.2
         }
         });
 
-        myMap.on('click', 'states-layer', function (e) {
-          window.alert("hello")
-          // new mapboxgl.Popup()
-          // .setLngLat(e.lngLat)
-          // .setHTML(e.features[0].properties.name)
-          // .addTo(map);
-          });
 
-          myMap.on('mouseenter', 'states-layer', function () {
-            myMap.getCanvas().style.cursor = 'pointer';
-            });
+         
+         
+
+        // When a click event occurs on a feature in the states layer, open a popup at the
+// location of the click, with description HTML from its properties.
+map.on('click', 'buildings', function (e) {
+  new mapboxgl.Popup()
+  .setLngLat(e.lngLat)
+  .setHTML(        `
+  <table width="300">
+  <tbody>
+  ${
+    e.features[0].properties["name"] && `<tr>
+    <th>Name</th>
+    <td style={{ paddingLeft: "5px" }}>
+    ${e.features[0].properties["name"]}
+    </td>
+    </tr>` || ""
+  }
+    ${
+      e.features[0].properties["addr:community"] && `<tr>
+      <th>Community</th>
+      <td style={{ paddingLeft: "5px" }}>
+      ${e.features[0].properties["addr:community"]}
+      </td>
+      </tr>` || ""
+    }
+
+    ${
+      e.features[0].properties["building:material"] && `<tr>
+      <th>Building material</th>
+      <td style={{ paddingLeft: "5px" }}>
+      ${e.features[0].properties["building:material"]}
+      </td>
+      </tr>` || ""
+    }
+    ${
+      e.features[0].properties["roof:material"] && `<tr>
+      <th>Roof material</th>
+      <td style={{ paddingLeft: "5px" }}>
+      ${e.features[0].properties["roof:material"]}
+      </td>
+      </tr>` || ""
+    }
+
+  ${
+    e.features[0].properties["addr:street"] && `<tr>
+    <th>Street</th>
+    <td style={{ paddingLeft: "5px" }}>
+    ${e.features[0].properties["addr:street"]}
+    </td>
+    </tr>` || ""
+  }
+
+  ${
+    e.features[0].properties["addr:city"] && `<tr>
+    <th>City</th>
+    <td style={{ paddingLeft: "5px" }}>
+    ${e.features[0].properties["addr:city"]}
+    </td>
+    </tr>` || ""
+  }
+
+
+  ${
+    e.features[0].properties["addr:suburb"] && `<tr>
+    <th>Suburb</th>
+    <td style={{ paddingLeft: "5px" }}>
+    ${e.features[0].properties["addr:suburb"]}
+    </td>
+    </tr>` || ""
+  }
+
+  ${
+    e.features[0].properties["addr:amenity"] && `<tr>
+    <th>Amenity</th>
+    <td style={{ paddingLeft: "5px" }}>
+    ${e.features[0].properties["addr:amenity"]}
+    </td>
+    </tr>` || ""
+  }
+
+
+${
+  e.features[0].properties["religion"] && `<tr>
+  <th>Religion</th>
+  <td style={{ paddingLeft: "5px" }}>
+  ${e.features[0].properties["religion"]}
+  </td>
+  </tr>` || ""
+}
+
+${
+  e.features[0].properties["building"] && `<tr>
+  <th>Building</th>
+  <td style={{ paddingLeft: "5px" }}>
+  ${e.features[0].properties["building"]}
+  </td>
+  </tr>` || ""
+}
+
+${
+  e.features[0].properties["denomination"] && `<tr>
+  <th>Denomination</th>
+  <td style={{ paddingLeft: "5px" }}>
+  ${e.features[0].properties["denomination"]}
+  </td>
+  </tr>` || ""
+}
+
+${
+  e.features[0].properties["source"] && `<tr>
+  <th>Source</th>
+  <td style={{ paddingLeft: "5px" }}>
+  ${e.features[0].properties["source"]}
+  </td>
+  </tr>` || ""
+}
+    </tbody>
+    </table>`
+    )
+  .addTo(map);
+  });
+   
+  // Change the cursor to a pointer when the mouse is over the states layer.
+  map.on('mouseenter', 'buildings', function () {
+  map.getCanvas().style.cursor = 'pointer';
+  });
+   
+  // Change it back to a pointer when it leaves.
+  map.on('mouseleave', 'buildings', function () {
+  map.getCanvas().style.cursor = '';
+  });
       
     })
     return (
@@ -234,62 +372,17 @@ this.setState({render:true})
             </div>
             <div className="col-sm-8">
               <div className="map-border" style={{ height: "750px" }}>
-                <ReactMapGL
-                  ref={ map => this.mapRef = map }
-                  mapboxApiAccessToken={
-                    "pk.eyJ1Ijoid2lzZG9tMDA2MyIsImEiOiJjanI1aWg0cGQwZTByM3dtc3J1OHJ3MGNqIn0.yjtKpgtEmgCkCcLvpH_tJg"
-                  }
-                  {...this.state.viewport}
-                  mapStyle="mapbox://styles/mapbox/streets-v9"
-                  onViewportChange={viewport => this.setState({ viewport })}
-                >
-                  {/* {this.state.buildingData && this.state.buildingData.features.map(value => {
-                    return value.geometry.coordinates.map((val, index) => {
-                      return (
-                        <Marker
-                          latitude={val[index][1]}
-                          longitude={val[index][0]}
-                          key={index}
-                        >
-                          <div style ={{width:"10px", height:"10px"}}
-                            onClick={() => {
-                              console.log("hhhheheheheh");
-                              this.setState({
-                                popupInfo: {
-                                  state: {
-                                    longitude: val[index][0],
-                                    latitude: val[index][1]
-                                  }
-                                },
-                                placeInfo: {
-                                  community: value.properties["addr:community"],
-                                  building_material:
-                                    value.properties["building:material"] ||
-                                    null,
-                                  roof_material:
-                                    value.properties["roof:material"] || null,
-                                    street: value.properties["addr:street"] || null,
-                                    suburb:value.properties["addr:suburb"] || null,
-                                    building:value.properties["building"] || null,
-                                    city:value.properties["addr:city"] || null
+              <div id='map' class='dark'></div>
+              <h4>Population</h4>
+              <div id='state-legend' class='legend'>
+<h4>Buildings</h4>
+<div><span style={{backgroundColor:"#088"}}></span>Residential</div>
+<div><span style={{backgroundColor:"red"}}></span>Commercial</div>
+<div><span style={{backgroundColor:"pink"}} ></span>Commercial & Residential</div>
+<div><span style={{backgroundColor:"purple"}} ></span>Church</div>
+<div><span style={{backgroundColor:"yellow"}} ></span>School</div>
 
-
-                                }
-                              });
-                            }}
-                          />
-                        </Marker>
-                      );
-                    });
-                  })} */}
-
-                  <div className="nav" style={navStyle}>
-                    <NavigationControl
-                      onViewportChange={viewport => this.setState({ viewport })}
-                    />
-                  </div>
-                  {this.renderPopup()}
-                </ReactMapGL>
+</div>
               </div>
             </div>
           </div>
