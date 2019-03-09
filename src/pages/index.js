@@ -645,7 +645,7 @@ map.getCanvas().style.cursor = '';
               </Link>
             </div>
             <div className="col-sm-9">
-              <div className="map-border" style={{ height: "700px" }}>
+              <div className="map-border" style={{ height: "900px" }}>
               <div id="map"></div>
               <div id='state-legend' class='legend'>
 <h4></h4>

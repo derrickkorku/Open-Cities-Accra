@@ -681,7 +681,7 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "map-border",
         style: {
-          height: "700px"
+          height: "900px"
         },
         __source: {
           fileName: _jsxFileName,
@@ -909,4 +909,4 @@ function (_Component) {
 /***/ })
 
 })
-//# sourceMappingURL=index.js.a593085c6d771cde8404.hot-update.js.map
+//# sourceMappingURL=index.js.b0a23c3bc717a0f67652.hot-update.js.map

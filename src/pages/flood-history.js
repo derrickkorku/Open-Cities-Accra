@@ -391,7 +391,7 @@ class FloodHistory extends Component {
               </center>
             </div>
             <div className="col-sm-8">
-              <div className="map-border" style={{ height: "750px" }}>
+              <div className="map-border" style={{ height: "900px" }}>
                <div id="map">   
                </div>
                <h4>Population</h4>
