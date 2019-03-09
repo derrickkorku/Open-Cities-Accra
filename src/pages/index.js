@@ -453,125 +453,127 @@ ${
   });
 
   map.addLayer({
-    'id': 'alogboshie-flood',
+    'id': 'flood',
     'type': 'circle',
     'source': {
     'type': 'geojson',
-    'data': "/static/data/alogboshie_flod_history.geojson"
+    'data': "/static/data/alogboshie_flod_history .geojson"
     },
     'paint': {
-            "circle-color":"gray",
-            "circle-radius":10
-                   }
+      'circle-color': 
+        /* other */ 'rgb(128, 128, 128)',
+        
+    'circle-radius': 10
+    }
     });
 
-    map.on('click', 'alogboshie-flood', function (e) {
-      new mapboxgl.Popup()
-      .setLngLat(e.lngLat)
-      .setHTML(        `
-      <table width="350">
-      <tbody>
-      ${
-        e.features[0].properties["experienced_flood"] && `<tr>
-        <th>experienced flood</th>
-        <td style={{ paddingLeft: "5px" }}>
-        ${e.features[0].properties["experienced_flood"]}
-        </td>
-        </tr>` || ""
-      }
-      ${
-        e.features[0].properties["flood_history.flood_cause"] && `<tr>
-        <th>Flood Cause</th>
-        <td style={{ paddingLeft: "5px" }}>
-        ${e.features[0].properties["flood_history.flood_cause"]}
-        </td>
-        </tr>` || ""
-      }
-    
-      ${
-        e.features[0].properties["flood_history.flood_event.flood_year"] && `<tr>
-        <th>Flood Year</th>
-        <td style={{ paddingLeft: "5px" }}>
-        ${e.features[0].properties["flood_history.flood_event.flood_year"]}
-        </td>
-        </tr>` || ""
-      }
-        ${
-          e.features[0].properties["dwelling_type"] && `<tr>
-          <th>Dwelling Type</th>
-          <td style={{ paddingLeft: "5px" }}>
-          ${e.features[0].properties["dwelling_type"]}
-          </td>
-          </tr>` || ""
-        }
+map.on('click', 'flood', function (e) {
+new mapboxgl.Popup()
+.setLngLat(e.lngLat)
+.setHTML(        `
+<table width="350">
+<tbody>
+${
+  e.features[0].properties["experienced_flood"] && `<tr>
+  <th>experienced flood</th>
+  <td style={{ paddingLeft: "5px" }}>
+  ${e.features[0].properties["experienced_flood"]}
+  </td>
+  </tr>` || ""
+}
+${
+  e.features[0].properties["flood_history.flood_cause"] && `<tr>
+  <th>Flood Cause</th>
+  <td style={{ paddingLeft: "5px" }}>
+  ${e.features[0].properties["flood_history.flood_cause"]}
+  </td>
+  </tr>` || ""
+}
 
-        ${
-          e.features[0].properties["building_use"] && `<tr>
-          <th>Building Use</th>
-          <td style={{ paddingLeft: "5px" }}>
-          ${e.features[0].properties["building_use"]}
-          </td>
-          </tr>` || ""
-        }
+${
+  e.features[0].properties["flood_history.flood_event.flood_year"] && `<tr>
+  <th>Flood Year</th>
+  <td style={{ paddingLeft: "5px" }}>
+  ${e.features[0].properties["flood_history.flood_event.flood_year"]}
+  </td>
+  </tr>` || ""
+}
+  ${
+    e.features[0].properties["dwelling_type"] && `<tr>
+    <th>Dwelling Type</th>
+    <td style={{ paddingLeft: "5px" }}>
+    ${e.features[0].properties["dwelling_type"]}
+    </td>
+    </tr>` || ""
+  }
 
-        ${
-          e.features[0].properties["years_in_house"] && `<tr>
-          <th>Years in house </Useth>
-          <td style={{ paddingLeft: "5px" }}>
-          ${e.features[0].properties["years_in_house"]}
-          </td>
-          </tr>` || ""
-        }
-    
-        ${
-          e.features[0].properties["flood_history.flood_depth"] && `<tr>
-          <th>Flood Depth</th>
-          <td style={{ paddingLeft: "5px" }}>
-          ${e.features[0].properties["flood_history.flood_depth"]}
-          </td>
-          </tr>` || ""
-        }
-        ${
-          e.features[0].properties["address.landmark"] && `<tr>
-          <th>Land Mark</th>
-          <td style={{ paddingLeft: "5px" }}>
-          ${e.features[0].properties["address.landmark"]}
-          </td>
-          </tr>` || ""
-        }
-    
-      ${
-        e.features[0].properties["moved_house"] && `<tr>
-        <th>Moved House</th>
-        <td style={{ paddingLeft: "5px" }}>
-        ${e.features[0].properties["moved_house"]}
-        </td>
-        </tr>` || ""
-      }
-    
-      ${
-        e.features[0].properties["moved_year"] && `<tr>
-        <th>Moved Year</th>
-        <td style={{ paddingLeft: "5px" }}>
-        ${e.features[0].properties["moved_year"]}
-        </td>
-        </tr>` || ""
-      }
-        </tbody>
-        </table>`
-        )
-      .addTo(map);
-      });
-       
-      // Change the cursor to a pointer when the mouse is over the states layer.
-      map.on('mouseenter', 'alogboshie-flood', function () {
-      map.getCanvas().style.cursor = 'pointer';
-      });
-       
-      // Change it back to a pointer when it leaves.
-      map.on('mouseleave', 'alogboshie-flood', function () {
-      map.getCanvas().style.cursor = '';
-      });
+  ${
+    e.features[0].properties["building_use"] && `<tr>
+    <th>Building Use</th>
+    <td style={{ paddingLeft: "5px" }}>
+    ${e.features[0].properties["building_use"]}
+    </td>
+    </tr>` || ""
+  }
+
+  ${
+    e.features[0].properties["years_in_house"] && `<tr>
+    <th>Years in house </Useth>
+    <td style={{ paddingLeft: "5px" }}>
+    ${e.features[0].properties["years_in_house"]}
+    </td>
+    </tr>` || ""
+  }
+
+  ${
+    e.features[0].properties["flood_history.flood_depth"] && `<tr>
+    <th>Flood Depth</th>
+    <td style={{ paddingLeft: "5px" }}>
+    ${e.features[0].properties["flood_history.flood_depth"]}
+    </td>
+    </tr>` || ""
+  }
+  ${
+    e.features[0].properties["address.landmark"] && `<tr>
+    <th>Land Mark</th>
+    <td style={{ paddingLeft: "5px" }}>
+    ${e.features[0].properties["address.landmark"]}
+    </td>
+    </tr>` || ""
+  }
+
+${
+  e.features[0].properties["moved_house"] && `<tr>
+  <th>Moved House</th>
+  <td style={{ paddingLeft: "5px" }}>
+  ${e.features[0].properties["moved_house"]}
+  </td>
+  </tr>` || ""
+}
+
+${
+  e.features[0].properties["moved_year"] && `<tr>
+  <th>Moved Year</th>
+  <td style={{ paddingLeft: "5px" }}>
+  ${e.features[0].properties["moved_year"]}
+  </td>
+  </tr>` || ""
+}
+  </tbody>
+  </table>`
+  )
+.addTo(map);
+});
+ 
+// Change the cursor to a pointer when the mouse is over the states layer.
+map.on('mouseenter', 'flood', function () {
+map.getCanvas().style.cursor = 'pointer';
+});
+ 
+// Change it back to a pointer when it leaves.
+map.on('mouseleave', 'flood', function () {
+map.getCanvas().style.cursor = '';
+});
 
       
     })
