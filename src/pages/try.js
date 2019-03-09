@@ -28,14 +28,14 @@ class Try extends Component{
                 // Add a layer showing the state polygons.
                 map.addLayer({
                     'id': 'drainage',
-                    'type': 'line',
+                    'type': 'circle',
                     'source': {
                     'type': 'geojson',
-                    'data': base_url + "/static/data/alogboshie_waterways.geojson"
+                    'data': "/static/data/alogboshie_flod_history .geojson"
                     },
                     'paint': {
-                            "line-color":"blue",
-                            "line-width":3
+                            "circle-color":"blue",
+                            "circle-radius":10
                                    }
                     });
         

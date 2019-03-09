@@ -1,5 +1,64 @@
 import { Component } from "react";
 import Link from "next/link";
+import {ResponsiveBar} from "@nivo/bar"
+const data = [
+  {
+    "suburb": "Alogboshie",
+    "Residential": 71,
+    "ResidentialColor": "rgba(0, 136, 136, 0.3)",
+    "Commercial": 140,
+    "CommercialColor": "rgba(255,0,0, 0.3)",
+    "Church": 199,
+    "ChurchColor": "rgba(128, 0, 128, 0.3)",
+    "School": 136,
+    "SchoolColor": "rgba(255, 255, 0, 0.4)",
+    "Other": 181,
+    "OtherColor": "rgba(0, 128, 0, 0.4)",
+
+  },
+  {
+    "suburb": "Akweteman",
+    "Residential": 61,
+    "ResidentialColor": "rgba(0, 136, 136, 0.3)",
+    "Commercial": 143,
+    "CommercialColor": "rgba(255,0,0, 0.3)",
+    "Church": 63,
+    "ChurchColor": "rgba(128, 0, 128, 0.3)",
+    "School": 6,
+    "SchoolColor": "rgba(255, 255, 0, 0.4)",
+    "Other": 65,
+    "OtherColor": "rgba(0, 128, 0, 0.4)",
+  },
+  {
+    "suburb": "Alajo",
+    "Residential": 111,
+    "ResidentialColor": "rgba(0, 136, 136, 0.3)",
+    "Commercial": 51,
+    "CommercialColor": "rgba(255,0,0, 0.3)",
+    "Church": 44,
+    "ChurchColor": "rgba(128, 0, 128, 0.3)",
+    "School": 110,
+    "SchoolColor": "rgba(255, 255, 0, 0.4)",
+    "Other": 145,
+    "OtherColor": "rgba(0, 128, 0, 0.4)",
+  },
+  {
+    "suburb": "Nima",
+    "Residential": 133,
+    "ResidentialColor": "rgba(0, 136, 136, 0.3)",
+    "Commercial": 125,
+    "CommercialColor": "rgba(255,0,0, 0.3)",
+    "Church": 194,
+    "ChurchColor": "rgba(128, 0, 128, 0.3)",
+    "School": 92,
+    "SchoolColor": "rgba(255, 255, 0, 0.4)",
+    "Other": 124,
+    "OtherColor": "rgba(0, 128, 0, 0.4)",
+  }
+
+
+
+]
 import ReactMapGL, { Popup, NavigationControl } from "react-map-gl";
 import {fromJS} from 'immutable';
 const navStyle = {
@@ -9,51 +68,14 @@ const navStyle = {
   padding: "20px"
 };
 import fetch from "isomorphic-unfetch";
-const base_url = "https://ocav1-app.herokuapp.com" || "http://localhost:5000" 
-//const base_url = "http://localhost:5000" || "https://ocav1-app.herokuapp.com" 
-const mapStyle = fromJS({
-  version: 8,
-  sources: {
-      building: {
-          type: 'geojson',
-          data:  base_url + "/static/data/alobgoshie-buildings.geojson", 
-      }
-  },
-  layers: [
-      {
-          id: 'my-layer',
-          source: 'building',
-          type: "fill",
-          'paint': {
-       "fill-color":"blue"
-            }
-      
-      }
-  ]
-});
 class Buildings extends Component {
   constructor(props) {
     super(props);
     this.state = {
       buildingData:null,
-      render:false,
-      viewport: {
-        width: "inherit",
-        height: "inherit",
-        latitude: 5.62620,
-        longitude: -0.23250,
-       
-        zoom: 17.0
-       
-
-        
-    
-      },
-      popupInfo: null,
-      placeInfo: null
-    };
-    this.renderPopup = this.renderPopup.bind(this);
+      render:false
   }
+}
 
 
   componentDidMount(){
@@ -62,71 +84,6 @@ mapboxgl.accessToken  = "pk.eyJ1Ijoid2lzZG9tMDA2MyIsImEiOiJjanI1aWg0cGQwZTByM3dt
    
      
    }
-
-  
-
-  renderPopup() {
-    console.log(this.state.placeInfo);
-    return (
-      this.state.popupInfo && (
-        <Popup
-          tipSize={10}
-          anchor="bottom-right"
-          longitude={this.state.popupInfo.state.longitude}
-          latitude={this.state.popupInfo.state.latitude}
-          onClose={() => this.setState({ popupInfo: null })}
-          closeOnClick={true}
-        >
-          <table width="300">
-            <tbody>
-              <tr>
-                <th>Community</th>
-                <td style={{ paddingLeft: "5px" }}>
-                  {this.state.placeInfo.community}
-                </td>
-              </tr>
-              <tr>
-                <th tyle={{ width: "80px" }}>Building material</th>
-                <td style={{ paddingLeft: "5px" }}>
-                  {this.state.placeInfo.building_material}
-                </td>
-              </tr>
-              <tr>
-                <th>Roof material</th>
-                <td style={{ paddingLeft: "5px" }}>
-                  {this.state.placeInfo.roof_material}
-                </td>
-              </tr>
-              <tr>
-                <th>Building</th>
-                <td style={{ paddingLeft: "5px" }}>
-                  {this.state.placeInfo.building}
-                </td>
-              </tr>
-              <tr>
-                <th>suburb</th>
-                <td style={{ paddingLeft: "5px" }}>
-                  {this.state.placeInfo.suburb}
-                </td>
-              </tr>
-              <tr>
-                <th>street</th>
-                <td style={{ paddingLeft: "5px" }}>
-                  {this.state.placeInfo.street}
-                </td>
-              </tr>
-              <tr>
-                <th>City</th>
-                <td style={{ paddingLeft: "5px" }}>
-                  {this.state.placeInfo.city}
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </Popup>
-      )
-    );
-  }
 
   render() {
 
@@ -147,7 +104,7 @@ mapboxgl.accessToken  = "pk.eyJ1Ijoid2lzZG9tMDA2MyIsImEiOiJjanI1aWg0cGQwZTByM3dt
         'type': 'fill',
         'source': {
         'type': 'geojson',
-        'data': base_url + "/static/data/alobgoshie-buildings.geojson"
+        'data': "/static/data/alobgoshie-buildings.geojson"
         },
         'layout': {},
         'paint': {
@@ -161,7 +118,7 @@ mapboxgl.accessToken  = "pk.eyJ1Ijoid2lzZG9tMDA2MyIsImEiOiJjanI1aWg0cGQwZTByM3dt
             "school","yellow",
             /* other */ 'green'
             ],
-        'fill-opacity': 0.2
+        'fill-opacity': 0.3
         }
         });
 
@@ -182,6 +139,15 @@ map.on('click', 'buildings', function (e) {
     <th>Name</th>
     <td style={{ paddingLeft: "5px" }}>
     ${e.features[0].properties["name"]}
+    </td>
+    </tr>` || ""
+  }
+
+  ${
+    e.features[0].properties["building:levels"] && `<tr>
+    <th>Building Level</th>
+    <td style={{ paddingLeft: "5px" }}>
+    ${e.features[0].properties["building:levels"]}
     </td>
     </tr>` || ""
   }
@@ -353,14 +319,121 @@ ${
 
                 <div className="py-2 px-2">
                   <div className="map-border my-3" style={{ height: "400px" }}>
-                    Summary chart and legends here
+                  <ResponsiveBar
+        data={data}
+        keys={[
+            "Residential",
+            "Commercial",
+            "Church",
+            "School",
+            "Other",
+           
+        ]}
+        indexBy="suburb"
+        margin={{
+            "top": 50,
+            "right": 110,
+            "bottom": 50,
+            "left": 50
+        }}
+        padding={0.3}
+        colors="nivo"
+        colorBy={function(e){var t=e.id;return e.data["".concat(t,"Color")]}}
+        defs={[
+            {
+                "id": "dots",
+                "type": "patternDots",
+                "background": "inherit",
+                "color": '({ id, data }) => data[`${id}Color`]',
+                "size": 4,
+                "padding": 1,
+                "stagger": true
+            },
+            {
+                "id": "lines",
+                "type": "patternLines",
+                "background": "inherit",
+                "color": "#eed312",
+                "rotation": -45,
+                "lineWidth": 6,
+                "spacing": 10
+            }
+        ]}
+        fill={[
+            {
+                "match": {
+                    "id": "fries"
+                },
+                "id": "dots"
+            },
+            {
+                "match": {
+                    "id": "sandwich"
+                },
+                "id": "lines"
+            }
+        ]}
+        borderColor="inherit:darker(1.6)"
+        axisTop={null}
+        axisRight={null}
+        axisBottom={{
+            "tickSize": 5,
+            "tickPadding": 5,
+            "tickRotation": 0,
+            "legend": "suburb",
+            "legendPosition": "middle",
+            "legendOffset": 32
+        }}
+        axisLeft={{
+            "tickSize": 5,
+            "tickPadding": 5,
+            "tickRotation": 0,
+            "legend": "building type",
+            "legendPosition": "middle",
+            "legendOffset": -40
+        }}
+        labelSkipWidth={12}
+        labelSkipHeight={12}
+        labelTextColor="inherit:darker(1.6)"
+        animate={true}
+        motionStiffness={90}
+        motionDamping={15}
+        legends={[
+            {
+                "dataFrom": "keys",
+                "anchor": "bottom-right",
+                "direction": "column",
+                "justify": false,
+                "translateX": 120,
+                "translateY": 0,
+                "itemsSpacing": 2,
+                "itemWidth": 100,
+                "itemHeight": 20,
+                "itemDirection": "left-to-right",
+                "itemOpacity": 0.85,
+                "symbolSize": 20,
+                "effects": [
+                    {
+                        "on": "hover",
+                        "style": {
+                            "itemOpacity": 1
+                        }
+                    }
+                ]
+            }
+        ]}
+    />
                   </div>
                   <center>
-                    <select className="form-control mb-3 text-center rounded">
+                    <div>
+                    <select className="form-control mb-3 text-center rounded" style={{float:"left", width:"70%"}}>
                       <option>-- Select to Download --</option>
                       <option>All Buildings</option>
+                      
                       <option>All Data</option>
                     </select>
+                    <div style={{float:"left", marginLeft:"10px"}}><button className="btn btn-dark">Download</button></div>
+                    </div>
                   </center>
                 </div>
               </ul>
@@ -376,11 +449,13 @@ ${
               <h4>Population</h4>
               <div id='state-legend' class='legend'>
 <h4>Buildings</h4>
-<div><span style={{backgroundColor:"#088"}}></span>Residential</div>
-<div><span style={{backgroundColor:"red"}}></span>Commercial</div>
-<div><span style={{backgroundColor:"pink"}} ></span>Commercial & Residential</div>
-<div><span style={{backgroundColor:"purple"}} ></span>Church</div>
-<div><span style={{backgroundColor:"yellow"}} ></span>School</div>
+<div><span style={{backgroundColor:"rgba(0, 136, 136, 0.3)"}}></span>Residential</div>
+<div><span style={{backgroundColor:"rgba(255,0,0, 0.3)"}}></span>Commercial</div>
+<div><span style={{backgroundColor:"rgb(0, 0, 0, 0.5)"}} ></span>Commercial & Residential</div>
+<div><span style={{backgroundColor:"rgba(128, 0, 128, 0.3)"}} ></span>Church</div>
+<div><span style={{backgroundColor:"rgba(255, 255, 0, 0.4)"}} ></span>School</div>
+<div><span style={{backgroundColor:"rgba(0, 128, 0, 0.4)"}} ></span>Other</div>
+
 
 </div>
               </div>

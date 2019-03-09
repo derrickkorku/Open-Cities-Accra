@@ -3,8 +3,8 @@ import Link from "next/link";
 import ReactMapGL, { NavigationControl, Marker, Popup, } from "react-map-gl";
 import {fromJS} from "immutable"
 import fetch from "isomorphic-unfetch";
-const base_url ="https://ocav1-app.herokuapp.com" || "http://localhost:5000"  
-//const base_url = "http://localhost:5000" || "https://ocav1-app.herokuapp.com" 
+//const base_url ="https://ocav1-app.herokuapp.com" || "http://localhost:5000"  
+const base_url = "http://localhost:5000" || "https://ocav1-app.herokuapp.com" 
 
 class Index extends Component {
   constructor(props) {
@@ -132,7 +132,7 @@ renderFloodPopup() {
         'type': 'fill',
         'source': {
         'type': 'geojson',
-        'data': base_url + "/static/data/alobgoshie-buildings.geojson"
+        'data': "/static/data/alobgoshie-buildings.geojson"
         },
         'layout': {},
         'paint': {
@@ -278,7 +278,7 @@ ${
           'type': 'line',
           'source': {
           'type': 'geojson',
-          'data': base_url + "/static/data/alogboshie_waterways.geojson"
+          'data': "/static/data/alogboshie_waterways.geojson"
           },
           'paint': {
                   "line-color":"blue",
@@ -286,18 +286,293 @@ ${
                          }
           });
 
-          map.addLayer({
-            'id': 'flood',
-            'type': 'circle',
-            'source': {
-            'type': 'geojson',
-            'data': base_url + "/static/data/alogboshie_flod_history.geojson"
-            },
-            'paint': {
-                    "circle-color":"gray",
-                    "circle-radius":10
-                           }
-            });
+               // When a click event occurs on a feature in the states layer, open a popup at the
+// location of the click, with description HTML from its properties.
+map.on('click', 'drainage', function (e) {
+  new mapboxgl.Popup()
+  .setLngLat(e.lngLat)
+  .setHTML(        `
+  <table width="350">
+  <tbody>
+  ${
+    e.features[0].properties["width"] && `<tr>
+    <th>Width</th>
+    <td style={{ paddingLeft: "5px" }}>
+    ${e.features[0].properties["width"]}
+    </td>
+    </tr>` || ""
+  }
+  ${
+    e.features[0].properties["waterway"] && `<tr>
+    <th>Waterway</th>
+    <td style={{ paddingLeft: "5px" }}>
+    ${e.features[0].properties["waterway"]}
+    </td>
+    </tr>` || ""
+  }
+
+  ${
+    e.features[0].properties["depth"] && `<tr>
+    <th>Depth</th>
+    <td style={{ paddingLeft: "5px" }}>
+    ${e.features[0].properties["depth"]}
+    </td>
+    </tr>` || ""
+  }
+    ${
+      e.features[0].properties["drain:cover_type"] && `<tr>
+      <th>Cover Type</th>
+      <td style={{ paddingLeft: "5px" }}>
+      ${e.features[0].properties["drain:cover_type"]}
+      </td>
+      </tr>` || ""
+    }
+
+    ${
+      e.features[0].properties["drain:ele"] && `<tr>
+      <th>Ele</th>
+      <td style={{ paddingLeft: "5px" }}>
+      ${e.features[0].properties["drain:ele"]}
+      </td>
+      </tr>` || ""
+    }
+    ${
+      e.features[0].properties["drain:material"] && `<tr>
+      <th>Drain material</th>
+      <td style={{ paddingLeft: "5px" }}>
+      ${e.features[0].properties["drain:material"]}
+      </td>
+      </tr>` || ""
+    }
+
+  ${
+    e.features[0].properties["drain:material_smoothness"] && `<tr>
+    <th>Material Smoothnes</th>
+    <td style={{ paddingLeft: "5px" }}>
+    ${e.features[0].properties["drain:material_smoothness"]}
+    </td>
+    </tr>` || ""
+  }
+
+  ${
+    e.features[0].properties["drain:profile_covered"] && `<tr>
+    <th>Profile Covered</th>
+    <td style={{ paddingLeft: "5px" }}>
+    ${e.features[0].properties["drain:profile_covered"]}
+    </td>
+    </tr>` || ""
+  }
+
+
+  ${
+    e.features[0].properties["drain:profile_open"] && `<tr>
+    <th>Profile Open</th>
+    <td style={{ paddingLeft: "5px" }}>
+    ${e.features[0].properties["drain:profile_open"]}
+    </td>
+    </tr>` || ""
+  }
+
+  ${
+    e.features[0].properties["layer"] && `<tr>
+    <th>Layer</th>
+    <td style={{ paddingLeft: "5px" }}>
+    ${e.features[0].properties["layer"]}
+    </td>
+    </tr>` || ""
+  }
+
+
+${
+  e.features[0].properties["reference:feature"] && `<tr>
+  <th>Reference Feature</th>
+  <td style={{ paddingLeft: "5px" }}>
+  ${e.features[0].properties["reference:feature"]}
+  </td>
+  </tr>` || ""
+}
+
+${
+  e.features[0].properties["reference:feature_type"] && `<tr>
+  <th>Reference Feature Type</th>
+  <td style={{ paddingLeft: "5px" }}>
+  ${e.features[0].properties["reference:feature_type"]}
+  </td>
+  </tr>` || ""
+}
+${
+  e.features[0].properties["description"] && `<tr>
+  <th>Description</th>
+  <td style={{ paddingLeft: "5px" }}>
+  ${e.features[0].properties["description"]}
+  </td>
+  </tr>` || ""
+}
+
+${
+  e.features[0].properties["drain:point_feature"] && `<tr>
+  <th>Point Feature</th>
+  <td style={{ paddingLeft: "5px" }}>
+  ${e.features[0].properties["drain:point_feature"]}
+  </td>
+  </tr>` || ""
+}
+
+${
+  e.features[0].properties["tunnel"] && `<tr>
+  <th>Point Feature</th>
+  <td style={{ paddingLeft: "5px" }}>
+  ${e.features[0].properties["tunnel"]}
+  </td>
+  </tr>` || ""
+}
+
+
+${
+  e.features[0].properties["source"] && `<tr>
+  <th>Source</th>
+  <td style={{ paddingLeft: "5px" }}>
+  ${e.features[0].properties["source"]}
+  </td>
+  </tr>` || ""
+}
+    </tbody>
+    </table>`
+    )
+  .addTo(map);
+  });
+   
+  // Change the cursor to a pointer when the mouse is over the states layer.
+  map.on('mouseenter', 'drainage', function () {
+  map.getCanvas().style.cursor = 'pointer';
+  });
+   
+  // Change it back to a pointer when it leaves.
+  map.on('mouseleave', 'drainage', function () {
+  map.getCanvas().style.cursor = '';
+  });
+
+  map.addLayer({
+    'id': 'alogboshie-flood',
+    'type': 'circle',
+    'source': {
+    'type': 'geojson',
+    'data': "/static/data/alogboshie_flod_history.geojson"
+    },
+    'paint': {
+            "circle-color":"gray",
+            "circle-radius":10
+                   }
+    });
+
+    map.on('click', 'alogboshie-flood', function (e) {
+      new mapboxgl.Popup()
+      .setLngLat(e.lngLat)
+      .setHTML(        `
+      <table width="350">
+      <tbody>
+      ${
+        e.features[0].properties["experienced_flood"] && `<tr>
+        <th>experienced flood</th>
+        <td style={{ paddingLeft: "5px" }}>
+        ${e.features[0].properties["experienced_flood"]}
+        </td>
+        </tr>` || ""
+      }
+      ${
+        e.features[0].properties["flood_history.flood_cause"] && `<tr>
+        <th>Flood Cause</th>
+        <td style={{ paddingLeft: "5px" }}>
+        ${e.features[0].properties["flood_history.flood_cause"]}
+        </td>
+        </tr>` || ""
+      }
+    
+      ${
+        e.features[0].properties["flood_history.flood_event.flood_year"] && `<tr>
+        <th>Flood Year</th>
+        <td style={{ paddingLeft: "5px" }}>
+        ${e.features[0].properties["flood_history.flood_event.flood_year"]}
+        </td>
+        </tr>` || ""
+      }
+        ${
+          e.features[0].properties["dwelling_type"] && `<tr>
+          <th>Dwelling Type</th>
+          <td style={{ paddingLeft: "5px" }}>
+          ${e.features[0].properties["dwelling_type"]}
+          </td>
+          </tr>` || ""
+        }
+
+        ${
+          e.features[0].properties["building_use"] && `<tr>
+          <th>Building Use</th>
+          <td style={{ paddingLeft: "5px" }}>
+          ${e.features[0].properties["building_use"]}
+          </td>
+          </tr>` || ""
+        }
+
+        ${
+          e.features[0].properties["years_in_house"] && `<tr>
+          <th>Years in house </Useth>
+          <td style={{ paddingLeft: "5px" }}>
+          ${e.features[0].properties["years_in_house"]}
+          </td>
+          </tr>` || ""
+        }
+    
+        ${
+          e.features[0].properties["flood_history.flood_depth"] && `<tr>
+          <th>Flood Depth</th>
+          <td style={{ paddingLeft: "5px" }}>
+          ${e.features[0].properties["flood_history.flood_depth"]}
+          </td>
+          </tr>` || ""
+        }
+        ${
+          e.features[0].properties["address.landmark"] && `<tr>
+          <th>Land Mark</th>
+          <td style={{ paddingLeft: "5px" }}>
+          ${e.features[0].properties["address.landmark"]}
+          </td>
+          </tr>` || ""
+        }
+    
+      ${
+        e.features[0].properties["moved_house"] && `<tr>
+        <th>Moved House</th>
+        <td style={{ paddingLeft: "5px" }}>
+        ${e.features[0].properties["moved_house"]}
+        </td>
+        </tr>` || ""
+      }
+    
+      ${
+        e.features[0].properties["moved_year"] && `<tr>
+        <th>Moved Year</th>
+        <td style={{ paddingLeft: "5px" }}>
+        ${e.features[0].properties["moved_year"]}
+        </td>
+        </tr>` || ""
+      }
+        </tbody>
+        </table>`
+        )
+      .addTo(map);
+      });
+       
+      // Change the cursor to a pointer when the mouse is over the states layer.
+      map.on('mouseenter', 'alogboshie-flood', function () {
+      map.getCanvas().style.cursor = 'pointer';
+      });
+       
+      // Change it back to a pointer when it leaves.
+      map.on('mouseleave', 'alogboshie-flood', function () {
+      map.getCanvas().style.cursor = '';
+      });
+
       
     })
     return (

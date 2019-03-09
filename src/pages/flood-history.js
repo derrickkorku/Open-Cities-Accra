@@ -1,151 +1,221 @@
 import Link from "next/link";
 import {Component} from "react"
-import ReactMapGL, { Marker, Popup, NavigationControl } from "react-map-gl";
-const navStyle = {
-  position: "absolute",
-  top: 0,
-  left: 0,
-  padding: "20px"
-};
-import fetch from "isomorphic-unfetch";
-const base_url = "https://ocav1-app.herokuapp.com" || "http://localhost:5000" 
-//const base_url = "http://localhost:5000" || "https://ocav1-app.herokuapp.com" 
+import {ResponsiveBar} from "@nivo/bar"
+const data = [
+  {
+    "suburb": "Alogboshie",
+    "Keen_deep_(30-50CM)": 71,
+    "Keen_deep_(30-50CMColor": "rgb(0, 136, 136)",
+    "Chest_deep_(1-1.5M)": 140,
+    "Chest_deep_(1-1.5M)Color": "rgb(102, 102, 0)",
+    "Waist_deep_(60cm-1m)": 199,
+    "Waist_deep_(60cm-1m)Color": "rgb(255, 192, 203)",
+    "SchoPerson_height_(1.5-2M)": 136,
+    "Person_height_(1.5-2M)Color": "rgb(128, 0, 128)",
+    "Other": 181,
+    "OtherColor": "rgb(128, 128, 128)",
+
+  },
+  {
+    "suburb": "Akweteman",
+    "Keen_deep_(30-50CM)": 61,
+    "Keen_deep_(30-50CM)Color": "rgb(0, 136, 136)",
+    "Chest_deep_(1-1.5M)": 143,
+    "Chest_deep_(1-1.5M)Color": "rgb(102, 102, 0)",
+    "Waist_deep_(60cm-1m)": 63,
+    "Waist_deep_(60cm-1m)Color": "rgb(255, 192, 203)",
+    "Person_height_(1.5-2M)": 6,
+    "Person_height_(1.5-2M)Color": "rgb(128, 0, 128)",
+    "Other": 65,
+    "OtherColor": "rgb(128, 128, 128)",
+  },
+  {
+    "suburb": "Alajo",
+    "Keen_deep_(30-50CM)": 111,
+    "Keen_deep_(30-50CM)Color": "rgb(0, 136, 136)",
+    "Chest_deep_(1-1.5M)": 51,
+    "Chest_deep_(1-1.5M)Color": "rgb(102, 102, 0)",
+    "Waist_deep_(60cm-1m)": 44,
+    "Waist_deep_(60cm-1m)Color": "rgb(255, 192, 203)",
+    "Person_height_(1.5-2M)": 110,
+    "Person_height_(1.5-2M)Color": "rgb(128, 0, 128)",
+    "Other": 145,
+    "OtherColor": "rgb(128, 128, 128)",
+  },
+  {
+    "suburb": "Nima",
+    "Keen_deep_(30-50CM)": 133,
+    "Keen_deep_(30-50CM)Color": "rgb(0, 136, 136)",
+    "Chest_deep_(1-1.5M)": 125,
+    "Chest_deep_(1-1.5M)Color": "rgb(102, 102, 0)",
+    "Waist_deep_(60cm-1m)": 194,
+    "Waist_deep_(60cm-1m)Color": "rgb(255, 192, 203)",
+    "Person_height_(1.5-2M)": 92,
+    "Person_height_(1.5-2M)Color": "rgb(128, 0, 128)",
+    "Other": 124,
+    "OtherColor": "rgb(128, 128, 128)",
+  }
+
+
+
+]
 class FloodHistory extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      floodData:null,
+    
       render:false,
-      viewport: {
-        width: "inherit",
-        height: "inherit",
-        latitude: 5.6249636,
-        longitude: -0.2332194,
-        zoom: 14.6,
 
-      },
-      popupInfo: null,
-      placeInfo: null
-    };
-    this.renderPopup = this.renderPopup.bind(this)
   }
-
-
-
+}
   componentDidMount(){
     this.setState({render:true})
-  
-    
-  }
-
-  renderPopup() {
-    console.log(this.state.placeInfo);
-    return (
-      this.state.popupInfo && (
-        <Popup
-          tipSize={10}
-          anchor="bottom-right"
-          longitude={this.state.popupInfo.state.longitude}
-          latitude={this.state.popupInfo.state.latitude}
-          onClose={() => this.setState({ popupInfo: null })}
-          closeOnClick={true}
-        >
-          <table width="400">
-            <tbody>
-              <tr>
-                <th>experienced_flood</th>
-                <td style={{ paddingLeft: "5px" }}>
-                  {this.state.placeInfo.experienced_flood}
-                </td>
-              </tr>
-              <tr>
-                <th tyle={{ width: "80px" }}>suburb</th>
-                <td style={{ paddingLeft: "5px" }}>
-                  {this.state.placeInfo.suburb}
-                </td>
-              </tr>
-              <tr>
-                <th>flood_cause</th>
-                <td style={{ paddingLeft: "5px" }}>
-                  {this.state.placeInfo.flood_cause}
-                </td>
-              </tr>
-              <tr>
-                <th>flood_year</th>
-                <td style={{ paddingLeft: "5px" }}>
-                  {this.state.placeInfo.flood_year}
-                </td>
-              </tr>
-              <tr>
-                <th>dwelling_type</th>
-                <td style={{ paddingLeft: "5px" }}>
-                  {this.state.placeInfo.dwelling_type}
-                </td>
-              </tr>
-              <tr>
-                <th>flood_depth</th>
-                <td style={{ paddingLeft: "5px" }}>
-                  {this.state.placeInfo.flood_depth}
-                </td>
-              </tr>
-              <tr>
-                <th>landmark</th>
-                <td style={{ paddingLeft: "5px" }}>
-                  {this.state.placeInfo.landmark}
-                </td>
-              </tr>
-              <tr>
-                <th>moved_house</th>
-                <td style={{ paddingLeft: "5px" }}>
-                  {this.state.placeInfo.moved_house}
-                </td>
-              </tr>
-            {
-                this.state.placeInfo.moved_house ==="yes" &&
-                <tr>
-                <th>moved_year</th>
-                <td style={{ paddingLeft: "5px" }}>
-                  {this.state.placeInfo.moved_year}
-                </td>
-              </tr>
-              }
-
-            </tbody>
-          </table>
-        </Popup>
-      )
-    );
+    mapboxgl.accessToken  = "pk.eyJ1Ijoid2lzZG9tMDA2MyIsImEiOiJjanI1aWg0cGQwZTByM3dtc3J1OHJ3MGNqIn0.yjtKpgtEmgCkCcLvpH_tJg";
   }
 
   render() {
 
-    const myMap =this.state.render && this.mapRef.getMap()
-    this.state.render && myMap.on("load", function () {
-        // Add a layer showing the state polygons.
-        myMap.addLayer({
-        'id': 'states-layer',
-        'type': 'circle',
-        'source': {
-        'type': 'geojson',
-        'data': base_url + "/static/data/alogboshie_flod_history.geojson"
-        },
-        'paint': {
-                "circle-color":"gray",
-                "circle-radius":10
-                       }
-        });
+  
+    var map = this.state.render && new mapboxgl.Map({
+      container: 'map',
+      style:"mapbox://styles/mapbox/streets-v9",
+      zoom: 15.4,
+      center: [ -0.23250, 5.62990]     
+      
+      });
 
-        myMap.on('click', 'states-layer', function (e) {
-          window.alert("hello")
-          // new mapboxgl.Popup()
-          // .setLngLat(e.lngLat)
-          // .setHTML(e.features[0].properties.name)
-          // .addTo(map);
+      this.state.render && map.addControl(new mapboxgl.NavigationControl())
+
+      this.state.render && map.on("load", function () {
+          // Add a layer showing the state polygons.
+          map.addLayer({
+              'id': 'flood',
+              'type': 'circle',
+              'source': {
+              'type': 'geojson',
+              'data': "/static/data/alogboshie_flod_history .geojson"
+              },
+              'paint': {
+                'circle-color': [
+                  'match',
+                  ['get', 'flood_history.flood_depth'],
+                  'Keen_deep_(30-50CM)', 'rgb(0, 136, 136)',
+                  'Chest_deep_(1-1.5M)', 'rgb(102, 102, 0)',
+                  'Waist_deep_(60cm-1m)', 'rgb(255, 192, 203)',
+                  'Person_height_(1.5-2M)', 'rgb(128, 0, 128)',
+                  /* other */ 'rgb(128, 128, 128)'
+                  ],
+              'circle-radius': 10
+              }
+              });
+
+        map.on('click', 'flood', function (e) {
+          new mapboxgl.Popup()
+          .setLngLat(e.lngLat)
+          .setHTML(        `
+          <table width="350">
+          <tbody>
+          ${
+            e.features[0].properties["experienced_flood"] && `<tr>
+            <th>experienced flood</th>
+            <td style={{ paddingLeft: "5px" }}>
+            ${e.features[0].properties["experienced_flood"]}
+            </td>
+            </tr>` || ""
+          }
+          ${
+            e.features[0].properties["flood_history.flood_cause"] && `<tr>
+            <th>Flood Cause</th>
+            <td style={{ paddingLeft: "5px" }}>
+            ${e.features[0].properties["flood_history.flood_cause"]}
+            </td>
+            </tr>` || ""
+          }
+        
+          ${
+            e.features[0].properties["flood_history.flood_event.flood_year"] && `<tr>
+            <th>Flood Year</th>
+            <td style={{ paddingLeft: "5px" }}>
+            ${e.features[0].properties["flood_history.flood_event.flood_year"]}
+            </td>
+            </tr>` || ""
+          }
+            ${
+              e.features[0].properties["dwelling_type"] && `<tr>
+              <th>Dwelling Type</th>
+              <td style={{ paddingLeft: "5px" }}>
+              ${e.features[0].properties["dwelling_type"]}
+              </td>
+              </tr>` || ""
+            }
+
+            ${
+              e.features[0].properties["building_use"] && `<tr>
+              <th>Building Use</th>
+              <td style={{ paddingLeft: "5px" }}>
+              ${e.features[0].properties["building_use"]}
+              </td>
+              </tr>` || ""
+            }
+
+            ${
+              e.features[0].properties["years_in_house"] && `<tr>
+              <th>Years in house </Useth>
+              <td style={{ paddingLeft: "5px" }}>
+              ${e.features[0].properties["years_in_house"]}
+              </td>
+              </tr>` || ""
+            }
+        
+            ${
+              e.features[0].properties["flood_history.flood_depth"] && `<tr>
+              <th>Flood Depth</th>
+              <td style={{ paddingLeft: "5px" }}>
+              ${e.features[0].properties["flood_history.flood_depth"]}
+              </td>
+              </tr>` || ""
+            }
+            ${
+              e.features[0].properties["address.landmark"] && `<tr>
+              <th>Land Mark</th>
+              <td style={{ paddingLeft: "5px" }}>
+              ${e.features[0].properties["address.landmark"]}
+              </td>
+              </tr>` || ""
+            }
+        
+          ${
+            e.features[0].properties["moved_house"] && `<tr>
+            <th>Moved House</th>
+            <td style={{ paddingLeft: "5px" }}>
+            ${e.features[0].properties["moved_house"]}
+            </td>
+            </tr>` || ""
+          }
+        
+          ${
+            e.features[0].properties["moved_year"] && `<tr>
+            <th>Moved Year</th>
+            <td style={{ paddingLeft: "5px" }}>
+            ${e.features[0].properties["moved_year"]}
+            </td>
+            </tr>` || ""
+          }
+            </tbody>
+            </table>`
+            )
+          .addTo(map);
           });
-
-          myMap.on('mouseenter', 'states-layer', function () {
-            myMap.getCanvas().style.cursor = 'pointer';
-            });
+           
+          // Change the cursor to a pointer when the mouse is over the states layer.
+          map.on('mouseenter', 'flood', function () {
+          map.getCanvas().style.cursor = 'pointer';
+          });
+           
+          // Change it back to a pointer when it leaves.
+          map.on('mouseleave', 'flood', function () {
+          map.getCanvas().style.cursor = '';
+          });
       
     })
     return (
@@ -200,7 +270,110 @@ class FloodHistory extends Component {
 
                 <div className="py-2 px-2">
                   <div className="map-border my-3" style={{ height: "400px" }}>
-                    Summary chart and legends here
+                  <ResponsiveBar
+        data={data}
+        keys={[
+            "Keen_deep_(30-50CM)",
+            "Chest_deep_(1-1.5M)",
+            "Waist_deep_(60cm-1m)",
+            "Person_height_(1.5-2M)",
+            "Other",
+           
+        ]}
+        indexBy="suburb"
+        margin={{
+            "top": 50,
+            "right": 110,
+            "bottom": 50,
+            "left": 50
+        }}
+        padding={0.3}
+        colors="nivo"
+        colorBy={function(e){var t=e.id;return e.data["".concat(t,"Color")]}}
+        defs={[
+            {
+                "id": "dots",
+                "type": "patternDots",
+                "background": "inherit",
+                "color": '({ id, data }) => data[`${id}Color`]',
+                "size": 4,
+                "padding": 1,
+                "stagger": true
+            },
+            {
+                "id": "lines",
+                "type": "patternLines",
+                "background": "inherit",
+                "color": "#eed312",
+                "rotation": -45,
+                "lineWidth": 6,
+                "spacing": 10
+            }
+        ]}
+        fill={[
+            {
+                "match": {
+                    "id": "fries"
+                },
+                "id": "dots"
+            },
+            {
+                "match": {
+                    "id": "sandwich"
+                },
+                "id": "lines"
+            }
+        ]}
+        borderColor="inherit:darker(1.6)"
+        axisTop={null}
+        axisRight={null}
+        axisBottom={{
+            "tickSize": 5,
+            "tickPadding": 5,
+            "tickRotation": 0,
+            "legend": "suburb",
+            "legendPosition": "middle",
+            "legendOffset": 32
+        }}
+        axisLeft={{
+            "tickSize": 5,
+            "tickPadding": 5,
+            "tickRotation": 0,
+            "legend": "building type",
+            "legendPosition": "middle",
+            "legendOffset": -40
+        }}
+        labelSkipWidth={12}
+        labelSkipHeight={12}
+        labelTextColor="inherit:darker(1.6)"
+        animate={true}
+        motionStiffness={90}
+        motionDamping={15}
+        legends={[
+            {
+                "dataFrom": "keys",
+                "anchor": "bottom-right",
+                "direction": "column",
+                "justify": false,
+                "translateX": 120,
+                "translateY": 0,
+                "itemsSpacing": 2,
+                "itemWidth": 100,
+                "itemHeight": 20,
+                "itemDirection": "left-to-right",
+                "itemOpacity": 0.85,
+                "symbolSize": 20,
+                "effects": [
+                    {
+                        "on": "hover",
+                        "style": {
+                            "itemOpacity": 1
+                        }
+                    }
+                ]
+            }
+        ]}
+    />
                   </div>
                   <center>
                     <select className="form-control mb-3 text-center rounded">
@@ -219,62 +392,19 @@ class FloodHistory extends Component {
             </div>
             <div className="col-sm-8">
               <div className="map-border" style={{ height: "750px" }}>
-              <ReactMapGL
-              ref={ map => this.mapRef = map }
-              mapboxApiAccessToken={
-                "pk.eyJ1Ijoid2lzZG9tMDA2MyIsImEiOiJjanI1aWg0cGQwZTByM3dtc3J1OHJ3MGNqIn0.yjtKpgtEmgCkCcLvpH_tJg"
-              }
-              {...this.state.viewport}
-               mapStyle="mapbox://styles/mapbox/streets-v9"
-                  onViewportChange={viewport => this.setState({ viewport })}
-                >
-                {this.state.floodData && this.state.floodData.features.map((value, index)=>{
-                                        return (
-                                          <Marker
-                                            latitude={value.geometry.coordinates[1]}
-                                            longitude={value.geometry.coordinates[0]}
-                                            key={index}
-                                          >
-                                            <img
-                                              src="../static/img/flood.png"
-                                              width="17"
-                                              height="15"
-                                              style={{backgroundColor:"gray"}}
-                                              onClick={() => {
-                                              
-                                                this.setState({
-                                                  popupInfo: {
-                                                    state: {
-                                                      longitude: value.geometry.coordinates[0],
-                                                      latitude: value.geometry.coordinates[1]
-                                                    }
-                                                  },
-                                                  placeInfo: {
-                                                    experienced_flood: value.properties["experienced_flood"],
-                                                    suburb:
-                                                      value.properties["address.suburb"] ||
-                                                      null,
-                                                    flood_cause:
-                                                      value.properties["flood_history.flood_cause"] || null,
-                                                      flood_year:value.properties["flood_history.flood_event.flood_year"] || null,
-                                                      dwelling_type:value.properties["dwelling_type"] || null,
-                                                      flood_depth:value.properties["flood_history.flood_depth"]||null,
-                                                      landmark:value.properties["address.landmark"] || null,
-                                                      moved_house:value.properties["moved_house"] || null,
-                                                      moved_year:value.properties["moved_year"] || null
-                                                  }
-                                                });
-                                              }}
-                                            />
-                                          </Marker>
-                                        )})}
-                    <div className="nav" style={navStyle}>
-                    <NavigationControl
-                      onViewportChange={viewport => this.setState({ viewport })}
-                    />
-                  </div>
-                  {this.renderPopup()}
-                </ReactMapGL>
+               <div id="map">   
+               </div>
+               <h4>Population</h4>
+              <div id='state-legend' class='legend'>
+<h4>Flood Depth</h4>
+<div><span style={{backgroundColor:"rgb(0, 136, 136)"}}></span>Keen_deep_(30-50CM)</div>
+<div><span style={{backgroundColor:"rgb(102, 102, 0)"}}></span>Chest_deep_(1-1.5M)</div>
+<div><span style={{backgroundColor:"rgb(255, 192, 203)"}} ></span>Waist_deep_(60cm-1m)</div>
+<div><span style={{backgroundColor:"rgb(128, 0, 128)"}} ></span>Person_height_(1.5-2M)</div>
+<div><span style={{backgroundColor:"rgb(128, 128, 128)"}} ></span>Other</div>
+</div>
+
+
               </div>
             </div>
           </div>
