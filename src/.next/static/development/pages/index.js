@@ -31943,7 +31943,7 @@ function (_Component) {
         className: "map-border",
         style: {
           height: "900px",
-          width: "80% !important"
+          width: "100%"
         },
         __source: {
           fileName: _jsxFileName,
