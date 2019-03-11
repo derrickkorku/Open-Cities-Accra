@@ -7,7 +7,7 @@ const data = [
   {
     suburb: "Alogboshie",
     "Knee deep": 101,
-    "Keen deepColor": "rgb(0, 136, 136)",
+    "Knee deepColor": "rgb(0, 136, 136)",
     "Chest deep": 61,
     "Chest deepColor": "rgb(102, 102, 0)",
     "Waist deep": 78,
@@ -20,7 +20,7 @@ const data = [
   {
     suburb: "Akweteman",
     "Knee deep": 51,
-    "Keen deepColor": "rgb(0, 136, 136)",
+    "Knee deepColor": "rgb(0, 136, 136)",
     "Chest deep": 59,
     "Chest deepColor": "rgb(102, 102, 0)",
     "Waist deep": 44,
@@ -33,7 +33,7 @@ const data = [
   {
     suburb: "Alajo",
     "Knee deep": 101,
-    "Keen deepColor": "rgb(0, 136, 136)",
+    "Knee deepColor": "rgb(0, 136, 136)",
     "Chest deep": 41,
     "Chest deepColor": "rgb(102, 102, 0)",
     "Waist deep": 64,
@@ -46,7 +46,7 @@ const data = [
   {
     suburb: "Nima",
     "Knee deep": 91,
-    "Keen deepColor": "rgb(0, 136, 136)",
+    "Knee deepColor": "rgb(0, 136, 136)",
     "Chest deep": 91,
     "Chest deepColor": "rgb(102, 102, 0)",
     "Waist deep": 44,
