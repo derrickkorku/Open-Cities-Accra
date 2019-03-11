@@ -1,6 +1,7 @@
 import { Component } from "react";
 import Link from "next/link";
 import {ResponsiveBar} from "@nivo/bar"
+import Download from "../components/download"
 
 const data = [
   {
@@ -400,7 +401,7 @@ ${
             "tickSize": 5,
             "tickPadding": 5,
             "tickRotation": 0,
-            "legend": "building type",
+            "legend": "Drain Covered",
             "legendPosition": "middle",
             "legendOffset": -40
         }}
@@ -437,11 +438,7 @@ ${
     />
                   </div>
                   <center>
-                    <select className="form-control mb-3 text-center rounded">
-                      <option>-- Select to Download --</option>
-                      <option>All Buildings</option>
-                      <option>All Data</option>
-                    </select>
+<Download/>
                   </center>
                 </div>
               </ul>

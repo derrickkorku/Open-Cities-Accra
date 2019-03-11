@@ -9914,7 +9914,7 @@ body {
 }
 
 .partner {
-  height: 120px;
+  height: 100px;
   width: auto;
 }
 
@@ -9932,7 +9932,7 @@ select.form-control option {
 }
 
 .map-border {
-  border: 3px solid black;
+  border: 1px solid black;
 }
 .contact-form-border {
   border: 4px solid #5380ea;
@@ -9967,10 +9967,11 @@ textarea.form-control {
 }
 
 .index-pg>.col-sm-9 {
-  max-width: 78.444443% !important;
+  max-width: 80% !important;
+  min-width: 80%;
 }
 .hot{
-  height: 140px;
+  height: 100px;
   width:auto !important;
   margin-left:12px
 }

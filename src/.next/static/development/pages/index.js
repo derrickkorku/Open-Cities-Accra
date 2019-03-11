@@ -31942,7 +31942,8 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "map-border",
         style: {
-          height: "900px"
+          height: "900px",
+          width: "80% !important"
         },
         __source: {
           fileName: _jsxFileName,
@@ -32169,7 +32170,7 @@ function (_Component) {
 
 /***/ }),
 
-/***/ 5:
+/***/ 8:
 /*!******************************!*\
   !*** multi ./pages/index.js ***!
   \******************************/
@@ -32194,5 +32195,5 @@ module.exports = dll_08fa50bc85c03b576e51;
 
 /***/ })
 
-},[[5,"static/runtime/webpack.js"]]]));;
+},[[8,"static/runtime/webpack.js"]]]));;
 //# sourceMappingURL=index.js.map
