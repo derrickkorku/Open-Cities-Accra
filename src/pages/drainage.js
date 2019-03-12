@@ -6,39 +6,39 @@ import Download from "../components/download"
 const data = [
   {
     "suburb": "Alogboshie",
-    "Yes": 69,
-    "YesColor": "rgb(0, 0, 255)",
-    "No": 23,
-    "NoColor": "rgb(255, 0, 0)",
+    "Covered": 69,
+    "CoveredColor": "rgb(0, 0, 255)",
+    "Not covered": 23,
+    "Not CoveredColor": "rgb(255, 0, 0)",
     "Not Known": 53,
     "Not KnownColor": "rgb(0, 128, 0)",
 
   },
   {
     "suburb": "Akweteman",
-    "Yes": 61,
-    "YesColor": "rgb(0, 0, 255)",
-    "No": 43,
-    "NoColor": "rgb(255, 0, 0)",
+    "Covered": 61,
+    "CoveredColor": "rgb(0, 0, 255)",
+    "Not Covered": 43,
+    "Not CoveredColor": "rgb(255, 0, 0)",
     "Not Known": 63,
     "Not KnownColor": "rgb(0, 128, 0)",
 
   },
   {
     "suburb": "Alajo",
-    "Yes": 41,
-    "YesColor": "rgb(0, 0, 255)",
-    "No": 73,
-    "NoColor": "rgb(255, 0, 0)",
+    "Covered": 41,
+    "CoveredColor": "rgb(0, 0, 255)",
+    "Not Covered": 73,
+    "Not CoveredColor": "rgb(255, 0, 0)",
     "Not Known": 83,
     "Not KnownColor": "rgb(0, 128, 0)",
   },
   {
     "suburb": "Nima",
-    "Yes": 69,
-    "YesColor": "rgb(0, 0, 255)",
-    "No": 23,
-    "NoColor": "rgb(255, 0, 0)",
+    "Covered": 69,
+    "CoveredColor": "rgb(0, 0, 255)",
+    "Not Covered": 23,
+    "Not CoveredColor": "rgb(255, 0, 0)",
     "Not Known": 33,
     "Not KnownColor": "rgb(0, 128, 0)",
   }
@@ -336,8 +336,8 @@ ${
                   <ResponsiveBar
         data={data}
         keys={[
-            "Yes",
-            "No",
+            "Covered",
+            "Not Covered",
             "Not Known",
 
            
@@ -453,8 +453,8 @@ ${
               <div id="map"></div>
               <div id='state-legend' class='legend'>
 <h4>Drain Covered</h4>
-<div><span style={{backgroundColor:"blue"}}></span>Yes</div>
-<div><span style={{backgroundColor:"red"}}></span>No</div>
+<div><span style={{backgroundColor:"blue"}}></span>Covered</div>
+<div><span style={{backgroundColor:"red"}}></span>Not Covered</div>
 <div><span style={{backgroundColor:"green"}}></span>Not Known</div>
 
 
