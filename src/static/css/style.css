@@ -1,5 +1,6 @@
 body {
   background-image: linear-gradient(#e1e2f4, #c2b8e9);
+
 }
 
 .bg-sidebar {
@@ -135,8 +136,16 @@ textarea.form-control {
     width: 10px;
     }
 
+    .info{
+      box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
+      -webkit-transition: all 0.2s cubic-bezier(0.3, 0.6, 0.2, 1.8);
+      transition: all 0.2s cubic-bezier(0.3, 0.6, 0.2, 1.8);
+    }
+
 
     .mapboxgl-popup {
       max-width: 400px;
       font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
       }
+
+      
