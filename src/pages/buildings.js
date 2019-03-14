@@ -282,8 +282,8 @@ ${(e.features[0].properties["source"] &&
               <div className="row" style={{minHeight:"6vh"}}>
               <div className="col-sm-2"/>
                 <div className="col-sm-7">
-                  <h4 className="font-weight-bold">           
-	 <small>Map Visualisation of buildings for Alogboshie, Accra-Ghana</small>
+                  <h4>           
+	 <small className="font-weight-bold">Map Visualisation of buildings for Alogboshie, Accra-Ghana</small>
 </h4>
                 </div>
                 <div className="col-sm-3">
@@ -440,7 +440,7 @@ ${(e.features[0].properties["source"] &&
               </center>
             </div>
             <div className="col-sm-8">
-              <div className="map-border" style={{ height: "91vh" }}>
+              <div className="map-border" style={{ height: "90vh" }}>
                 <div id="map" class="dark" />
                 <h4>Population</h4>
                 <div id="state-legend" class="legend">

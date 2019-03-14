@@ -498,7 +498,7 @@ ${(e.features[0].properties["moved_year"] &&
                
                 <div className="col-sm-9">
                 <h4>
-	 <small>Map Visualisation of buildings, flood history, and drainage for Alogboshie, Accra-Ghana</small>
+	 <small className="font-weight-bold">Map Visualisation of buildings, flood history, and drainage for Alogboshie, Accra-Ghana</small>
 </h4>
                 </div>
                 <div className="col-sm-3">

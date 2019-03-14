@@ -1,290 +1,277 @@
 import { Component } from "react";
 import Link from "next/link";
-import {ResponsiveBar} from "@nivo/bar"
-import Download from "../components/download"
+import { ResponsiveBar } from "@nivo/bar";
+import Download from "../components/download";
 
 const data = [
   {
-    "suburb": "Alogboshie",
-    "Covered": 69,
-    "CoveredColor": "rgb(0, 0, 255)",
+    suburb: "Alogboshie",
+    Covered: 69,
+    CoveredColor: "rgb(0, 0, 255)",
     "Not covered": 23,
     "Not CoveredColor": "rgb(255, 0, 0)",
     "Not Known": 53,
-    "Not KnownColor": "rgb(0, 128, 0)",
-
+    "Not KnownColor": "rgb(0, 128, 0)"
   },
   {
-    "suburb": "Akweteman",
-    "Covered": 61,
-    "CoveredColor": "rgb(0, 0, 255)",
+    suburb: "Akweteman",
+    Covered: 61,
+    CoveredColor: "rgb(0, 0, 255)",
     "Not Covered": 43,
     "Not CoveredColor": "rgb(255, 0, 0)",
     "Not Known": 63,
-    "Not KnownColor": "rgb(0, 128, 0)",
-
+    "Not KnownColor": "rgb(0, 128, 0)"
   },
   {
-    "suburb": "Alajo",
-    "Covered": 41,
-    "CoveredColor": "rgb(0, 0, 255)",
+    suburb: "Alajo",
+    Covered: 41,
+    CoveredColor: "rgb(0, 0, 255)",
     "Not Covered": 73,
     "Not CoveredColor": "rgb(255, 0, 0)",
     "Not Known": 83,
-    "Not KnownColor": "rgb(0, 128, 0)",
+    "Not KnownColor": "rgb(0, 128, 0)"
   },
   {
-    "suburb": "Nima",
-    "Covered": 69,
-    "CoveredColor": "rgb(0, 0, 255)",
+    suburb: "Nima",
+    Covered: 69,
+    CoveredColor: "rgb(0, 0, 255)",
     "Not Covered": 23,
     "Not CoveredColor": "rgb(255, 0, 0)",
     "Not Known": 33,
-    "Not KnownColor": "rgb(0, 128, 0)",
+    "Not KnownColor": "rgb(0, 128, 0)"
   }
-
-
-
-]
-
+];
 
 class Drainage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      drainageData:null,
-      render:false,
-      viewport: {
-        width: "inherit",
-        height: "inherit",
-        latitude: 5.6299636,
-        longitude: -0.2302194,
-        zoom: 16.1,
-        bearing: 9.6,
-        pitch: 60,
-        opacity: 1,
-        boxZoom: false
-      }
+      drainageData: null,
+      render: false,
+      waterways:"alogboshie_waterways.geojson",
+      community:"Alogboshie",
+      center:[-0.2325, 5.6262]
+
     };
   }
 
-
-
-  componentDidMount(){
-this.setState({render:true})
-mapboxgl.accessToken  = "pk.eyJ1Ijoid2lzZG9tMDA2MyIsImEiOiJjanI1aWg0cGQwZTByM3dtc3J1OHJ3MGNqIn0.yjtKpgtEmgCkCcLvpH_tJg";
-
-
-   
-  
-        
-
+  componentDidMount() {
+    this.setState({ render: true });
+    mapboxgl.accessToken =
+      "pk.eyJ1Ijoid2lzZG9tMDA2MyIsImEiOiJjanI1aWg0cGQwZTByM3dtc3J1OHJ3MGNqIn0.yjtKpgtEmgCkCcLvpH_tJg";
   }
 
   render() {
-    var map = this.state.render && new mapboxgl.Map({
-      container: 'map',
-      style:"mapbox://styles/mapbox/streets-v9",
-      zoom: 17,
-      center: [ -0.23250, 5.62620]     
-      
+    let center = this.state.render && this.state.center
+    var map =
+      this.state.render &&
+      new mapboxgl.Map({
+        container: "map",
+        style: "mapbox://styles/mapbox/streets-v9",
+        zoom: 17,
+        center:center
       });
 
-      this.state.render && map.addControl(new mapboxgl.NavigationControl())
+    this.state.render && map.addControl(new mapboxgl.NavigationControl());
+  let dataurl = this.state.render && this.state.waterways
 
-      this.state.render && map.on("load", function () {
-          // Add a layer showing the state polygons.
-          map.addLayer({
-              'id': 'drainage',
-              'type': 'line',
-              'source': {
-              'type': 'geojson',
-              'data': "/static/data/alogboshie_waterways.geojson"
-              },
-              'paint': {
-                      "line-color":[
-                        "match",
-                        ["get", "drain:profile_covered"],
-                        "no", "red",
-                        "yes", "blue",
-                        "green"
 
-                      ],
-                      "line-width":3
-                             }
-              });
-  
+    this.state.render &&
+      map.on("load", function() {
+        // Add a layer showing the state polygons.
+        map.addLayer({
+          id: "drainage",
+          type: "line",
+          source: {
+            type: "geojson",
+            data: `/static/data/${dataurl}`
+          },
+          paint: {
+            "line-color": [
+              "match",
+              ["get", "drain:profile_covered"],
+              "no",
+              "red",
+              "yes",
+              "blue",
+              "green"
+            ],
+            "line-width": 3
+          }
+        });
+
         // When a click event occurs on a feature in the states layer, open a popup at the
-// location of the click, with description HTML from its properties.
-map.on('click', 'drainage', function (e) {
-  new mapboxgl.Popup()
-  .setLngLat(e.lngLat)
-  .setHTML(        `
+        // location of the click, with description HTML from its properties.
+        map.on("click", "drainage", function(e) {
+          window.alert(e.lngLat)
+          new mapboxgl.Popup()
+            .setLngLat(e.lngLat)
+            .setHTML(
+              `
   <table width="350">
   <tbody>
-  ${
-    e.features[0].properties["width"] && `<tr>
+  ${(e.features[0].properties["width"] &&
+    `<tr>
     <th>Width</th>
     <td style={{ paddingLeft: "5px" }}>
     ${e.features[0].properties["width"]}
     </td>
-    </tr>` || ""
-  }
-  ${
-    e.features[0].properties["waterway"] && `<tr>
+    </tr>`) ||
+    ""}
+  ${(e.features[0].properties["waterway"] &&
+    `<tr>
     <th>Waterway</th>
     <td style={{ paddingLeft: "5px" }}>
     ${e.features[0].properties["waterway"]}
     </td>
-    </tr>` || ""
-  }
+    </tr>`) ||
+    ""}
 
-  ${
-    e.features[0].properties["depth"] && `<tr>
+  ${(e.features[0].properties["depth"] &&
+    `<tr>
     <th>Depth</th>
     <td style={{ paddingLeft: "5px" }}>
     ${e.features[0].properties["depth"]}
     </td>
-    </tr>` || ""
-  }
-    ${
-      e.features[0].properties["drain:cover_type"] && `<tr>
+    </tr>`) ||
+    ""}
+    ${(e.features[0].properties["drain:cover_type"] &&
+      `<tr>
       <th>Cover Type</th>
       <td style={{ paddingLeft: "5px" }}>
       ${e.features[0].properties["drain:cover_type"]}
       </td>
-      </tr>` || ""
-    }
+      </tr>`) ||
+      ""}
 
-    ${
-      e.features[0].properties["drain:ele"] && `<tr>
+    ${(e.features[0].properties["drain:ele"] &&
+      `<tr>
       <th>Ele</th>
       <td style={{ paddingLeft: "5px" }}>
       ${e.features[0].properties["drain:ele"]}
       </td>
-      </tr>` || ""
-    }
-    ${
-      e.features[0].properties["drain:material"] && `<tr>
+      </tr>`) ||
+      ""}
+    ${(e.features[0].properties["drain:material"] &&
+      `<tr>
       <th>Drain material</th>
       <td style={{ paddingLeft: "5px" }}>
       ${e.features[0].properties["drain:material"]}
       </td>
-      </tr>` || ""
-    }
+      </tr>`) ||
+      ""}
 
-  ${
-    e.features[0].properties["drain:material_smoothness"] && `<tr>
+  ${(e.features[0].properties["drain:material_smoothness"] &&
+    `<tr>
     <th>Material Smoothnes</th>
     <td style={{ paddingLeft: "5px" }}>
     ${e.features[0].properties["drain:material_smoothness"]}
     </td>
-    </tr>` || ""
-  }
+    </tr>`) ||
+    ""}
 
-  ${
-    e.features[0].properties["drain:profile_covered"] && `<tr>
+  ${(e.features[0].properties["drain:profile_covered"] &&
+    `<tr>
     <th>Profile Covered</th>
     <td style={{ paddingLeft: "5px" }}>
     ${e.features[0].properties["drain:profile_covered"]}
     </td>
-    </tr>` || ""
-  }
+    </tr>`) ||
+    ""}
 
 
-  ${
-    e.features[0].properties["drain:profile_open"] && `<tr>
+  ${(e.features[0].properties["drain:profile_open"] &&
+    `<tr>
     <th>Profile Open</th>
     <td style={{ paddingLeft: "5px" }}>
     ${e.features[0].properties["drain:profile_open"]}
     </td>
-    </tr>` || ""
-  }
+    </tr>`) ||
+    ""}
 
-  ${
-    e.features[0].properties["layer"] && `<tr>
+  ${(e.features[0].properties["layer"] &&
+    `<tr>
     <th>Layer</th>
     <td style={{ paddingLeft: "5px" }}>
     ${e.features[0].properties["layer"]}
     </td>
-    </tr>` || ""
-  }
+    </tr>`) ||
+    ""}
 
 
-${
-  e.features[0].properties["reference:feature"] && `<tr>
+${(e.features[0].properties["reference:feature"] &&
+  `<tr>
   <th>Reference Feature</th>
   <td style={{ paddingLeft: "5px" }}>
   ${e.features[0].properties["reference:feature"]}
   </td>
-  </tr>` || ""
-}
+  </tr>`) ||
+  ""}
 
-${
-  e.features[0].properties["reference:feature_type"] && `<tr>
+${(e.features[0].properties["reference:feature_type"] &&
+  `<tr>
   <th>Reference Feature Type</th>
   <td style={{ paddingLeft: "5px" }}>
   ${e.features[0].properties["reference:feature_type"]}
   </td>
-  </tr>` || ""
-}
-${
-  e.features[0].properties["description"] && `<tr>
+  </tr>`) ||
+  ""}
+${(e.features[0].properties["description"] &&
+  `<tr>
   <th>Description</th>
   <td style={{ paddingLeft: "5px" }}>
   ${e.features[0].properties["description"]}
   </td>
-  </tr>` || ""
-}
+  </tr>`) ||
+  ""}
 
-${
-  e.features[0].properties["drain:point_feature"] && `<tr>
+${(e.features[0].properties["drain:point_feature"] &&
+  `<tr>
   <th>Point Feature</th>
   <td style={{ paddingLeft: "5px" }}>
   ${e.features[0].properties["drain:point_feature"]}
   </td>
-  </tr>` || ""
-}
+  </tr>`) ||
+  ""}
 
-${
-  e.features[0].properties["tunnel"] && `<tr>
+${(e.features[0].properties["tunnel"] &&
+  `<tr>
   <th>Point Feature</th>
   <td style={{ paddingLeft: "5px" }}>
   ${e.features[0].properties["tunnel"]}
   </td>
-  </tr>` || ""
-}
+  </tr>`) ||
+  ""}
 
 
-${
-  e.features[0].properties["source"] && `<tr>
+${(e.features[0].properties["source"] &&
+  `<tr>
   <th>Source</th>
   <td style={{ paddingLeft: "5px" }}>
   ${e.features[0].properties["source"]}
   </td>
-  </tr>` || ""
-}
+  </tr>`) ||
+  ""}
     </tbody>
     </table>`
-    )
-  .addTo(map);
-  });
-   
-  // Change the cursor to a pointer when the mouse is over the states layer.
-  map.on('mouseenter', 'drainage', function () {
-  map.getCanvas().style.cursor = 'pointer';
-  });
-   
-  // Change it back to a pointer when it leaves.
-  map.on('mouseleave', 'drainage', function () {
-  map.getCanvas().style.cursor = '';
-  });
-        
-      })
+            )
+            .addTo(map);
+        });
+
+        // Change the cursor to a pointer when the mouse is over the states layer.
+        map.on("mouseenter", "drainage", function() {
+          map.getCanvas().style.cursor = "pointer";
+        });
+
+        // Change it back to a pointer when it leaves.
+        map.on("mouseleave", "drainage", function() {
+          map.getCanvas().style.cursor = "";
+        });
+      });
     return (
       <div>
         <div className="container-fluid mt-3">
-          <div className="row">
+          <div className="row" style={{ minHeight: "6vh" }}>
             <div className="col-sm-3" style={{ marginTop: "0.8em" }}>
               <center>
                 <Link href="/">
@@ -293,24 +280,51 @@ ${
               </center>
             </div>
             <div className="col-sm-9">
-            <div className="row">
-            <div className="col-md-2"></div>
-            <div className="col-sm-7">
-              <h4 className="font-weight-bold">	 <small>Map Visualisation of drainage for Alogboshie, Accra-Ghana</small>
-</h4>
-              </div>
-              <div className="col-sm-3">
-         
-                <select className="form-control mb-3 mr-3 w-100 rounded" disabled>
-                  <option>-- Select Community --</option>
-                  <option>Akweteyman</option>
-                  <option selected>Alogboshie</option>
-                  <option>Alajo</option>
-                  <option>Nima</option>
-                </select>
-          
-           
-              </div>
+              <div className="row">
+                <div className="col-md-2" />
+                <div className="col-sm-7">
+                  <h4>
+                    {" "}
+                    <small className="font-weight-bold">
+                      Map Visualisation of drainage for {this.state.render && this.state.community}, Accra-Ghana
+                    </small>
+                  </h4>
+                </div>
+                <div className="col-sm-3">
+                  <select
+                    className="form-control mb-3 mr-3 w-100 rounded"
+                    onChange={(e)=>{
+                      
+                      if(e.target.value==="Akweteyman"){
+                        this.setState({
+                          community:e.target.value,
+                          waterways:"akweteyman_waterways.geojson",
+                          center:[-0.2410443288160593, 5.6174037536466415]
+
+                        })
+                      }else{
+                        if(e.target.value==="Alogboshie"){
+                          this.setState({
+                            community:e.target.value,
+                            waterways:"alogboshie_waterways.geojson",
+                            center:[-0.2325, 5.6262]
+                          })
+                        
+
+                        }else{
+                          return;
+                        }
+                      }
+                    }}
+                    
+                  >
+                    <option>-- Select Community --</option>
+                    <option value="Alogboshie" selected>Alogboshie</option>
+                    <option value="Akweteyman">Akweteyman</option>
+                    <option value="Alajo">Alajo</option>
+                    <option value="Nima">Nima</option>
+                  </select>
+                </div>
               </div>
             </div>
           </div>
@@ -334,112 +348,109 @@ ${
 
                 <div className="py-2 px-2">
                   <div className="map-border my-3" style={{ height: "400px" }}>
-                  <ResponsiveBar
-        data={data}
-        keys={[
-            "Covered",
-            "Not Covered",
-            "Not Known",
-
-           
-        ]}
-        indexBy="suburb"
-        margin={{
-            "top": 50,
-            "right": 110,
-            "bottom": 50,
-            "left": 50
-        }}
-        padding={0.3}
-        colors="nivo"
-        colorBy={function(e){var t=e.id;return e.data["".concat(t,"Color")]}}
-        defs={[
-            {
-                "id": "dots",
-                "type": "patternDots",
-                "background": "inherit",
-                "color": '({ id, data }) => data[`${id}Color`]',
-                "size": 4,
-                "padding": 1,
-                "stagger": true
-            },
-            {
-                "id": "lines",
-                "type": "patternLines",
-                "background": "inherit",
-                "color": "#eed312",
-                "rotation": -45,
-                "lineWidth": 6,
-                "spacing": 10
-            }
-        ]}
-        fill={[
-            {
-                "match": {
-                    "id": "fries"
-                },
-                "id": "dots"
-            },
-            {
-                "match": {
-                    "id": "sandwich"
-                },
-                "id": "lines"
-            }
-        ]}
-        borderColor="inherit:darker(1.6)"
-        axisTop={null}
-        axisRight={null}
-        axisBottom={{
-            "tickSize": 5,
-            "tickPadding": 5,
-            "tickRotation": 0,
-            "legend": "suburb",
-            "legendPosition": "middle",
-            "legendOffset": 32
-        }}
-        axisLeft={{
-            "tickSize": 5,
-            "tickPadding": 5,
-            "tickRotation": 0,
-            "legend": "Drain Covered",
-            "legendPosition": "middle",
-            "legendOffset": -40
-        }}
-        labelSkipWidth={12}
-        labelSkipHeight={12}
-        labelTextColor="inherit:darker(1.6)"
-        animate={true}
-        motionStiffness={90}
-        motionDamping={15}
-        legends={[
-            {
-                "dataFrom": "keys",
-                "anchor": "bottom-right",
-                "direction": "column",
-                "justify": false,
-                "translateX": 120,
-                "translateY": 0,
-                "itemsSpacing": 2,
-                "itemWidth": 100,
-                "itemHeight": 20,
-                "itemDirection": "left-to-right",
-                "itemOpacity": 0.85,
-                "symbolSize": 20,
-                "effects": [
-                    {
-                        "on": "hover",
-                        "style": {
-                            "itemOpacity": 1
+                    <ResponsiveBar
+                      data={data}
+                      keys={["Covered", "Not Covered", "Not Known"]}
+                      indexBy="suburb"
+                      margin={{
+                        top: 50,
+                        right: 110,
+                        bottom: 50,
+                        left: 50
+                      }}
+                      padding={0.3}
+                      colors="nivo"
+                      colorBy={function(e) {
+                        var t = e.id;
+                        return e.data["".concat(t, "Color")];
+                      }}
+                      defs={[
+                        {
+                          id: "dots",
+                          type: "patternDots",
+                          background: "inherit",
+                          color: "({ id, data }) => data[`${id}Color`]",
+                          size: 4,
+                          padding: 1,
+                          stagger: true
+                        },
+                        {
+                          id: "lines",
+                          type: "patternLines",
+                          background: "inherit",
+                          color: "#eed312",
+                          rotation: -45,
+                          lineWidth: 6,
+                          spacing: 10
                         }
-                    }
-                ]
-            }
-        ]}
-    />
+                      ]}
+                      fill={[
+                        {
+                          match: {
+                            id: "fries"
+                          },
+                          id: "dots"
+                        },
+                        {
+                          match: {
+                            id: "sandwich"
+                          },
+                          id: "lines"
+                        }
+                      ]}
+                      borderColor="inherit:darker(1.6)"
+                      axisTop={null}
+                      axisRight={null}
+                      axisBottom={{
+                        tickSize: 5,
+                        tickPadding: 5,
+                        tickRotation: 0,
+                        legend: "suburb",
+                        legendPosition: "middle",
+                        legendOffset: 32
+                      }}
+                      axisLeft={{
+                        tickSize: 5,
+                        tickPadding: 5,
+                        tickRotation: 0,
+                        legend: "Drain Covered",
+                        legendPosition: "middle",
+                        legendOffset: -40
+                      }}
+                      labelSkipWidth={12}
+                      labelSkipHeight={12}
+                      labelTextColor="inherit:darker(1.6)"
+                      animate={true}
+                      motionStiffness={90}
+                      motionDamping={15}
+                      legends={[
+                        {
+                          dataFrom: "keys",
+                          anchor: "bottom-right",
+                          direction: "column",
+                          justify: false,
+                          translateX: 120,
+                          translateY: 0,
+                          itemsSpacing: 2,
+                          itemWidth: 100,
+                          itemHeight: 20,
+                          itemDirection: "left-to-right",
+                          itemOpacity: 0.85,
+                          symbolSize: 20,
+                          effects: [
+                            {
+                              on: "hover",
+                              style: {
+                                itemOpacity: 1
+                              }
+                            }
+                          ]
+                        }
+                      ]}
+                    />
                   </div>
                   <center>
-<Download/>
+                    <Download />
                   </center>
                 </div>
               </ul>
@@ -450,16 +461,23 @@ ${
               </center>
             </div>
             <div className="col-sm-8">
-              <div className="map-border" style={{ height: "900px" }}>
-              <div id="map"></div>
-              <div id='state-legend' class='legend'>
-<h4>Drain Covered</h4>
-<div><span style={{backgroundColor:"blue"}}></span>Covered</div>
-<div><span style={{backgroundColor:"red"}}></span>Not Covered</div>
-<div><span style={{backgroundColor:"green"}}></span>Not Known</div>
-
-
-</div>
+              <div className="map-border" style={{ height: "90vh" }}>
+                <div id="map" />
+                <div id="state-legend" class="legend">
+                  <h4>Drain Covered</h4>
+                  <div>
+                    <span style={{ backgroundColor: "blue" }} />
+                    Covered
+                  </div>
+                  <div>
+                    <span style={{ backgroundColor: "red" }} />
+                    Not Covered
+                  </div>
+                  <div>
+                    <span style={{ backgroundColor: "green" }} />
+                    Not Known
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -489,13 +507,10 @@ ${
                     </a>
                   </Link>
                 </li>
-                <li className="list-inline-item"  >
+                <li className="list-inline-item">
                   <Link href="https://www.hotosm.org/">
-                    <a target="_blank" style={{width:"800px !important"}}>
-                      <img
-                        src="../static/img/hot.png" 
-                        className="hot"
-                      />
+                    <a target="_blank" style={{ width: "800px !important" }}>
+                      <img src="../static/img/hot.png" className="hot" />
                     </a>
                   </Link>
                 </li>

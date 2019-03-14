@@ -222,7 +222,7 @@ class FloodHistory extends Component {
     return (
       <div>
         <div className="container-fluid mt-3">
-          <div className="row" style={{minHeight:"6vh"}}>
+          <div className="row" style={{ minHeight: "6vh" }}>
             <div className="col-sm-3" style={{ marginTop: "0.8em" }}>
               <center>
                 <Link href="/">
@@ -234,8 +234,13 @@ class FloodHistory extends Component {
               <div className="row">
                 <div className="col-md-2" />
                 <div className="col-sm-7">
-                  <h4 className="font-weight-bold">	 <small>Map Visualisation of flood history for Alogboshie, Accra-Ghana</small>
-</h4>
+                  <h4>
+                    {" "}
+                    <small className="font-weight-bold">
+                      Map Visualisation of flood history for Alogboshie,
+                      Accra-Ghana
+                    </small>
+                  </h4>
                 </div>
                 <div className="col-sm-3">
                   <select
@@ -391,7 +396,7 @@ class FloodHistory extends Component {
               </center>
             </div>
             <div className="col-sm-8">
-              <div className="map-border" style={{ height: "92vh" }}>
+              <div className="map-border" style={{ height: "91vh" }}>
                 <div id="map" />
                 <h4>Population</h4>
                 <div id="state-legend" class="legend">
@@ -415,7 +420,7 @@ class FloodHistory extends Component {
                   </div>
                   <div>
                     <span style={{ backgroundColor: "rgb(128, 128, 128)" }} />
-                   Not measured
+                    Not measured
                   </div>
                 </div>
               </div>

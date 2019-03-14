@@ -13,11 +13,11 @@
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/flood-history": [
+    "/drainage": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/drainage": [
+    "/buildings": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ]
