@@ -222,7 +222,7 @@ class FloodHistory extends Component {
     return (
       <div>
         <div className="container-fluid mt-3">
-          <div className="row">
+          <div className="row" style={{minHeight:"6vh"}}>
             <div className="col-sm-3" style={{ marginTop: "0.8em" }}>
               <center>
                 <Link href="/">
@@ -233,10 +233,11 @@ class FloodHistory extends Component {
             <div className="col-sm-9">
               <div className="row">
                 <div className="col-md-2" />
-                <div className="col-sm-6">
-                  <h4 className="font-weight-bold">FLOOD HISTORY-ALOGBOSHIE</h4>
+                <div className="col-sm-7">
+                  <h4 className="font-weight-bold">	 <small>Map Visualisation of flood history for Alogboshie, Accra-Ghana</small>
+</h4>
                 </div>
-                <div className="col-sm-4">
+                <div className="col-sm-3">
                   <select
                     className="form-control mb-3 mr-3 w-100 rounded"
                     disabled
@@ -265,7 +266,7 @@ class FloodHistory extends Component {
                     <a className="btn btn-n1">Drainage</a>
                   </Link>
                   <Link href="/buildings">
-                    <a className="btn btn-n2">Buildings</a>
+                    <a className="btn btn-n1">Buildings</a>
                   </Link>
                 </div>
 
@@ -390,7 +391,7 @@ class FloodHistory extends Component {
               </center>
             </div>
             <div className="col-sm-8">
-              <div className="map-border" style={{ height: "900px" }}>
+              <div className="map-border" style={{ height: "92vh" }}>
                 <div id="map" />
                 <h4>Population</h4>
                 <div id="state-legend" class="legend">

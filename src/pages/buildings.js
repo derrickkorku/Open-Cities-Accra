@@ -279,12 +279,14 @@ ${(e.features[0].properties["source"] &&
               </center>
             </div>
             <div className="col-sm-9">
-              <div className="row">
-                <div className="col-md-2" />
-                <div className="col-sm-6">
-                  <h4 className="font-weight-bold">BUILDINGS-ALOGBOSHIE</h4>
+              <div className="row" style={{minHeight:"6vh"}}>
+              <div className="col-sm-2"/>
+                <div className="col-sm-7">
+                  <h4 className="font-weight-bold">           
+	 <small>Map Visualisation of buildings for Alogboshie, Accra-Ghana</small>
+</h4>
                 </div>
-                <div className="col-sm-4">
+                <div className="col-sm-3">
                   <select
                     className="form-control mb-3 mr-3 w-100 rounded"
                     disabled
@@ -313,7 +315,7 @@ ${(e.features[0].properties["source"] &&
                     <a className="btn btn-n1">Flood History</a>
                   </Link>
                   <Link href="/drainage">
-                    <a className="btn btn-n2">Drainage</a>
+                    <a className="btn btn-n1">Drainage</a>
                   </Link>
                 </div>
 
@@ -438,7 +440,7 @@ ${(e.features[0].properties["source"] &&
               </center>
             </div>
             <div className="col-sm-8">
-              <div className="map-border" style={{ height: "900px" }}>
+              <div className="map-border" style={{ height: "91vh" }}>
                 <div id="map" class="dark" />
                 <h4>Population</h4>
                 <div id="state-legend" class="legend">

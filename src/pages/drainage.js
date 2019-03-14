@@ -295,10 +295,11 @@ ${
             <div className="col-sm-9">
             <div className="row">
             <div className="col-md-2"></div>
-            <div className="col-sm-6">
-              <h4 className="font-weight-bold">DRAINAGE-ALOGBOSHIE</h4>
+            <div className="col-sm-7">
+              <h4 className="font-weight-bold">	 <small>Map Visualisation of drainage for Alogboshie, Accra-Ghana</small>
+</h4>
               </div>
-              <div className="col-sm-4">
+              <div className="col-sm-3">
          
                 <select className="form-control mb-3 mr-3 w-100 rounded" disabled>
                   <option>-- Select Community --</option>
@@ -327,7 +328,7 @@ ${
                     <a className="btn btn-n1">Buildings</a>
                   </Link>
                   <Link href="/flood-history">
-                    <a className="btn btn-n2">Flood History</a>
+                    <a className="btn btn-n1">Flood History</a>
                   </Link>
                 </div>
 
