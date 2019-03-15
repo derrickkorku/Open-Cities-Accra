@@ -2,6 +2,8 @@ import Link from "next/link";
 import { Component } from "react";
 import { ResponsiveBar } from "@nivo/bar";
 import Download from "../components/download";
+import Footer from "../components/footer"
+
 
 const data = [
   {
@@ -275,6 +277,10 @@ class FloodHistory extends Component {
                   </Link>
                 </div>
 
+                <div className="info">
+                On this page users are be able to view the flood history data collected in the areas of interest on the map. Here you can explore the history of flooding in the area and how deep the water level was. Users can also download flood history data as a .csv file.
+                </div>
+
                 <div className="py-2 px-2">
                   <div className="map-border my-3" style={{ height: "400px" }}>
                     <ResponsiveBar
@@ -427,42 +433,7 @@ class FloodHistory extends Component {
             </div>
           </div>
         </div>
-        <footer className="footer">
-          <div className="container">
-            <center>Powered by:</center>
-            <div className="row justify-content-center">
-              <ul className="list-inline py-2">
-                <li className="list-inline-item">
-                  <Link href="http://mobilewebghana.org/">
-                    <a target="_blank">
-                      <img
-                        src="../static/img/partners/mwg.png"
-                        className="partner"
-                      />
-                    </a>
-                  </Link>
-                </li>
-                <li className="list-inline-item">
-                  <Link href="https://www.osmghana.org/">
-                    <a target="_blank">
-                      <img
-                        src="../static/img/partners/osmghana.png"
-                        className="partner"
-                      />
-                    </a>
-                  </Link>
-                </li>
-                <li className="list-inline-item">
-                  <Link href="https://www.hotosm.org/">
-                    <a target="_blank" style={{ width: "800px !important" }}>
-                      <img src="../static/img/hot.png" className="hot" />
-                    </a>
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </footer>
+<Footer/>
       </div>
     );
   }

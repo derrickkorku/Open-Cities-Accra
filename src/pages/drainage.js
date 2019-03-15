@@ -1,7 +1,11 @@
 import { Component } from "react";
 import Link from "next/link";
 import { ResponsiveBar } from "@nivo/bar";
-import Download from "../components/download";
+import AlogboshieDownload from "../components/download";
+import AkwetemanDownload from "../components/aketeyman-downloads"
+import AlajoDownload from "../components/alajo-download"
+import Footer from "../components/footer"
+
 
 const data = [
   {
@@ -62,6 +66,7 @@ class Drainage extends Component {
   }
 
   render() {
+    let Download = this.state.community ==="Alogboshie"?<AlogboshieDownload/>:this.state.community==="Akweteyman"?<AkwetemanDownload/>:""
     let center = this.state.render && this.state.center
     var map =
       this.state.render &&
@@ -103,7 +108,6 @@ class Drainage extends Component {
         // When a click event occurs on a feature in the states layer, open a popup at the
         // location of the click, with description HTML from its properties.
         map.on("click", "drainage", function(e) {
-          window.alert(e.lngLat)
           new mapboxgl.Popup()
             .setLngLat(e.lngLat)
             .setHTML(
@@ -321,8 +325,8 @@ ${(e.features[0].properties["source"] &&
                     <option>-- Select Community --</option>
                     <option value="Alogboshie" selected>Alogboshie</option>
                     <option value="Akweteyman">Akweteyman</option>
-                    <option value="Alajo">Alajo</option>
-                    <option value="Nima">Nima</option>
+                    {/* <option value="Alajo">Alajo</option>
+                    <option value="Nima">Nima</option> */}
                   </select>
                 </div>
               </div>
@@ -344,6 +348,10 @@ ${(e.features[0].properties["source"] &&
                   <Link href="/flood-history">
                     <a className="btn btn-n1">Flood History</a>
                   </Link>
+                </div>
+
+                <div className="info">
+                This page displays drainage data (drain lines and points) on the map. Here data displayed is for the entire area of interest and the user can zoom in on the map to a particular place to see more details about the data displayed. On the left side of the page is a visualization of the drainage in the area of interest. Users can explore the drainage data by looking at the types of drains in the community.  Beneath that is the download button which allows users to download either drainage data alone or the entire dataset as a .GeoJSON file.
                 </div>
 
                 <div className="py-2 px-2">
@@ -450,7 +458,7 @@ ${(e.features[0].properties["source"] &&
                     />
                   </div>
                   <center>
-                    <Download />
+                    {Download }
                   </center>
                 </div>
               </ul>
@@ -482,42 +490,7 @@ ${(e.features[0].properties["source"] &&
             </div>
           </div>
         </div>
-        <footer className="footer">
-          <div className="container">
-            <center>Powered by:</center>
-            <div className="row justify-content-center">
-              <ul className="list-inline py-2">
-                <li className="list-inline-item">
-                  <Link href="http://mobilewebghana.org/">
-                    <a target="_blank">
-                      <img
-                        src="../static/img/partners/mwg.png"
-                        className="partner"
-                      />
-                    </a>
-                  </Link>
-                </li>
-                <li className="list-inline-item">
-                  <Link href="https://www.osmghana.org/">
-                    <a target="_blank">
-                      <img
-                        src="../static/img/partners/osmghana.png"
-                        className="partner"
-                      />
-                    </a>
-                  </Link>
-                </li>
-                <li className="list-inline-item">
-                  <Link href="https://www.hotosm.org/">
-                    <a target="_blank" style={{ width: "800px !important" }}>
-                      <img src="../static/img/hot.png" className="hot" />
-                    </a>
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </footer>
+<Footer/>
       </div>
     );
   }

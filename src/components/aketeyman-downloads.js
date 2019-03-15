@@ -26,11 +26,11 @@ let filename = filearr[filearr.length-1]
         filePath:null,
         filename:null
       }}>-- Select to Download --</option>
-      {/* <option value=
-      "../static/alobgoshie-buildings.geojson"
+      <option value=
+      "../static/akweteyman_buildings.geojson"
       >Buildings</option>
 
-      <option value="../static/alogboshie_flod_history .geojson"
+      {/* <option value="../static/alogboshie_flod_history .geojson"
       
     >Flood History</option> */}
 

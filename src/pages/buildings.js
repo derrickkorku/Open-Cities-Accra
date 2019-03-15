@@ -1,7 +1,10 @@
 import { Component } from "react";
 import Link from "next/link";
 import { ResponsiveBar } from "@nivo/bar";
-import Download from "../components/download"
+import AlogboshieDownload from "../components/download";
+import AkwetemanDownload from "../components/aketeyman-downloads"
+import AlajoDownload from "../components/alajo-download"
+import Footer from "../components/footer"
 const data = [
   {
     suburb: "Alogboshie",
@@ -71,7 +74,9 @@ class Buildings extends Component {
     this.state = {
       buildingData: null,
       render: false,
-      file: null,
+      buildings:"alobgoshie-buildings.geojson",
+      community:"Alogboshie",
+      center:[-0.2325, 5.6262]
     };
   }
 
@@ -84,16 +89,22 @@ class Buildings extends Component {
   
 
   render() {
+    let Download = this.state.community ==="Alogboshie"?<AlogboshieDownload/>:this.state.community==="Akweteyman"?<AkwetemanDownload/>:this.state.community==="Alajo"?<AlajoDownload/>:""
+
+    let center = this.state.render && this.state.center
+
     var map =
       this.state.render &&
       new mapboxgl.Map({
         container: "map",
         style: "mapbox://styles/mapbox/streets-v9",
         zoom: 17,
-        center: [-0.2325, 5.6262]
+        center: center
       });
 
     this.state.render && map.addControl(new mapboxgl.NavigationControl());
+    let dataurl = this.state.render && this.state.buildings
+
 
     this.state.render &&
       map.on("load", function() {
@@ -103,7 +114,7 @@ class Buildings extends Component {
           type: "fill",
           source: {
             type: "geojson",
-            data: "/static/data/alobgoshie-buildings.geojson"
+            data: `/static/data/${dataurl}`
           },
           layout: {},
           paint: {
@@ -129,6 +140,7 @@ class Buildings extends Component {
         // When a click event occurs on a feature in the states layer, open a popup at the
         // location of the click, with description HTML from its properties.
         map.on("click", "buildings", function(e) {
+    
           new mapboxgl.Popup()
             .setLngLat(e.lngLat)
             .setHTML(
@@ -283,19 +295,52 @@ ${(e.features[0].properties["source"] &&
               <div className="col-sm-2"/>
                 <div className="col-sm-7">
                   <h4>           
-	 <small className="font-weight-bold">Map Visualisation of buildings for Alogboshie, Accra-Ghana</small>
+	 <small className="font-weight-bold">Map Visualisation of buildings for {this.state.render && this.state.community}, Accra-Ghana</small>
 </h4>
                 </div>
                 <div className="col-sm-3">
-                  <select
+                <select
                     className="form-control mb-3 mr-3 w-100 rounded"
-                    disabled
+                    onChange={(e)=>{
+                      
+                      if(e.target.value==="Akweteyman"){
+                        this.setState({
+                          community:e.target.value,
+                          buildings:"akweteyman_buildings.geojson",
+                          center:[-0.2410443288160593, 5.6134037536466415]
+
+                        })
+                      }else{
+                        if(e.target.value==="Alogboshie"){
+                          this.setState({
+                            community:e.target.value,
+                            buildings:"alobgoshie-buildings.geojson",
+                            center:[-0.2325, 5.6262]
+                          })
+                        
+
+                        }else{
+                          if(e.target.value==="Alajo"){
+                            this.setState({
+                              community:e.target.value,
+                              buildings:"alajo_buildings.geojson",
+                              center:[-0.2152084488221533, 5.598973832979908]
+                            })
+                          
+  
+                          }else{
+                            return
+                          }
+                        }
+                      }
+                    }}
+                    
                   >
                     <option>-- Select Community --</option>
-                    <option>Akweteyman</option>
-                    <option selected>Alogboshie</option>
-                    <option>Alajo</option>
-                    <option>Nima</option>
+                    <option value="Alogboshie" selected>Alogboshie</option>
+                    <option value="Akweteyman">Akweteyman</option>
+                    <option value="Alajo">Alajo</option>
+                    {/* <option value="Nima">Nima</option> */}
                   </select>
                 </div>
               </div>
@@ -303,7 +348,7 @@ ${(e.features[0].properties["source"] &&
           </div>
           <div className="row">
             <div className="col-sm-4">
-              <ul className="list-unstyled rounded bg-sidebar shadow">
+            <ul className="list-unstyled rounded bg-sidebar shadow">
                 <div
                   className="btn-group btn-group-lg w-100 rounded"
                   role="group"
@@ -318,6 +363,12 @@ ${(e.features[0].properties["source"] &&
                     <a className="btn btn-n1">Drainage</a>
                   </Link>
                 </div>
+              
+            <div className="info">
+            The buildings page displays the buildings data collected in a selected area of interest on the map. Here, you can explore the data collected on buildings in a selected area of interest according to the following subjects: type, purpose and materials used. You can also explore the data according to these subjects by viewing the bar graph on the left side of the page. Beneath that is the download button which allows users to download either buildings data alone or the entire dataset as a .GeoJSON file.
+            </div>
+
+
 
                 <div className="py-2 px-2">
                   <div className="map-border my-3" style={{ height: "400px" }}>
@@ -429,15 +480,16 @@ ${(e.features[0].properties["source"] &&
                     />
                   </div>
                   <center>
-<Download/>
+{Download}
                   </center>
                 </div>
-              </ul>
+                </ul>
               <center>
                 <Link href="/contact">
                   <a className="btn btn-dark px-10">Contact</a>
                 </Link>
               </center>
+          
             </div>
             <div className="col-sm-8">
               <div className="map-border" style={{ height: "90vh" }}>
@@ -480,42 +532,7 @@ ${(e.features[0].properties["source"] &&
             </div>
           </div>
         </div>
-        <footer className="footer">
-          <div className="container">
-            <center>Powered by:</center>
-            <div className="row justify-content-center">
-              <ul className="list-inline py-2">
-                <li className="list-inline-item">
-                  <Link href="http://mobilewebghana.org/">
-                    <a target="_blank">
-                      <img
-                        src="../static/img/partners/mwg.png"
-                        className="partner"
-                      />
-                    </a>
-                  </Link>
-                </li>
-                <li className="list-inline-item">
-                  <Link href="https://www.osmghana.org/">
-                    <a target="_blank">
-                      <img
-                        src="../static/img/partners/osmghana.png"
-                        className="partner"
-                      />
-                    </a>
-                  </Link>
-                </li>
-                <li className="list-inline-item">
-                  <Link href="https://www.hotosm.org/">
-                    <a target="_blank" style={{ width: "800px !important" }}>
-                      <img src="../static/img/hot.png" className="hot" />
-                    </a>
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </footer>
+<Footer/>
       </div>
     );
   }

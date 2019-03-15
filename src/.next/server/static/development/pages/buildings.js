@@ -88,10 +88,283 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 6);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ({
+
+/***/ "./components/aketeyman-downloads.js":
+/*!*******************************************!*\
+  !*** ./components/aketeyman-downloads.js ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+var _jsxFileName = "/home/wisdom/Documents/OCA/Open-Cities-Accra-master/src/components/aketeyman-downloads.js";
+
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+var Download =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(Download, _Component);
+
+  function Download(props) {
+    var _this;
+
+    _classCallCheck(this, Download);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Download).call(this, props));
+    _this.state = {
+      file: null,
+      filename: null
+    };
+    return _this;
+  }
+
+  _createClass(Download, [{
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 14
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+        className: "form-control mb-3 text-center rounded",
+        style: {
+          float: "left",
+          width: "70%"
+        },
+        onChange: function onChange(e) {
+          var filearr = e.target.value.split("/");
+          var filename = filearr[filearr.length - 1];
+
+          _this2.setState({
+            file: e.target.value,
+            filename: filename
+          });
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 15
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: {
+          filePath: null,
+          filename: null
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 25
+        },
+        __self: this
+      }, "-- Select to Download --"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "../static/akweteyman_buildings.geojson",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 29
+        },
+        __self: this
+      }, "Buildings"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "../static/akweteyman_waterways.geojson",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 37
+        },
+        __self: this
+      }, "Drainage")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        style: {
+          float: "left",
+          marginLeft: "10px"
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 39
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        className: "btn btn-dark",
+        style: {
+          color: "white"
+        },
+        href: this.state.file,
+        download: this.state.filename,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 40
+        },
+        __self: this
+      }, "Download")));
+    }
+  }]);
+
+  return Download;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (Download);
+
+/***/ }),
+
+/***/ "./components/alajo-download.js":
+/*!**************************************!*\
+  !*** ./components/alajo-download.js ***!
+  \**************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+var _jsxFileName = "/home/wisdom/Documents/OCA/Open-Cities-Accra-master/src/components/alajo-download.js";
+
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+var Download =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(Download, _Component);
+
+  function Download(props) {
+    var _this;
+
+    _classCallCheck(this, Download);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Download).call(this, props));
+    _this.state = {
+      file: null,
+      filename: null
+    };
+    return _this;
+  }
+
+  _createClass(Download, [{
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 14
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+        className: "form-control mb-3 text-center rounded",
+        style: {
+          float: "left",
+          width: "70%"
+        },
+        onChange: function onChange(e) {
+          var filearr = e.target.value.split("/");
+          var filename = filearr[filearr.length - 1];
+
+          _this2.setState({
+            file: e.target.value,
+            filename: filename
+          });
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 15
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: {
+          filePath: null,
+          filename: null
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 25
+        },
+        __self: this
+      }, "-- Select to Download --"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "../static/alajo_buildings.geojson",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 29
+        },
+        __self: this
+      }, "Buildings")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        style: {
+          float: "left",
+          marginLeft: "10px"
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 39
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        className: "btn btn-dark",
+        style: {
+          color: "white"
+        },
+        href: this.state.file,
+        download: this.state.filename,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 40
+        },
+        __self: this
+      }, "Download")));
+    }
+  }]);
+
+  return Download;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (Download);
+
+/***/ }),
 
 /***/ "./components/download.js":
 /*!********************************!*\
@@ -240,6 +513,152 @@ function (_Component) {
 
 /***/ }),
 
+/***/ "./components/footer.js":
+/*!******************************!*\
+  !*** ./components/footer.js ***!
+  \******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/link */ "next/link");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_1__);
+var _jsxFileName = "/home/wisdom/Documents/OCA/Open-Cities-Accra-master/src/components/footer.js";
+
+
+/* harmony default export */ __webpack_exports__["default"] = (function () {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", {
+    className: "footer",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 4
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "container",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 5
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("center", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 6
+    },
+    __self: this
+  }, "Powered by:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "row justify-content-center",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 7
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+    className: "list-inline py-2",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 8
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+    className: "list-inline-item",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 9
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
+    href: "http://mobilewebghana.org/",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 10
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    target: "_blank",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 11
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: "../static/img/partners/mwg.png",
+    className: "partner",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 12
+    },
+    __self: this
+  })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+    className: "list-inline-item",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 19
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
+    href: "https://www.osmghana.org/",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 20
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    target: "_blank",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 21
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: "../static/img/partners/osmghana-logo.png",
+    className: "partner",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 22
+    },
+    __self: this
+  })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+    className: "list-inline-item",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 29
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
+    href: "https://www.hotosm.org/",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 30
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    target: "_blank",
+    style: {
+      width: "800px !important"
+    },
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 31
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: "../static/img/hot.png",
+    className: "hot",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 32
+    },
+    __self: this
+  }))))))));
+});
+
+/***/ }),
+
 /***/ "./pages/buildings.js":
 /*!****************************!*\
   !*** ./pages/buildings.js ***!
@@ -256,12 +675,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _nivo_bar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @nivo/bar */ "@nivo/bar");
 /* harmony import */ var _nivo_bar__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_nivo_bar__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _components_download__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/download */ "./components/download.js");
-/* harmony import */ var react_map_gl__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-map-gl */ "react-map-gl");
-/* harmony import */ var react_map_gl__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_map_gl__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var immutable__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! immutable */ "immutable");
-/* harmony import */ var immutable__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(immutable__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! isomorphic-unfetch */ "isomorphic-unfetch");
-/* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _components_aketeyman_downloads__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/aketeyman-downloads */ "./components/aketeyman-downloads.js");
+/* harmony import */ var _components_alajo_download__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/alajo-download */ "./components/alajo-download.js");
+/* harmony import */ var _components_footer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/footer */ "./components/footer.js");
+/* harmony import */ var react_map_gl__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-map-gl */ "react-map-gl");
+/* harmony import */ var react_map_gl__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react_map_gl__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var immutable__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! immutable */ "immutable");
+/* harmony import */ var immutable__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(immutable__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! isomorphic-unfetch */ "isomorphic-unfetch");
+/* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_9__);
 var _jsxFileName = "/home/wisdom/Documents/OCA/Open-Cities-Accra-master/src/pages/buildings.js";
 
 
@@ -282,6 +704,9 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
 
 
 
@@ -360,7 +785,9 @@ function (_Component) {
     _this.state = {
       buildingData: null,
       render: false,
-      file: null
+      buildings: "alobgoshie-buildings.geojson",
+      community: "Alogboshie",
+      center: [-0.2325, 5.6262]
     };
     return _this;
   }
@@ -376,13 +803,36 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
+      var Download = this.state.community === "Alogboshie" ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_download__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 92
+        },
+        __self: this
+      }) : this.state.community === "Akweteyman" ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_aketeyman_downloads__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 92
+        },
+        __self: this
+      }) : this.state.community === "Alajo" ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_alajo_download__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 92
+        },
+        __self: this
+      }) : "";
+      var center = this.state.render && this.state.center;
       var map = this.state.render && new mapboxgl.Map({
         container: "map",
         style: "mapbox://styles/mapbox/streets-v9",
         zoom: 17,
-        center: [-0.2325, 5.6262]
+        center: center
       });
       this.state.render && map.addControl(new mapboxgl.NavigationControl());
+      var dataurl = this.state.render && this.state.buildings;
       this.state.render && map.on("load", function () {
         // Add a layer showing the state polygons.
         map.addLayer({
@@ -390,7 +840,7 @@ function (_Component) {
           type: "fill",
           source: {
             type: "geojson",
-            data: "/static/data/alobgoshie-buildings.geojson"
+            data: "/static/data/".concat(dataurl)
           },
           layout: {},
           paint: {
@@ -417,21 +867,21 @@ function (_Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 271
+          lineNumber: 283
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container-fluid mt-3",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 272
+          lineNumber: 284
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 273
+          lineNumber: 285
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -441,34 +891,34 @@ function (_Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 274
+          lineNumber: 286
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("center", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 275
+          lineNumber: 287
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
         href: "/",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 276
+          lineNumber: 288
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         className: "home-link",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 277
+          lineNumber: 289
         },
         __self: this
       }, "HOME")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-sm-9",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 281
+          lineNumber: 293
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -478,101 +928,124 @@ function (_Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 282
+          lineNumber: 294
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-sm-2",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 283
+          lineNumber: 295
         },
         __self: this
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-sm-7",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 284
+          lineNumber: 296
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 285
+          lineNumber: 297
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", {
         className: "font-weight-bold",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 286
+          lineNumber: 298
         },
         __self: this
-      }, "Map Visualisation of buildings for Alogboshie, Accra-Ghana"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Map Visualisation of buildings for ", this.state.render && this.state.community, ", Accra-Ghana"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-sm-3",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 289
+          lineNumber: 301
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
         className: "form-control mb-3 mr-3 w-100 rounded",
-        disabled: true,
+        onChange: function onChange(e) {
+          if (e.target.value === "Akweteyman") {
+            _this2.setState({
+              community: e.target.value,
+              buildings: "akweteyman_buildings.geojson",
+              center: [-0.2410443288160593, 5.6134037536466415]
+            });
+          } else {
+            if (e.target.value === "Alogboshie") {
+              _this2.setState({
+                community: e.target.value,
+                buildings: "alobgoshie-buildings.geojson",
+                center: [-0.2325, 5.6262]
+              });
+            } else {
+              if (e.target.value === "Alajo") {
+                _this2.setState({
+                  community: e.target.value,
+                  buildings: "alajo_buildings.geojson",
+                  center: [-0.2152084488221533, 5.598973832979908]
+                });
+              } else {
+                return;
+              }
+            }
+          }
+        },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 290
+          lineNumber: 302
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 294
+          lineNumber: 339
         },
         __self: this
       }, "-- Select Community --"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 295
-        },
-        __self: this
-      }, "Akweteyman"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "Alogboshie",
         selected: true,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 296
+          lineNumber: 340
         },
         __self: this
       }, "Alogboshie"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "Akweteyman",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 297
+          lineNumber: 341
         },
         __self: this
-      }, "Alajo"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+      }, "Akweteyman"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "Alajo",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 298
+          lineNumber: 342
         },
         __self: this
-      }, "Nima")))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Alajo")))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 304
+          lineNumber: 349
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-sm-4",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 305
+          lineNumber: 350
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "list-unstyled rounded bg-sidebar shadow",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 306
+          lineNumber: 351
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -580,56 +1053,63 @@ function (_Component) {
         role: "group",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 307
+          lineNumber: 352
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
         href: "/buildings",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 311
+          lineNumber: 356
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         className: "btn btn-active",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 312
+          lineNumber: 357
         },
         __self: this
       }, "Buildings")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
         href: "/flood-history",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 314
+          lineNumber: 359
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         className: "btn btn-n1",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 315
+          lineNumber: 360
         },
         __self: this
       }, "Flood History")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
         href: "/drainage",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 317
+          lineNumber: 362
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         className: "btn btn-n1",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 318
+          lineNumber: 363
         },
         __self: this
       }, "Drainage"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "info",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 367
+        },
+        __self: this
+      }, "The buildings page displays the buildings data collected in a selected area of interest on the map. Here, you can explore the data collected on buildings in a selected area of interest according to the following subjects: type, purpose and materials used. You can also explore the data according to these subjects by viewing the bar graph on the left side of the page. Beneath that is the download button which allows users to download either buildings data alone or the entire dataset as a .GeoJSON file."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "py-2 px-2",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 322
+          lineNumber: 373
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -639,7 +1119,7 @@ function (_Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 323
+          lineNumber: 374
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_nivo_bar__WEBPACK_IMPORTED_MODULE_2__["ResponsiveBar"], {
@@ -733,46 +1213,40 @@ function (_Component) {
         }],
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 324
+          lineNumber: 375
         },
         __self: this
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("center", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 431
+          lineNumber: 482
         },
         __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_download__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      }, Download))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("center", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 432
-        },
-        __self: this
-      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("center", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 436
+          lineNumber: 487
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
         href: "/contact",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 437
+          lineNumber: 488
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         className: "btn btn-dark px-10",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 438
+          lineNumber: 489
         },
         __self: this
       }, "Contact")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-sm-8",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 442
+          lineNumber: 494
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -782,7 +1256,7 @@ function (_Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 443
+          lineNumber: 495
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -790,13 +1264,13 @@ function (_Component) {
         class: "dark",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 444
+          lineNumber: 496
         },
         __self: this
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 445
+          lineNumber: 497
         },
         __self: this
       }, "Population"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -804,19 +1278,19 @@ function (_Component) {
         class: "legend",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 446
+          lineNumber: 498
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 447
+          lineNumber: 499
         },
         __self: this
       }, "Buildings"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 448
+          lineNumber: 500
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
@@ -825,13 +1299,13 @@ function (_Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 449
+          lineNumber: 501
         },
         __self: this
       }), "Residential"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 454
+          lineNumber: 506
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
@@ -840,13 +1314,13 @@ function (_Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 455
+          lineNumber: 507
         },
         __self: this
       }), "Commercial"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 458
+          lineNumber: 510
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
@@ -855,13 +1329,13 @@ function (_Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 459
+          lineNumber: 511
         },
         __self: this
       }), "Commercial & Residential"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 462
+          lineNumber: 514
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
@@ -870,13 +1344,13 @@ function (_Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 463
+          lineNumber: 515
         },
         __self: this
       }), "Church"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 468
+          lineNumber: 520
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
@@ -885,13 +1359,13 @@ function (_Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 469
+          lineNumber: 521
         },
         __self: this
       }), "School"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 474
+          lineNumber: 526
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
@@ -900,134 +1374,16 @@ function (_Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 475
+          lineNumber: 527
         },
         __self: this
-      }), "Other")))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", {
-        className: "footer",
+      }), "Other")))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_footer__WEBPACK_IMPORTED_MODULE_6__["default"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 483
+          lineNumber: 535
         },
         __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "container",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 484
-        },
-        __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("center", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 485
-        },
-        __self: this
-      }, "Powered by:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row justify-content-center",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 486
-        },
-        __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "list-inline py-2",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 487
-        },
-        __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "list-inline-item",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 488
-        },
-        __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
-        href: "http://mobilewebghana.org/",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 489
-        },
-        __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        target: "_blank",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 490
-        },
-        __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "../static/img/partners/mwg.png",
-        className: "partner",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 491
-        },
-        __self: this
-      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "list-inline-item",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 498
-        },
-        __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
-        href: "https://www.osmghana.org/",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 499
-        },
-        __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        target: "_blank",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 500
-        },
-        __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "../static/img/partners/osmghana.png",
-        className: "partner",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 501
-        },
-        __self: this
-      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "list-inline-item",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 508
-        },
-        __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
-        href: "https://www.hotosm.org/",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 509
-        },
-        __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        target: "_blank",
-        style: {
-          width: "800px !important"
-        },
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 510
-        },
-        __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "../static/img/hot.png",
-        className: "hot",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 511
-        },
-        __self: this
-      })))))))));
+      }));
     }
   }]);
 
@@ -1038,7 +1394,7 @@ function (_Component) {
 
 /***/ }),
 
-/***/ 6:
+/***/ 3:
 /*!**********************************!*\
   !*** multi ./pages/buildings.js ***!
   \**********************************/

@@ -1,5 +1,7 @@
 import { Component } from "react";
 import Link from "next/link";
+import Footer from "../components/footer"
+
 class Index extends Component {
   constructor(props) {
     super(props);
@@ -486,20 +488,22 @@ ${(e.features[0].properties["moved_year"] &&
       <div>
         <div className="container-fluid mt-3 mr-10 ml-10">
           <div className="row" style={{ minHeight: "6vh" }}>
-            <div className="col-sm-3" style={{ marginTop: "0.8em" }}>
+            <div className="col-sm-4" style={{ marginTop: "0.8em" }}>
               <center>
                 <Link href="/">
                   <a className="home-link">HOME</a>
                 </Link>
               </center>
             </div>
-            <div className="col-sm-9">
+            <div className="col-sm-8">
               <div className="row">
-               
                 <div className="col-sm-9">
-                <h4>
-	 <small className="font-weight-bold">Map Visualisation of buildings, flood history, and drainage for Alogboshie, Accra-Ghana</small>
-</h4>
+                  <h4>
+                    <small className="font-weight-bold">
+                      Map Visualisation of buildings, flood history, and
+                      drainage for Alogboshie, Accra-Ghana
+                    </small>
+                  </h4>
                 </div>
                 <div className="col-sm-3">
                   <select
@@ -517,9 +521,47 @@ ${(e.features[0].properties["moved_year"] &&
             </div>
           </div>
           <div className="row index-pg">
-            <div className="col-sm-3">
-              <ul className="list-unstyled px-3 py-3 rounded bg-sidebar shadow">
-                <li className="mb-3">
+            <div className="col-sm-4">
+            <div className="info">
+            This web application was developed as part of the Open Cities Accra project. The project sought to collect and curate up-to-date and accurate geospatial data in the following areas of interest in Accra: Akweteyman, Alajo, Alogboshie and Nima. This web application was developed as a data tool to help government agencies, institutions and other stakeholders working in the Disaster Risk Management field take data-driven decisions in their work. The maps display the following data - buildings, flood history and drainage. 
+            </div>
+          
+            <div className=" row py-2 mx-1 rounded shadow">
+                <div  className="col-sm-4">
+                  <Link href="/buildings">
+                    <a className="btn btn-lg btn-block btn-light rounded" style={{height:"100%"}}>
+                      <i className="fas fa-home fa-2x fa-color" />
+                      <br />
+                      Building
+                    </a>
+                  </Link>
+                </div>
+                <div className="mb-1 col-sm-4"  >
+                  <Link href="/flood-history">
+                    <a className="btn btn-lg btn-block btn-light rounded" style={{height:"100%"}}>
+                      <i className="fab fa-fort-awesome-alt fa-2x fa-color" />
+                      <br />
+                      Flood History
+                    </a>
+                  </Link>
+                </div>
+                <div className="col-sm-4">
+                  <Link href="/drainage">
+                    <a className="btn btn-lg btn-block btn-lg btn-light rounded" style={{height:"100%"}}>
+                      <i className="fab fa-schlix fa-2x fa-color" />
+                      <br />
+                      Drainage Points
+                    </a>
+                  </Link>
+                </div>
+              </div>
+              <div style={{clear:"both", marginTop:"30px"}}/>
+              <Link href="/contact">
+                <a className="btn btn-dark btn-block" style={{width:"60%", marginLeft:"20%"}}>Contact</a>
+              </Link>
+          
+              {/* <ul className="list-unstyled px-3 py-3 rounded bg-sidebar shadow">
+                <li className="mb-3" style={{float:"left"}}>
                   <Link href="/buildings">
                     <a className="btn btn-lg btn-block btn-light rounded p-home-btn">
                       <i className="fas fa-home fa-2x fa-color" />
@@ -528,7 +570,7 @@ ${(e.features[0].properties["moved_year"] &&
                     </a>
                   </Link>
                 </li>
-                <li className="mb-3">
+                <li className="mb-3" style={{float:"left"}}>
                   <Link href="/flood-history">
                     <a className="btn btn-lg btn-block btn-light rounded p-home-btn">
                       <i className="fab fa-fort-awesome-alt fa-2x fa-color" />
@@ -537,7 +579,7 @@ ${(e.features[0].properties["moved_year"] &&
                     </a>
                   </Link>
                 </li>
-                <li className="">
+                <li className="" style={{float:"left"}}>
                   <Link href="/drainage">
                     <a className="btn btn-lg btn-block btn-lg btn-light rounded p-home-btn">
                       <i className="fab fa-schlix fa-2x fa-color" />
@@ -547,11 +589,13 @@ ${(e.features[0].properties["moved_year"] &&
                   </Link>
                 </li>
               </ul>
+              <div style={{clear:"both"}}/>
               <Link href="/contact">
                 <a className="btn btn-dark btn-block">Contact</a>
-              </Link>
-            </div>
-            <div className="col-sm-9">
+              </Link> */}
+              </div>
+    
+            <div className="col-sm-8">
               <div
                 className="map-border"
                 style={{ height: "90vh", width: "100%" }}
@@ -560,55 +604,23 @@ ${(e.features[0].properties["moved_year"] &&
                 <div id="state-legend" class="legend">
                   <h4 />
                   <div>
-                    <span style={{ backgroundColor: "#088" }} />Buildings
+                    <span style={{ backgroundColor: "#088" }} />
+                    Buildings
                   </div>
                   <div>
-                    <span style={{ backgroundColor: "blue" }} />Drainage
+                    <span style={{ backgroundColor: "blue" }} />
+                    Drainage
                   </div>
                   <div>
-                    <span style={{ backgroundColor: "gray" }} />Flood History
+                    <span style={{ backgroundColor: "gray" }} />
+                    Flood History
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <footer className="footer">
-          <div className="container">
-            <center>Powered by:</center>
-            <div className="row justify-content-center">
-              <ul className="list-inline py-2">
-                <li className="list-inline-item">
-                  <Link href="http://mobilewebghana.org/">
-                    <a target="_blank">
-                      <img
-                        src="../static/img/partners/mwg.png"
-                        className="partner"
-                      />
-                    </a>
-                  </Link>
-                </li>
-                <li className="list-inline-item">
-                  <Link href="https://www.osmghana.org/">
-                    <a target="_blank">
-                      <img
-                        src="../static/img/partners/osmghana.png"
-                        className="partner"
-                      />
-                    </a>
-                  </Link>
-                </li>
-                <li className="list-inline-item">
-                  <Link href="https://www.hotosm.org/">
-                    <a target="_blank" style={{ width: "800px !important" }}>
-                      <img src="../static/img/hot.png" className="hot" />
-                    </a>
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </footer>
+<Footer/>
       </div>
     );
   }
