@@ -32,7 +32,10 @@
     "popper.js": "^1.14.6",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
-    "react-map-gl": "^4.0.8"
+    "react-map-gl": "^4.0.8",
+    "react-spinners": "^0.5.3",
+    "react-toastify": "^4.5.2",
+    "react-toasts": "^3.0.1"
   },
   "devDependencies": {
     "dotenv": "^6.2.0"
