@@ -10,40 +10,40 @@ import Footer from "../components/footer"
 const data = [
   {
     suburb: "Alogboshie",
-    Covered: 69,
+    Covered: 16,
     CoveredColor: "rgb(0, 0, 255)",
-    "Not covered": 23,
+    "Not Covered": 40,
     "Not CoveredColor": "rgb(255, 0, 0)",
-    "Not Known": 53,
+    "Not Known": 208,
     "Not KnownColor": "rgb(0, 128, 0)"
   },
   {
     suburb: "Akweteman",
-    Covered: 61,
+    Covered: 7,
     CoveredColor: "rgb(0, 0, 255)",
-    "Not Covered": 43,
+    "Not Covered": 2,
     "Not CoveredColor": "rgb(255, 0, 0)",
-    "Not Known": 63,
+    "Not Known": 425,
     "Not KnownColor": "rgb(0, 128, 0)"
   },
-  {
-    suburb: "Alajo",
-    Covered: 41,
-    CoveredColor: "rgb(0, 0, 255)",
-    "Not Covered": 73,
-    "Not CoveredColor": "rgb(255, 0, 0)",
-    "Not Known": 83,
-    "Not KnownColor": "rgb(0, 128, 0)"
-  },
-  {
-    suburb: "Nima",
-    Covered: 69,
-    CoveredColor: "rgb(0, 0, 255)",
-    "Not Covered": 23,
-    "Not CoveredColor": "rgb(255, 0, 0)",
-    "Not Known": 33,
-    "Not KnownColor": "rgb(0, 128, 0)"
-  }
+  // {
+  //   suburb: "Alajo",
+  //   Covered: 41,
+  //   CoveredColor: "rgb(0, 0, 255)",
+  //   "Not Covered": 73,
+  //   "Not CoveredColor": "rgb(255, 0, 0)",
+  //   "Not Known": 83,
+  //   "Not KnownColor": "rgb(0, 128, 0)"
+  // },
+  // {
+  //   suburb: "Nima",
+  //   Covered: 69,
+  //   CoveredColor: "rgb(0, 0, 255)",
+  //   "Not Covered": 23,
+  //   "Not CoveredColor": "rgb(255, 0, 0)",
+  //   "Not Known": 33,
+  //   "Not KnownColor": "rgb(0, 128, 0)"
+  // }
 ];
 
 class Drainage extends Component {
@@ -94,7 +94,7 @@ class Drainage extends Component {
           paint: {
             "line-color": [
               "match",
-              ["get", "drain:profile_covered"],
+              ["get", "covered"],
               "no",
               "red",
               "yes",

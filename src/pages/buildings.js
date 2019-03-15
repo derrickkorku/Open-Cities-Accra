@@ -8,66 +8,57 @@ import Footer from "../components/footer"
 const data = [
   {
     suburb: "Alogboshie",
-    Residential: 71,
+    Residential: 2672,
     ResidentialColor: "rgba(0, 136, 136, 0.3)",
-    Commercial: 140,
+    Commercial: 687,
     CommercialColor: "rgba(255,0,0, 0.3)",
-    Church: 199,
+    Church: 46,
     ChurchColor: "rgba(128, 0, 128, 0.3)",
-    School: 136,
+    School: 45,
     SchoolColor: "rgba(255, 255, 0, 0.4)",
-    Other: 181,
+    Other: 9062,
     OtherColor: "rgba(0, 128, 0, 0.4)"
   },
   {
     suburb: "Akweteman",
-    Residential: 61,
+    Residential: 0,
     ResidentialColor: "rgba(0, 136, 136, 0.3)",
-    Commercial: 143,
+    Commercial: 0,
     CommercialColor: "rgba(255,0,0, 0.3)",
-    Church: 63,
+    Church: 0,
     ChurchColor: "rgba(128, 0, 128, 0.3)",
-    School: 6,
+    School: 0,
     SchoolColor: "rgba(255, 255, 0, 0.4)",
-    Other: 65,
+    Other: 7005,
     OtherColor: "rgba(0, 128, 0, 0.4)"
   },
   {
     suburb: "Alajo",
-    Residential: 111,
+    Residential: 0,
     ResidentialColor: "rgba(0, 136, 136, 0.3)",
-    Commercial: 51,
+    Commercial: 3,
     CommercialColor: "rgba(255,0,0, 0.3)",
-    Church: 44,
+    Church: 3,
     ChurchColor: "rgba(128, 0, 128, 0.3)",
-    School: 110,
+    School: 0,
     SchoolColor: "rgba(255, 255, 0, 0.4)",
-    Other: 145,
+    Other: 11006,
     OtherColor: "rgba(0, 128, 0, 0.4)"
   },
-  {
-    suburb: "Nima",
-    Residential: 133,
-    ResidentialColor: "rgba(0, 136, 136, 0.3)",
-    Commercial: 125,
-    CommercialColor: "rgba(255,0,0, 0.3)",
-    Church: 194,
-    ChurchColor: "rgba(128, 0, 128, 0.3)",
-    School: 92,
-    SchoolColor: "rgba(255, 255, 0, 0.4)",
-    Other: 124,
-    OtherColor: "rgba(0, 128, 0, 0.4)"
-  }
+  // {
+  //   suburb: "Nima",
+  //   Residential: 133,
+  //   ResidentialColor: "rgba(0, 136, 136, 0.3)",
+  //   Commercial: 125,
+  //   CommercialColor: "rgba(255,0,0, 0.3)",
+  //   Church: 194,
+  //   ChurchColor: "rgba(128, 0, 128, 0.3)",
+  //   School: 92,
+  //   SchoolColor: "rgba(255, 255, 0, 0.4)",
+  //   Other: 124,
+  //   OtherColor: "rgba(0, 128, 0, 0.4)"
+  // }
 ];
-import ReactMapGL, { Popup, NavigationControl } from "react-map-gl";
-import { fromJS } from "immutable";
-const navStyle = {
-  position: "absolute",
-  top: 0,
-  left: 0,
-  padding: "20px"
-};
-import fetch from "isomorphic-unfetch";
 class Buildings extends Component {
   constructor(props) {
     super(props);

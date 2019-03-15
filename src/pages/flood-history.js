@@ -8,56 +8,56 @@ import Footer from "../components/footer"
 const data = [
   {
     suburb: "Alogboshie",
-    "Knee deep": 101,
+    "Knee deep": 2,
     "Knee deepColor": "rgb(0, 136, 136)",
-    "Chest deep": 61,
+    "Chest deep": 2,
     "Chest deepColor": "rgb(102, 102, 0)",
-    "Waist deep": 78,
+    "Waist deep": 1,
     "Waist deepColor": "rgb(255, 192, 203)",
-    "Person height": 100,
+    "Person height": 1,
     "Person heightColor": "rgb(128, 0, 128)",
-    "Not measured": 125,
+    "Not measured": 17,
     "Not measuredColor": "rgb(128, 128, 128)"
   },
-  {
-    suburb: "Akweteman",
-    "Knee deep": 51,
-    "Knee deepColor": "rgb(0, 136, 136)",
-    "Chest deep": 59,
-    "Chest deepColor": "rgb(102, 102, 0)",
-    "Waist deep": 44,
-    "Waist deepColor": "rgb(255, 192, 203)",
-    "Person height": 90,
-    "Person heightColor": "rgb(128, 0, 128)",
-    "Not measured": 75,
-    "Not measuredColor": "rgb(128, 128, 128)"
-  },
-  {
-    suburb: "Alajo",
-    "Knee deep": 101,
-    "Knee deepColor": "rgb(0, 136, 136)",
-    "Chest deep": 41,
-    "Chest deepColor": "rgb(102, 102, 0)",
-    "Waist deep": 64,
-    "Waist deepColor": "rgb(255, 192, 203)",
-    "Person height": 120,
-    "Person heightColor": "rgb(128, 0, 128)",
-    "Not measured": 115,
-    "Not measuredColor": "rgb(128, 128, 128)"
-  },
-  {
-    suburb: "Nima",
-    "Knee deep": 91,
-    "Knee deepColor": "rgb(0, 136, 136)",
-    "Chest deep": 91,
-    "Chest deepColor": "rgb(102, 102, 0)",
-    "Waist deep": 44,
-    "Waist deepColor": "rgb(255, 192, 203)",
-    "Person height": 110,
-    "Person heightColor": "rgb(128, 0, 128)",
-    "Not measured": 145,
-    "Not measuredColor": "rgb(128, 128, 128)"
-  }
+  // {
+  //   suburb: "Akweteman",
+  //   "Knee deep": 51,
+  //   "Knee deepColor": "rgb(0, 136, 136)",
+  //   "Chest deep": 59,
+  //   "Chest deepColor": "rgb(102, 102, 0)",
+  //   "Waist deep": 44,
+  //   "Waist deepColor": "rgb(255, 192, 203)",
+  //   "Person height": 90,
+  //   "Person heightColor": "rgb(128, 0, 128)",
+  //   "Not measured": 75,
+  //   "Not measuredColor": "rgb(128, 128, 128)"
+  // },
+  // {
+  //   suburb: "Alajo",
+  //   "Knee deep": 101,
+  //   "Knee deepColor": "rgb(0, 136, 136)",
+  //   "Chest deep": 41,
+  //   "Chest deepColor": "rgb(102, 102, 0)",
+  //   "Waist deep": 64,
+  //   "Waist deepColor": "rgb(255, 192, 203)",
+  //   "Person height": 120,
+  //   "Person heightColor": "rgb(128, 0, 128)",
+  //   "Not measured": 115,
+  //   "Not measuredColor": "rgb(128, 128, 128)"
+  // },
+  // {
+  //   suburb: "Nima",
+  //   "Knee deep": 91,
+  //   "Knee deepColor": "rgb(0, 136, 136)",
+  //   "Chest deep": 91,
+  //   "Chest deepColor": "rgb(102, 102, 0)",
+  //   "Waist deep": 44,
+  //   "Waist deepColor": "rgb(255, 192, 203)",
+  //   "Person height": 110,
+  //   "Person heightColor": "rgb(128, 0, 128)",
+  //   "Not measured": 145,
+  //   "Not measuredColor": "rgb(128, 128, 128)"
+  // }
 ];
 class FloodHistory extends Component {
   constructor(props) {

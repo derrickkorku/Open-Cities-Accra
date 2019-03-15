@@ -44,7 +44,7 @@
                 "source": "Open Cities Accra - Field Survey",
                 "waterway": "drain",
                 "width": "0.06"
-            },
+            }
             "geometry": {
                 "type": "LineString",
                 "coordinates": [

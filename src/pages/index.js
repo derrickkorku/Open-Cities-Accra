@@ -1,6 +1,6 @@
 import { Component } from "react";
 import Link from "next/link";
-import Footer from "../components/footer"
+import Footer from "../components/footer";
 
 class Index extends Component {
   constructor(props) {
@@ -9,7 +9,14 @@ class Index extends Component {
       floodData: null,
       buildingData: null,
       drainageData: null,
-      render: false
+      render: false,
+      title:
+        "Map Visualisation of buildings, flood history, and drainage for Alogboshie, Accra-Ghana",
+      community: "Alobgoshie",
+      buildings: "alobgoshie-buildings.geojson",
+      waterways: "alogboshie_waterways.geojson",
+      flood: "alogboshie_flod_history.geojson",
+      center: [-0.2325, 5.6262]
     };
   }
 
@@ -20,13 +27,18 @@ class Index extends Component {
   }
 
   render() {
+    let buildingurl = this.state.render && this.state.buildings;
+    let waterwaysurl = this.state.render && this.state.waterways;
+    let floodurl = this.state.render && this.state.flood;
+    let center = this.state.render && this.state.center;
+
     var map =
       this.state.render &&
       new mapboxgl.Map({
         container: "map",
         style: "mapbox://styles/mapbox/streets-v9",
         zoom: 17.3,
-        center: [-0.23188090993107835, 5.6279210505577595]
+        center: center
       });
 
     this.state.render && map.addControl(new mapboxgl.NavigationControl());
@@ -39,7 +51,7 @@ class Index extends Component {
           type: "fill",
           source: {
             type: "geojson",
-            data: "/static/data/alobgoshie-buildings.geojson"
+            data: `/static/data/${buildingurl}`
           },
           layout: {},
           paint: {
@@ -186,7 +198,7 @@ ${(e.features[0].properties["source"] &&
           type: "line",
           source: {
             type: "geojson",
-            data: "/static/data/alogboshie_waterways.geojson"
+            data: `/static/data/${waterwaysurl}`
           },
           paint: {
             "line-color": "blue",
@@ -366,7 +378,7 @@ ${(e.features[0].properties["source"] &&
           type: "circle",
           source: {
             type: "geojson",
-            data: "/static/data/alogboshie_flod_history .geojson"
+            data: `/static/data/${floodurl}`
           },
           paint: {
             "circle-color": /* other */ "rgb(128, 128, 128)",
@@ -500,21 +512,62 @@ ${(e.features[0].properties["moved_year"] &&
                 <div className="col-sm-9">
                   <h4>
                     <small className="font-weight-bold">
-                      Map Visualisation of buildings, flood history, and
-                      drainage for Alogboshie, Accra-Ghana
+                      {this.state.title}
                     </small>
                   </h4>
                 </div>
                 <div className="col-sm-3">
                   <select
                     className="form-control mb-3 mr-3 w-100 rounded"
-                    disabled
+                    onChange={e => {
+                      if (e.target.value === "Akweteyman") {
+                        this.setState({
+                          title:
+                            "Map Visualisation of buildings and drainage for Akweteyman, Accra-Ghana",
+                          community: e.target.value,
+                          buildings: "akweteyman_buildings.geojson",
+                          waterways: "akweteyman_waterways.geojson",
+                          flood: null,
+                          center: [-0.23843433907319422, 5.613465574220044]
+                        });
+                      } else {
+                        if (e.target.value === "Alogboshie") {
+                          this.setState({
+                            title:
+                              "Map Visualisation of buildings, flood history and drainage for Alobgoshie, Accra-Ghana",
+
+                            community: e.target.value,
+                            buildings: "alobgoshie-buildings.geojson",
+                            waterways: "alogboshie_waterways.geojson",
+                            flood: "alogboshie_flod_history.geojson",
+                            center: [-0.2325, 5.6262]
+                          });
+                        } else {
+                          if (e.target.value === "Alajo") {
+                            this.setState({
+                              title:
+                                "Map Visualisation of buildings for Alajo, Accra-Ghana",
+
+                              community: e.target.value,
+                              buildings: "alajo_buildings.geojson",
+                              waterways: null,
+                              flood: null,
+                              center: [-0.2152084488221533, 5.598973832979908]
+                            });
+                          } else {
+                            return;
+                          }
+                        }
+                      }
+                    }}
                   >
                     <option>-- Select Community --</option>
-                    <option>Akweteyman</option>
-                    <option selected>Alogboshie</option>
-                    <option>Alajo</option>
-                    <option>Nima</option>
+                    <option value="Alogboshie" selected>
+                      Alogboshie
+                    </option>
+                    <option value="Akweteyman">Akweteyman</option>
+                    <option value="Alajo">Alajo</option>
+                    {/* <option value="Nima">Nima</option> */}
                   </select>
                 </div>
               </div>
@@ -522,23 +575,39 @@ ${(e.features[0].properties["moved_year"] &&
           </div>
           <div className="row index-pg">
             <div className="col-sm-4">
-            <div className="info">
-            This web application was developed as part of the Open Cities Accra project. The project sought to collect and curate up-to-date and accurate geospatial data in the following areas of interest in Accra: Akweteyman, Alajo, Alogboshie and Nima. This web application was developed as a data tool to help government agencies, institutions and other stakeholders working in the Disaster Risk Management field take data-driven decisions in their work. The maps display the following data - buildings, flood history and drainage. 
-            </div>
-          
-            <div className=" row py-2 mx-1 rounded shadow">
-                <div  className="col-sm-4">
+            <div className="bg-sidebar">
+              <div className="info">
+                This web application was developed as part of the Open Cities
+                Accra project. The project sought to collect and curate
+                up-to-date and accurate geospatial data in the following areas
+                of interest in Accra: Akweteyman, Alajo, Alogboshie and Nima.
+                This web application was developed as a data tool to help
+                government agencies, institutions and other stakeholders working
+                in the Disaster Risk Management field take data-driven decisions
+                in their work. The maps display the following data - buildings,
+                flood history and drainage.
+              </div>
+              <div style={{ marginTop: "30px" }} />
+
+              <div className=" row py-2 mx-1 rounded shadow">
+                <div className="col-sm-4">
                   <Link href="/buildings">
-                    <a className="btn btn-lg btn-block btn-light rounded" style={{height:"100%"}}>
+                    <a
+                      className="btn btn-md btn-block btn-light rounded"
+                      style={{ height: "100%" }}
+                    >
                       <i className="fas fa-home fa-2x fa-color" />
                       <br />
                       Building
                     </a>
                   </Link>
                 </div>
-                <div className="mb-1 col-sm-4"  >
+                <div className="mb-1 col-sm-4">
                   <Link href="/flood-history">
-                    <a className="btn btn-lg btn-block btn-light rounded" style={{height:"100%"}}>
+                    <a
+                      className="btn btn-md btn-block btn-light rounded"
+                      style={{ height: "100%" }}
+                    >
                       <i className="fab fa-fort-awesome-alt fa-2x fa-color" />
                       <br />
                       Flood History
@@ -547,7 +616,10 @@ ${(e.features[0].properties["moved_year"] &&
                 </div>
                 <div className="col-sm-4">
                   <Link href="/drainage">
-                    <a className="btn btn-lg btn-block btn-lg btn-light rounded" style={{height:"100%"}}>
+                    <a
+                      className="btn btn-block btn-md btn-light rounded"
+                      style={{ height: "100%" }}
+                    >
                       <i className="fab fa-schlix fa-2x fa-color" />
                       <br />
                       Drainage Points
@@ -555,11 +627,17 @@ ${(e.features[0].properties["moved_year"] &&
                   </Link>
                 </div>
               </div>
-              <div style={{clear:"both", marginTop:"30px"}}/>
+              </div>
+              <div style={{ clear: "both", marginTop: "30px" }} />
               <Link href="/contact">
-                <a className="btn btn-dark btn-block" style={{width:"60%", marginLeft:"20%"}}>Contact</a>
+                <a
+                  className="btn btn-dark btn-block"
+                  style={{ width: "60%", marginLeft: "20%" }}
+                >
+                  Contact
+                </a>
               </Link>
-          
+
               {/* <ul className="list-unstyled px-3 py-3 rounded bg-sidebar shadow">
                 <li className="mb-3" style={{float:"left"}}>
                   <Link href="/buildings">
@@ -593,8 +671,8 @@ ${(e.features[0].properties["moved_year"] &&
               <Link href="/contact">
                 <a className="btn btn-dark btn-block">Contact</a>
               </Link> */}
-              </div>
-    
+            </div>
+
             <div className="col-sm-8">
               <div
                 className="map-border"
@@ -603,24 +681,30 @@ ${(e.features[0].properties["moved_year"] &&
                 <div id="map" />
                 <div id="state-legend" class="legend">
                   <h4 />
-                  <div>
-                    <span style={{ backgroundColor: "#088" }} />
-                    Buildings
-                  </div>
-                  <div>
-                    <span style={{ backgroundColor: "blue" }} />
-                    Drainage
-                  </div>
-                  <div>
-                    <span style={{ backgroundColor: "gray" }} />
-                    Flood History
-                  </div>
+                  {this.state.buildings && (
+                    <div>
+                      <span style={{ backgroundColor: "#088" }} />
+                      Buildings
+                    </div>
+                  )}
+                  {this.state.waterways && (
+                    <div>
+                      <span style={{ backgroundColor: "blue" }} />
+                      Drainage
+                    </div>
+                  )}
+                  {this.state.flood && (
+                    <div>
+                      <span style={{ backgroundColor: "gray" }} />
+                      Flood History
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
           </div>
         </div>
-<Footer/>
+        <Footer />
       </div>
     );
   }
