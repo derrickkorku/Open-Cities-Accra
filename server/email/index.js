@@ -29,7 +29,7 @@ const transporter = nodemailer.createTransport(transport);
  *
  * @return {Promise}
  */
-function sendEmail({ fromEmail, message, template }) {
+function sendEmail({ fromEmail, locals, template }) {
   const email = new emailTemplates({
     transport: transporter,
     send: true,
@@ -50,13 +50,12 @@ function sendEmail({ fromEmail, message, template }) {
       }
     }
   });
-
   return email.send({
     message: {
       to: fromEmail
     },
     template,
-    locals: message
+    locals: locals
   });
 }
 

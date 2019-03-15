@@ -1,7 +1,7 @@
 import { Component } from "react";
 import Link from "next/link";
 import fetch from "isomorphic-unfetch";
-const base_url = "https://ocav1-app.herokuapp.com" || "http://localhost:5000" 
+//const base_url = "https://ocav1-app.herokuapp.com" || "http://localhost:5000" 
 class Contact extends Component {
   constructor(props) {
     super(props);
@@ -18,7 +18,7 @@ class Contact extends Component {
 
   async sendEmail(e) {
     e.preventDefault();
-    const drainageRes = await fetch(base_url + "/send-email", {
+    const drainageRes = await fetch("/send-email", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

@@ -13,8 +13,12 @@ app.prepare().then(() => {
   server.post("/send-email", async (req, res) => {
     try{
     let isSent = await sendEmail({
-      fromEmail: "kwartengwisdomug95@gmail.com",
-      message: "hello",
+      fromEmail: req.body.email,
+      locals: {
+        name:req.body.name,
+        phone:req.body.phone_number,
+        message:req.body.Message
+      },
       template: "message"
     });
 
