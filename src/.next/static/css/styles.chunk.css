@@ -9915,7 +9915,7 @@ body {
 }
 
 .partner {
-  height: 100px;
+  height: 90px;
   width: auto;
 }
 
@@ -9975,8 +9975,8 @@ textarea.form-control {
   min-width: 80%;
 }
 .hot{
-  height: 100px;
-  width:auto !important;
+  height: 90px;
+  width:229px !important;
   margin-left:12px
 }
 

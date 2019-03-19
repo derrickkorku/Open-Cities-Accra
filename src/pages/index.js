@@ -1,11 +1,12 @@
 import { Component } from "react";
 import Link from "next/link";
 import Footer from "../components/footer";
-
+import dynamic from 'next/dynamic'
 class Index extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      isLoading:false,
       floodData: null,
       buildingData: null,
       drainageData: null,
@@ -15,7 +16,7 @@ class Index extends Component {
       community: "Alobgoshie",
       buildings: "alobgoshie-buildings.geojson",
       waterways: "alogboshie_waterways.geojson",
-      flood: "alogboshie_flod_history.geojson",
+      flood: "alogboshie_flod_history .geojson",
       center: [-0.2325, 5.6262]
     };
   }
@@ -25,6 +26,7 @@ class Index extends Component {
     mapboxgl.accessToken =
       "pk.eyJ1Ijoid2lzZG9tMDA2MyIsImEiOiJjanI1aWg0cGQwZTByM3dtc3J1OHJ3MGNqIn0.yjtKpgtEmgCkCcLvpH_tJg";
   }
+
 
   render() {
     let buildingurl = this.state.render && this.state.buildings;
@@ -503,7 +505,7 @@ ${(e.features[0].properties["moved_year"] &&
             <div className="col-sm-4" style={{ marginTop: "0.8em" }}>
               <center>
                 <Link href="/">
-                  <a className="home-link">HOME</a>
+                  <a className="home-link">Open Cities Accra Data Visualizations</a>
                 </Link>
               </center>
             </div>
@@ -539,7 +541,7 @@ ${(e.features[0].properties["moved_year"] &&
                             community: e.target.value,
                             buildings: "alobgoshie-buildings.geojson",
                             waterways: "alogboshie_waterways.geojson",
-                            flood: "alogboshie_flod_history.geojson",
+                            flood: "alogboshie_flod_history .geojson",
                             center: [-0.2325, 5.6262]
                           });
                         } else {

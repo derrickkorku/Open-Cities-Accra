@@ -616,7 +616,7 @@ var _jsxFileName = "/home/wisdom/Documents/OCA/Open-Cities-Accra-master/src/comp
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     src: "../static/img/partners/osmghana-logo.png",
-    className: "partner",
+    className: "hot",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 22

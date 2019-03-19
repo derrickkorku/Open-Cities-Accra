@@ -21,7 +21,7 @@ export default ()=>(
               <a target="_blank">
                 <img
                   src="../static/img/partners/osmghana-logo.png"
-                  className="partner"
+                  className="hot"
                 />
               </a>
             </Link>
