@@ -1,5 +1,6 @@
 import { Component } from "react";
 import Link from "next/link";
+import Router from "next/router"
 import fetch from "isomorphic-unfetch";
 import { css } from "@emotion/core";
 import "react-toastify/dist/ReactToastify.css";
@@ -18,7 +19,7 @@ class Contact extends Component {
       email: "",
       phone_number: "",
       Message: "",
-      loading: false
+      loading: true
     };
 
     this.sendEmail = this.sendEmail.bind(this);
@@ -31,14 +32,17 @@ class Contact extends Component {
     e.preventDefault();
     this.setState({ loading: true });
 
-    const drainageRes = await fetch("/send-email", {
+    const contactRes = await fetch("/send-email", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify(this.state)
     });
-    const drainageData = await drainageRes.json();
+    let contactData = await contactRes.json()
+    console.log(contactData)
+    if(contactData.success) Router.push(`/thank-you?name=${this.state.name}`)
+    
     this.setState({ loading: false });
   }
 
@@ -168,7 +172,7 @@ class Contact extends Component {
                 className="sweet-loading"
                 style={{
                   position: "absolute",
-                  bottom: "30vh",
+                  bottom: "53vh",
                   display: "block",
                   margin: "auto",
                   borderColor: "red"
