@@ -2,6 +2,7 @@ import { Component } from "react";
 import Link from "next/link";
 import Router from "next/router"
 import fetch from "isomorphic-unfetch";
+import Footer from "../components/footer"
 import { css } from "@emotion/core";
 import "react-toastify/dist/ReactToastify.css";
 import { ClipLoader } from "react-spinners";
@@ -131,44 +132,7 @@ class Contact extends Component {
                 <Link href="/">
                   <a className="home-link">BACK HOME</a>
                 </Link>
-              </center>
-            </div>
-          </div>
-        </div>
-        <footer>
-          <div className="container">
-            <center>Powered by:</center>
-            <div className="row justify-content-center">
-              <ul className="list-inline py-2">
-                <li className="list-inline-item">
-                  <Link href="http://mobilewebghana.org/">
-                    <a target="_blank">
-                      <img
-                        src="../static/img/partners/mwg.png"
-                        className="partner"
-                      />
-                    </a>
-                  </Link>
-                </li>
-                <li className="list-inline-item">
-                  <Link href="https://www.osmghana.org/">
-                    <a target="_blank">
-                      <img
-                        src="../static/img/partners/osmghana.png"
-                        className="partner"
-                      />
-                    </a>
-                  </Link>
-                </li>
-                <li className="list-inline-item">
-                  <Link href="https://www.hotosm.org/">
-                    <a target="_blank" style={{ width: "800px !important" }}>
-                      <img src="../static/img/hot.png" className="hot" />
-                    </a>
-                  </Link>
-                </li>
-              </ul>
-              <div
+                <div
                 className="sweet-loading"
                 style={{
                   position: "absolute",
@@ -186,9 +150,11 @@ class Contact extends Component {
                   loading={this.state.loading}
                 />
               </div>
+              </center>
             </div>
           </div>
-        </footer>
+        </div>
+<Footer/>
       </div>
     );
   }
