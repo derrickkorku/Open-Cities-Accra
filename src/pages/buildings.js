@@ -274,10 +274,10 @@ ${(e.features[0].properties["source"] &&
       <div>
         <div className="container-fluid mt-3">
           <div className="row">
-            <div className="col-sm-3" style={{ marginTop: "0.8em" }}>
+            <div className="col-sm-3 text-center" style={{ marginTop: "0.8em" }}>
               <center>
                 <Link href="/">
-                  <a className="home-link">HOME</a>
+                  <a className="home-link home-heading">Open Cities Accra Data Visualizations</a>
                 </Link>
               </center>
             </div>
@@ -481,6 +481,7 @@ ${(e.features[0].properties["source"] &&
                 </Link>
               </center>
           
+              <Footer/>
             </div>
             <div className="col-sm-8">
               <div className="map-border" style={{ height: "90vh" }}>
@@ -523,7 +524,6 @@ ${(e.features[0].properties["source"] &&
             </div>
           </div>
         </div>
-<Footer/>
       </div>
     );
   }

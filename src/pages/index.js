@@ -640,6 +640,8 @@ ${(e.features[0].properties["moved_year"] &&
                 </a>
               </Link>
 
+              <Footer />
+
               {/* <ul className="list-unstyled px-3 py-3 rounded bg-sidebar shadow">
                 <li className="mb-3" style={{float:"left"}}>
                   <Link href="/buildings">
@@ -706,7 +708,6 @@ ${(e.features[0].properties["moved_year"] &&
             </div>
           </div>
         </div>
-        <Footer />
       </div>
     );
   }

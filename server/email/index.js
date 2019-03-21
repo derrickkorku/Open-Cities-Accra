@@ -3,7 +3,6 @@ const emailTemplates = require("email-templates");
 const nodemailer = require("nodemailer");
 const mailgunTransport = require("nodemailer-mailgun-transport");
 const path = require("path");
-const { Config } = require("../../config/config");
 
 // const transporter = nodemailer.createTransport({
 //     host: Config("EMAIL_HOST"),
@@ -17,8 +16,8 @@ const { Config } = require("../../config/config");
 
 const mailgunOptions = {
   auth: {
-    api_key: Config("MAILGUN_ACTIVE_API_KEY"),
-    domain: Config("MAILGUN_DOMAIN")
+    api_key: process.env.MAILGUN_ACTIVE_API_KEY,
+    domain: process.env.MAILGUN_DOMAIN
   }
 };
 

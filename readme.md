@@ -2,17 +2,19 @@
 
 This is a web application project that shows realtime map data collected of some cities in Accra. This project make use of bootstrap 4, font-awesome 5, nextjs, Mapbox GL JS.
 
-## Getting Started
+## GETTING STARTED
 
 ### Clone the project
 
-### npm install
+## LOCAL RUN
 
-### Run in dev
+### Create your .env file using .env.example as a guide
+
+### npm install
 
 #### npm run dev
 
-### Run in Pro
+### RUN IN PRODUCTION
 
 #### npm run build
 
