@@ -228,7 +228,7 @@ class FloodHistory extends Component {
             <div className="col-sm-3" style={{ marginTop: "0.8em" }}>
               <center>
                 <Link href="/">
-                  <a className="home-link">HOME</a>
+                  <a className="home-link home-heading">Open Cities Accra Data Visualizations</a>
                 </Link>
               </center>
             </div>
@@ -400,6 +400,8 @@ class FloodHistory extends Component {
                   <a className="btn btn-dark px-10">Contact</a>
                 </Link>
               </center>
+
+              <Footer/>
             </div>
             <div className="col-sm-8">
               <div className="map-border" style={{ height: "91vh" }}>
@@ -433,7 +435,6 @@ class FloodHistory extends Component {
             </div>
           </div>
         </div>
-<Footer/>
       </div>
     );
   }

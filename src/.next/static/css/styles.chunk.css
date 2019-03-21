@@ -9890,6 +9890,11 @@ body {
 
 }
 
+.home-heading {
+  font-size: 1.2em !important;
+  margin-left: 1.5rem;
+}
+
 .bg-sidebar {
   background-image: linear-gradient(#c2b8e9, #9cc9f3);
 }
@@ -9915,7 +9920,7 @@ body {
 }
 
 .partner {
-  height: 90px;
+  height: 50px;
   width: auto;
 }
 
@@ -9975,9 +9980,8 @@ textarea.form-control {
   min-width: 80%;
 }
 .hot{
-  height: 90px;
-  width:229px !important;
-  margin-left:12px
+  height: 50px;
+  width: 160px;
 }
 
 /* .legend label,
