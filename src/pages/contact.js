@@ -19,7 +19,7 @@ class Contact extends Component {
       email: "",
       phone_number: "",
       Message: "",
-      loading: true
+      loading: false
     };
 
     this.sendEmail = this.sendEmail.bind(this);
