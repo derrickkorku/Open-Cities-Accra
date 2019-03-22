@@ -186,6 +186,16 @@ class Drainage extends Component {
     ""}
 
 
+    ${(e.features[0].properties["covered"] &&
+    `<tr>
+    <th>Profile Covered</th>
+    <td style={{ paddingLeft: "5px" }}>
+    ${e.features[0].properties["covered"]}
+    </td>
+    </tr>`) ||
+    ""}
+
+
   ${(e.features[0].properties["drain:profile_open"] &&
     `<tr>
     <th>Profile Open</th>
