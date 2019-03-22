@@ -10,21 +10,21 @@ import Footer from "../components/footer"
 const data = [
   {
     suburb: "Alogboshie",
-    Covered: 16,
-    CoveredColor: "rgb(0, 0, 255)",
-    "Not Covered": 40,
-    "Not CoveredColor": "rgb(255, 0, 0)",
-    "Not Known": 208,
-    "Not KnownColor": "rgb(0, 128, 0)"
+    Drain: 185,
+    DrainColor: "#0099cc",
+    "Ditch": 6,
+    "DitchColor": "#ff9999",
+    "Stream": 9,
+    "StreamColor": "#009900"
   },
   {
     suburb: "Akweteman",
-    Covered: 7,
-    CoveredColor: "rgb(0, 0, 255)",
-    "Not Covered": 2,
-    "Not CoveredColor": "rgb(255, 0, 0)",
-    "Not Known": 425,
-    "Not KnownColor": "rgb(0, 128, 0)"
+    Drain: 402,
+    DrainColor: "#0099cc",
+    "Ditch": 22,
+    "DitchColor": "#ff9999",
+    "Stream": 1,
+    "StreamColor": "#009900"
   },
   // {
   //   suburb: "Alajo",
@@ -73,7 +73,7 @@ class Drainage extends Component {
       new mapboxgl.Map({
         container: "map",
         style: "mapbox://styles/mapbox/streets-v9",
-        zoom: 17,
+        zoom: 16,
         center:center
       });
 
@@ -94,12 +94,14 @@ class Drainage extends Component {
           paint: {
             "line-color": [
               "match",
-              ["get", "covered"],
-              "no",
-              "red",
-              "yes",
-              "blue",
-              "green"
+              ["get", "waterway"],
+              "drain",
+              "#0099cc",
+              "ditch",
+              "#ff9999",
+              "stream",
+              "#009900",
+              "red"
             ],
             "line-width": 3
           }
@@ -303,7 +305,7 @@ ${(e.features[0].properties["source"] &&
                         this.setState({
                           community:e.target.value,
                           waterways:"akweteyman_waterways.geojson",
-                          center:[-0.2410443288160593, 5.6174037536466415]
+                          center:[-0.2410443288160593, 5.6134037536466415]
 
                         })
                       }else{
@@ -358,7 +360,7 @@ ${(e.features[0].properties["source"] &&
                   <div className="map-border my-3" style={{ height: "400px" }}>
                     <ResponsiveBar
                       data={data}
-                      keys={["Covered", "Not Covered", "Not Known"]}
+                      keys={["Drain", "Ditch", "Stream"]}
                       indexBy="suburb"
                       margin={{
                         top: 50,
@@ -421,7 +423,7 @@ ${(e.features[0].properties["source"] &&
                         tickSize: 5,
                         tickPadding: 5,
                         tickRotation: 0,
-                        legend: "Drain Covered",
+                        legend: "Waterway",
                         legendPosition: "middle",
                         legendOffset: -40
                       }}
@@ -474,18 +476,18 @@ ${(e.features[0].properties["source"] &&
               <div className="map-border" style={{ height: "90vh" }}>
                 <div id="map" />
                 <div id="state-legend" class="legend">
-                  <h4>Drain Covered</h4>
+                  <h4>Waterway</h4>
                   <div>
-                    <span style={{ backgroundColor: "blue" }} />
-                    Covered
+                    <span style={{ backgroundColor: "#0099cc" }} />
+                    Drain
                   </div>
                   <div>
-                    <span style={{ backgroundColor: "red" }} />
-                    Not Covered
+                    <span style={{ backgroundColor: "#ff9999" }} />
+                   Ditch
                   </div>
                   <div>
-                    <span style={{ backgroundColor: "green" }} />
-                    Not Known
+                    <span style={{ backgroundColor: "#009900" }} />
+                    Stream
                   </div>
                 </div>
               </div>
