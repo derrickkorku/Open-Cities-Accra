@@ -1,12 +1,15 @@
 import { Component } from "react";
 import Link from "next/link";
 import Footer from "../components/footer";
-import dynamic from 'next/dynamic'
+import dynamic from "next/dynamic";
 class Index extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLoading:false,
+      building_status: true,
+      drainage_status: true,
+      flood_status: true,
+      isLoading: false,
       floodData: null,
       buildingData: null,
       drainageData: null,
@@ -27,7 +30,6 @@ class Index extends Component {
       "pk.eyJ1Ijoid2lzZG9tMDA2MyIsImEiOiJjanI1aWg0cGQwZTByM3dtc3J1OHJ3MGNqIn0.yjtKpgtEmgCkCcLvpH_tJg";
   }
 
-
   render() {
     let buildingurl = this.state.render && this.state.buildings;
     let waterwaysurl = this.state.render && this.state.waterways;
@@ -44,6 +46,9 @@ class Index extends Component {
       });
 
     this.state.render && map.addControl(new mapboxgl.NavigationControl());
+    let building_status = this.state.building_status
+    let drainage_status = this.state.drainage_status
+    let flood_status = this.state.flood_status
 
     this.state.render &&
       map.on("load", function() {
@@ -389,6 +394,10 @@ ${(e.features[0].properties["source"] &&
           }
         });
 
+
+!building_status && map.setFilter("buildings", ["in", "building"])
+!drainage_status && map.setFilter("drainage", ["in", "waterway" ])
+!flood_status && map.setFilter("flood", ["in", "flood_history.flood_depth"])
         map.on("click", "flood", function(e) {
           new mapboxgl.Popup()
             .setLngLat(e.lngLat)
@@ -505,7 +514,9 @@ ${(e.features[0].properties["moved_year"] &&
             <div className="col-sm-4" style={{ marginTop: "0.8em" }}>
               <center>
                 <Link href="/">
-                  <a className="home-link">Open Cities Accra Data Visualizations</a>
+                  <a className="home-link">
+                    Open Cities Accra Data Visualizations
+                  </a>
                 </Link>
               </center>
             </div>
@@ -577,58 +588,58 @@ ${(e.features[0].properties["moved_year"] &&
           </div>
           <div className="row index-pg">
             <div className="col-sm-4">
-            <div className="bg-sidebar">
-              <div className="info">
-                This web application was developed as part of the Open Cities
-                Accra project. The project sought to collect and curate
-                up-to-date and accurate geospatial data in the following areas
-                of interest in Accra: Akweteyman, Alajo, Alogboshie and Nima.
-                This web application was developed as a data tool to help
-                government agencies, institutions and other stakeholders working
-                in the Disaster Risk Management field take data-driven decisions
-                in their work. The maps display the following data - buildings,
-                flood history and drainage.
-              </div>
-              <div style={{ marginTop: "30px" }} />
+              <div className="bg-sidebar">
+                <div className="info">
+                  This web application was developed as part of the Open Cities
+                  Accra project. The project sought to collect and curate
+                  up-to-date and accurate geospatial data in the following areas
+                  of interest in Accra: Akweteyman, Alajo, Alogboshie and Nima.
+                  This web application was developed as a data tool to help
+                  government agencies, institutions and other stakeholders
+                  working in the Disaster Risk Management field take data-driven
+                  decisions in their work. The maps display the following data -
+                  buildings, flood history and drainage.
+                </div>
+                <div style={{ marginTop: "30px" }} />
 
-              <div className=" row py-2 mx-1 rounded shadow">
-                <div className="col-sm-4">
-                  <Link href="/buildings">
-                    <a
-                      className="btn btn-md btn-block btn-light rounded"
-                      style={{ height: "100%" }}
-                    >
-                      <i className="fas fa-home fa-2x fa-color" />
-                      <br />
-                      Building
-                    </a>
-                  </Link>
+                <div className=" row py-2 mx-1 rounded shadow">
+                  <div className="col-sm-4">
+                    <Link href="/buildings">
+                      <a
+                        className="btn btn-md btn-block btn-light rounded"
+                        style={{ height: "100%" }}
+                      >
+                        <i className="fas fa-home fa-2x fa-color" />
+                        <br />
+                        Building
+                      </a>
+                    </Link>
+                  </div>
+                  <div className="mb-1 col-sm-4">
+                    <Link href="/flood-history">
+                      <a
+                        className="btn btn-md btn-block btn-light rounded"
+                        style={{ height: "100%" }}
+                      >
+                        <i className="fab fa-fort-awesome-alt fa-2x fa-color" />
+                        <br />
+                        Flood History
+                      </a>
+                    </Link>
+                  </div>
+                  <div className="col-sm-4">
+                    <Link href="/drainage">
+                      <a
+                        className="btn btn-block btn-md btn-light rounded"
+                        style={{ height: "100%" }}
+                      >
+                        <i className="fab fa-schlix fa-2x fa-color" />
+                        <br />
+                        Drainage Points
+                      </a>
+                    </Link>
+                  </div>
                 </div>
-                <div className="mb-1 col-sm-4">
-                  <Link href="/flood-history">
-                    <a
-                      className="btn btn-md btn-block btn-light rounded"
-                      style={{ height: "100%" }}
-                    >
-                      <i className="fab fa-fort-awesome-alt fa-2x fa-color" />
-                      <br />
-                      Flood History
-                    </a>
-                  </Link>
-                </div>
-                <div className="col-sm-4">
-                  <Link href="/drainage">
-                    <a
-                      className="btn btn-block btn-md btn-light rounded"
-                      style={{ height: "100%" }}
-                    >
-                      <i className="fab fa-schlix fa-2x fa-color" />
-                      <br />
-                      Drainage Points
-                    </a>
-                  </Link>
-                </div>
-              </div>
               </div>
               <div style={{ clear: "both", marginTop: "30px" }} />
               <Link href="/contact">
@@ -688,19 +699,55 @@ ${(e.features[0].properties["moved_year"] &&
                   {this.state.buildings && (
                     <div>
                       <span style={{ backgroundColor: "#088" }} />
-                      Buildings
+                      Buildings{" "}
+                      <span style={{ marginLeft: "40px" }}>
+                        <input
+                          onChange={e =>
+                            this.setState({
+                              building_status: e.target.checked
+                            })
+                          }
+                          type="checkbox"
+                          checked={this.state.building_status}
+                          value="building"
+                        />
+                      </span>
                     </div>
                   )}
                   {this.state.waterways && (
                     <div>
                       <span style={{ backgroundColor: "blue" }} />
-                      Drainage
+                      Drainage{" "}
+                      <span style={{ marginLeft: "40px" }}>
+                        <input
+                          onChange={e =>
+                            this.setState({
+                              drainage_status: e.target.checked
+                            })
+                          }
+                          type="checkbox"
+                          checked={this.state.drainage_status}
+                          value="drainage"
+                        />
+                      </span>
                     </div>
                   )}
                   {this.state.flood && (
                     <div>
                       <span style={{ backgroundColor: "gray" }} />
-                      Flood History
+                      Flood History{" "}
+                      <span style={{ marginLeft: "18px" }}>
+                        <input
+                          onChange={e =>
+                            this.setState({
+                              flood_status: e.target.checked
+                            })
+                          }
+                          type="checkbox"
+                          checked={this.state.flood_status}
+                          value="waterway"
+                        />
+                      </span>
                     </div>
                   )}
                 </div>

@@ -2,30 +2,29 @@ import { Component } from "react";
 import Link from "next/link";
 import { ResponsiveBar } from "@nivo/bar";
 import AlogboshieDownload from "../components/download";
-import AkwetemanDownload from "../components/aketeyman-downloads"
-import AlajoDownload from "../components/alajo-download"
-import Footer from "../components/footer"
-
+import AkwetemanDownload from "../components/aketeyman-downloads";
+import AlajoDownload from "../components/alajo-download";
+import Footer from "../components/footer";
 
 const data = [
   {
     suburb: "Alogboshie",
     Drain: 185,
     DrainColor: "#0099cc",
-    "Ditch": 6,
-    "DitchColor": "#ff9999",
-    "Stream": 9,
-    "StreamColor": "#009900"
+    Ditch: 6,
+    DitchColor: "#ff9999",
+    Stream: 9,
+    StreamColor: "#009900"
   },
   {
     suburb: "Akweteman",
     Drain: 402,
     DrainColor: "#0099cc",
-    "Ditch": 22,
-    "DitchColor": "#ff9999",
-    "Stream": 1,
-    "StreamColor": "#009900"
-  },
+    Ditch: 22,
+    DitchColor: "#ff9999",
+    Stream: 1,
+    StreamColor: "#009900"
+  }
   // {
   //   suburb: "Alajo",
   //   Covered: 41,
@@ -52,10 +51,12 @@ class Drainage extends Component {
     this.state = {
       drainageData: null,
       render: false,
-      waterways:"alogboshie_waterways.geojson",
-      community:"Alogboshie",
-      center:[-0.2325, 5.6262]
-
+      drain_status: true,
+      stream_status: true,
+      ditch_status: true,
+      waterways: "alogboshie_waterways.geojson",
+      community: "Alogboshie",
+      center: [-0.2325, 5.6262]
     };
   }
 
@@ -66,20 +67,32 @@ class Drainage extends Component {
   }
 
   render() {
-    let Download = this.state.community ==="Alogboshie"?<AlogboshieDownload/>:this.state.community==="Akweteyman"?<AkwetemanDownload/>:""
-    let center = this.state.render && this.state.center
+    let Download =
+      this.state.community === "Alogboshie" ? (
+        <AlogboshieDownload />
+      ) : this.state.community === "Akweteyman" ? (
+        <AkwetemanDownload />
+      ) : (
+        ""
+      );
+      let filterArr= []
+      this.state.drain_status && filterArr.push("drain")
+      this.state.ditch_status && filterArr.push("ditch")
+
+      this.state.stream_status && filterArr.push("stream")
+
+    let center = this.state.render && this.state.center;
     var map =
       this.state.render &&
       new mapboxgl.Map({
         container: "map",
         style: "mapbox://styles/mapbox/streets-v9",
         zoom: 16,
-        center:center
+        center: center
       });
 
     this.state.render && map.addControl(new mapboxgl.NavigationControl());
-  let dataurl = this.state.render && this.state.waterways
-
+    let dataurl = this.state.render && this.state.waterways;
 
     this.state.render &&
       map.on("load", function() {
@@ -106,7 +119,7 @@ class Drainage extends Component {
             "line-width": 3
           }
         });
-
+map.setFilter("drainage", ["in", "waterway", ...filterArr])
         // When a click event occurs on a feature in the states layer, open a popup at the
         // location of the click, with description HTML from its properties.
         map.on("click", "drainage", function(e) {
@@ -187,13 +200,13 @@ class Drainage extends Component {
 
 
     ${(e.features[0].properties["covered"] &&
-    `<tr>
+      `<tr>
     <th>Profile Covered</th>
     <td style={{ paddingLeft: "5px" }}>
     ${e.features[0].properties["covered"]}
     </td>
     </tr>`) ||
-    ""}
+      ""}
 
 
   ${(e.features[0].properties["drain:profile_open"] &&
@@ -291,7 +304,9 @@ ${(e.features[0].properties["source"] &&
             <div className="col-sm-3" style={{ marginTop: "0.8em" }}>
               <center>
                 <Link href="/">
-                  <a className="home-link home-heading">Open Cities Accra Data Visualizations</a>
+                  <a className="home-link home-heading">
+                    Open Cities Accra Data Visualizations
+                  </a>
                 </Link>
               </center>
             </div>
@@ -302,40 +317,38 @@ ${(e.features[0].properties["source"] &&
                   <h4>
                     {" "}
                     <small className="font-weight-bold">
-                      Map Visualisation of drainage for {this.state.render && this.state.community}, Accra-Ghana
+                      Map Visualisation of drainage for{" "}
+                      {this.state.render && this.state.community}, Accra-Ghana
                     </small>
                   </h4>
                 </div>
                 <div className="col-sm-3">
                   <select
                     className="form-control mb-3 mr-3 w-100 rounded"
-                    onChange={(e)=>{
-                      
-                      if(e.target.value==="Akweteyman"){
+                    onChange={e => {
+                      if (e.target.value === "Akweteyman") {
                         this.setState({
-                          community:e.target.value,
-                          waterways:"akweteyman_waterways.geojson",
-                          center:[-0.2410443288160593, 5.6134037536466415]
-
-                        })
-                      }else{
-                        if(e.target.value==="Alogboshie"){
+                          community: e.target.value,
+                          waterways: "akweteyman_waterways.geojson",
+                          center: [-0.2410443288160593, 5.6134037536466415]
+                        });
+                      } else {
+                        if (e.target.value === "Alogboshie") {
                           this.setState({
-                            community:e.target.value,
-                            waterways:"alogboshie_waterways.geojson",
-                            center:[-0.2325, 5.6262]
-                          })
-                        
-
-                        }else{
+                            community: e.target.value,
+                            waterways: "alogboshie_waterways.geojson",
+                            center: [-0.2325, 5.6262]
+                          });
+                        } else {
                           return;
                         }
                       }
                     }}
-                    
                   >
                     <option>-- Select Community --</option>
-                    <option value="Alogboshie" selected>Alogboshie</option>
+                    <option value="Alogboshie" selected>
+                      Alogboshie
+                    </option>
                     <option value="Akweteyman">Akweteyman</option>
                     {/* <option value="Alajo">Alajo</option>
                     <option value="Nima">Nima</option> */}
@@ -363,7 +376,15 @@ ${(e.features[0].properties["source"] &&
                 </div>
 
                 <div className="info">
-                This page displays drainage data (drain lines and points) on the map. Here data displayed is for the entire area of interest and the user can zoom in on the map to a particular place to see more details about the data displayed. On the left side of the page is a visualization of the drainage in the area of interest. Users can explore the drainage data by looking at the types of drains in the community.  Beneath that is the download button which allows users to download either drainage data alone or the entire dataset as a .GeoJSON file.
+                  This page displays drainage data (drain lines and points) on
+                  the map. Here data displayed is for the entire area of
+                  interest and the user can zoom in on the map to a particular
+                  place to see more details about the data displayed. On the
+                  left side of the page is a visualization of the drainage in
+                  the area of interest. Users can explore the drainage data by
+                  looking at the types of drains in the community. Beneath that
+                  is the download button which allows users to download either
+                  drainage data alone or the entire dataset as a .GeoJSON file.
                 </div>
 
                 <div className="py-2 px-2">
@@ -469,9 +490,7 @@ ${(e.features[0].properties["source"] &&
                       ]}
                     />
                   </div>
-                  <center>
-                    {Download }
-                  </center>
+                  <center>{Download}</center>
                 </div>
               </ul>
               <center>
@@ -480,7 +499,7 @@ ${(e.features[0].properties["source"] &&
                 </Link>
               </center>
 
-              <Footer/>
+              <Footer />
             </div>
             <div className="col-sm-8">
               <div className="map-border" style={{ height: "90vh" }}>
@@ -489,15 +508,51 @@ ${(e.features[0].properties["source"] &&
                   <h4>Waterway</h4>
                   <div>
                     <span style={{ backgroundColor: "#0099cc" }} />
-                    Drain
+                    Drain{" "}
+                    <span style={{ marginLeft: "53px" }}>
+                      <input
+                        onChange={e =>
+                          this.setState({
+                            drain_status: e.target.checked
+                          })
+                        }
+                        type="checkbox"
+                        checked={this.state.drain_status}
+                        value="drain"
+                      />
+                    </span>
                   </div>
                   <div>
                     <span style={{ backgroundColor: "#ff9999" }} />
-                   Ditch
+                    Ditch{" "}
+                    <span style={{ marginLeft: "53px" }}>
+                      <input
+                        onChange={e =>
+                          this.setState({
+                            ditch_status: e.target.checked
+                          })
+                        }
+                        type="checkbox"
+                        checked={this.state.ditch_status}
+                        value="ditch"
+                      />
+                    </span>
                   </div>
                   <div>
                     <span style={{ backgroundColor: "#009900" }} />
-                    Stream
+                    Stream{" "}
+                    <span style={{ marginLeft: "40px" }}>
+                      <input
+                        onChange={e =>
+                          this.setState({
+                            stream_status: e.target.checked
+                          })
+                        }
+                        type="checkbox"
+                        checked={this.state.stream_status}
+                        value="stream"
+                      />
+                    </span>
                   </div>
                 </div>
               </div>

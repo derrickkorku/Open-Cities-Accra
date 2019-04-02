@@ -2,9 +2,9 @@ import { Component } from "react";
 import Link from "next/link";
 import { ResponsiveBar } from "@nivo/bar";
 import AlogboshieDownload from "../components/download";
-import AkwetemanDownload from "../components/aketeyman-downloads"
-import AlajoDownload from "../components/alajo-download"
-import Footer from "../components/footer"
+import AkwetemanDownload from "../components/aketeyman-downloads";
+import AlajoDownload from "../components/alajo-download";
+import Footer from "../components/footer";
 const data = [
   {
     suburb: "Alogboshie",
@@ -44,7 +44,7 @@ const data = [
     SchoolColor: "rgba(255, 255, 0, 0.4)",
     Other: 11006,
     OtherColor: "rgba(0, 128, 0, 0.4)"
-  },
+  }
   // {
   //   suburb: "Nima",
   //   Residential: 133,
@@ -63,11 +63,22 @@ class Buildings extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      residential_status: true,
+      commercial_status: true,
+      resi_comm_status: true,
+      church_status: true,
+      school_status: true,
+      construction_status: true,
+      warehouse_status: true,
+      industrial_status:true,
+      shed_status:true,
+      toilets_status:true,
+      other_status: true,
       buildingData: null,
       render: false,
-      buildings:"alobgoshie-buildings.geojson",
-      community:"Alogboshie",
-      center:[-0.2325, 5.6262]
+      buildings: "alobgoshie-buildings.geojson",
+      community: "Alogboshie",
+      center: [-0.2325, 5.6262]
     };
   }
 
@@ -77,12 +88,46 @@ class Buildings extends Component {
       "pk.eyJ1Ijoid2lzZG9tMDA2MyIsImEiOiJjanI1aWg0cGQwZTByM3dtc3J1OHJ3MGNqIn0.yjtKpgtEmgCkCcLvpH_tJg";
   }
 
-  
-
   render() {
-    let Download = this.state.community ==="Alogboshie"?<AlogboshieDownload/>:this.state.community==="Akweteyman"?<AkwetemanDownload/>:this.state.community==="Alajo"?<AlajoDownload/>:""
+    let Download =
+      this.state.community === "Alogboshie" ? (
+        <AlogboshieDownload />
+      ) : this.state.community === "Akweteyman" ? (
+        <AkwetemanDownload />
+      ) : this.state.community === "Alajo" ? (
+        <AlajoDownload />
+      ) : (
+        ""
+      );
 
-    let center = this.state.render && this.state.center
+    let filterArr = [];
+    this.state.residential_status && filterArr.push("residential");
+    this.state.commercial_status && filterArr.push("commercial");
+    this.state.resi_comm_status && filterArr.push("commercial;residential");
+    this.state.church_status && filterArr.push("church");
+    this.state.school_status && filterArr.push("school");
+    this.state.warehouse_status && filterArr.push("warehouse");
+    this.state.construction_status && filterArr.push("construction");
+    this.state.industrial_status && filterArr.push("industrial")
+    this.state.shed_status && filterArr.push("shed")
+    this.state.toilets_status && filterArr.push("toilets")
+
+    let otherfilterArr = [];
+    !this.state.residential_status && otherfilterArr.push("residential");
+    !this.state.commercial_status && otherfilterArr.push("commercial");
+    !this.state.resi_comm_status && otherfilterArr.push("commercial;residential");
+    !this.state.church_status && otherfilterArr.push("church");
+    !this.state.school_status && otherfilterArr.push("school");
+    !this.state.warehouse_status && otherfilterArr.push("warehouse");
+    !this.state.construction_status && otherfilterArr.push("construction");
+    !this.state.industrial_status && otherfilterArr.push("industrial")
+    !this.state.shed_status && otherfilterArr.push("shed")
+    !this.state.toilets_status && otherfilterArr.push("toilets")
+
+
+
+
+    let center = this.state.render && this.state.center;
 
     var map =
       this.state.render &&
@@ -94,9 +139,9 @@ class Buildings extends Component {
       });
 
     this.state.render && map.addControl(new mapboxgl.NavigationControl());
-    let dataurl = this.state.render && this.state.buildings
-
-
+    let dataurl = this.state.render && this.state.buildings;
+let community = this.state.community
+let other = this.state.other_status
     this.state.render &&
       map.on("load", function() {
         // Add a layer showing the state polygons.
@@ -122,16 +167,30 @@ class Buildings extends Component {
               "purple",
               "school",
               "yellow",
+              "construction",
+              "#005ce6",
+              "warehouse",
+              "rgb(128, 128, 255)",
+              "industrial",
+              "rgb(128, 128, 128)",
+              "shed",
+              "rgb(238, 130, 238)",
+              "toilets",
+              "rgb(0, 255, 0)",
+
               /* other */ "green"
             ],
             "fill-opacity": 0.3
           }
         });
 
+   other && map.setFilter("buildings", ["!in", "building", ...otherfilterArr]);
+   !other && map.setFilter("buildings", ["in", "building", ...filterArr]);
+
+
         // When a click event occurs on a feature in the states layer, open a popup at the
         // location of the click, with description HTML from its properties.
         map.on("click", "buildings", function(e) {
-    
           new mapboxgl.Popup()
             .setLngLat(e.lngLat)
             .setHTML(
@@ -274,61 +333,66 @@ ${(e.features[0].properties["source"] &&
       <div>
         <div className="container-fluid mt-3">
           <div className="row">
-            <div className="col-sm-3 text-center" style={{ marginTop: "0.8em" }}>
+            <div
+              className="col-sm-3 text-center"
+              style={{ marginTop: "0.8em" }}
+            >
               <center>
                 <Link href="/">
-                  <a className="home-link home-heading">Open Cities Accra Data Visualizations</a>
+                  <a className="home-link home-heading">
+                    Open Cities Accra Data Visualizations
+                  </a>
                 </Link>
               </center>
             </div>
             <div className="col-sm-9">
-              <div className="row" style={{minHeight:"6vh"}}>
-              <div className="col-sm-2"/>
+              <div className="row" style={{ minHeight: "6vh" }}>
+                <div className="col-sm-2" />
                 <div className="col-sm-7">
-                  <h4>           
-	 <small className="font-weight-bold">Map Visualisation of buildings for {this.state.render && this.state.community}, Accra-Ghana</small>
-</h4>
+                  <h4>
+                    <small className="font-weight-bold">
+                      Map Visualisation of buildings for{" "}
+                      {this.state.render && this.state.community}, Accra-Ghana
+                    </small>
+                  </h4>
                 </div>
                 <div className="col-sm-3">
-                <select
+                  <select
                     className="form-control mb-3 mr-3 w-100 rounded"
-                    onChange={(e)=>{
-                      
-                      if(e.target.value==="Akweteyman"){
-                        this.setState({
-                          community:e.target.value,
-                          buildings:"akweteyman_buildings.geojson",
-                          center:[-0.2410443288160593, 5.6134037536466415]
-
-                        })
-                      }else{
-                        if(e.target.value==="Alogboshie"){
-                          this.setState({
-                            community:e.target.value,
-                            buildings:"alobgoshie-buildings.geojson",
-                            center:[-0.2325, 5.6262]
-                          })
+                    onChange={e => {
+                      if (e.target.value === "Akweteyman") {
                         
+                        this.setState({
+                          community: e.target.value,
+                          buildings: "akweteyman_buildings.geojson",
+                          center: [-0.2410443288160593, 5.6134037536466415]
+                        });
 
-                        }else{
-                          if(e.target.value==="Alajo"){
+                      } else {
+                        if (e.target.value === "Alogboshie") {
+                          this.setState({
+                            community: e.target.value,
+                            buildings: "alobgoshie-buildings.geojson",
+                            center: [-0.2325, 5.6262]
+                          });
+                        } else {
+                          if (e.target.value === "Alajo") {
                             this.setState({
-                              community:e.target.value,
-                              buildings:"alajo_buildings.geojson",
-                              center:[-0.2152084488221533, 5.598973832979908]
-                            })
-                          
-  
-                          }else{
-                            return
+                              community: e.target.value,
+                              buildings: "alajo_buildings.geojson",
+                              center: [-0.2152084488221533, 5.598973832979908]
+                            });
+                          } else {
+                            return;
                           }
                         }
                       }
                     }}
-                    
                   >
                     <option>-- Select Community --</option>
-                    <option value="Alogboshie" selected>Alogboshie</option>
+                    <option value="Alogboshie" selected>
+                      Alogboshie
+                    </option>
                     <option value="Akweteyman">Akweteyman</option>
                     <option value="Alajo">Alajo</option>
                     {/* <option value="Nima">Nima</option> */}
@@ -339,7 +403,7 @@ ${(e.features[0].properties["source"] &&
           </div>
           <div className="row">
             <div className="col-sm-4">
-            <ul className="list-unstyled rounded bg-sidebar shadow">
+              <ul className="list-unstyled rounded bg-sidebar shadow">
                 <div
                   className="btn-group btn-group-lg w-100 rounded"
                   role="group"
@@ -354,12 +418,18 @@ ${(e.features[0].properties["source"] &&
                     <a className="btn btn-n1">Drainage</a>
                   </Link>
                 </div>
-              
-            <div className="info">
-            The buildings page displays the buildings data collected in a selected area of interest on the map. Here, you can explore the data collected on buildings in a selected area of interest according to the following subjects: type, purpose and materials used. You can also explore the data according to these subjects by viewing the bar graph on the left side of the page. Beneath that is the download button which allows users to download either buildings data alone or the entire dataset as a .GeoJSON file.
-            </div>
 
-
+                <div className="info">
+                  The buildings page displays the buildings data collected in a
+                  selected area of interest on the map. Here, you can explore
+                  the data collected on buildings in a selected area of interest
+                  according to the following subjects: type, purpose and
+                  materials used. You can also explore the data according to
+                  these subjects by viewing the bar graph on the left side of
+                  the page. Beneath that is the download button which allows
+                  users to download either buildings data alone or the entire
+                  dataset as a .GeoJSON file.
+                </div>
 
                 <div className="py-2 px-2">
                   <div className="map-border my-3" style={{ height: "400px" }}>
@@ -470,18 +540,16 @@ ${(e.features[0].properties["source"] &&
                       ]}
                     />
                   </div>
-                  <center>
-{Download}
-                  </center>
+                  <center>{Download}</center>
                 </div>
-                </ul>
+              </ul>
               <center>
                 <Link href="/contact">
                   <a className="btn btn-dark px-10">Contact</a>
                 </Link>
               </center>
-          
-              <Footer/>
+
+              <Footer />
             </div>
             <div className="col-sm-8">
               <div className="map-border" style={{ height: "90vh" }}>
@@ -493,31 +561,183 @@ ${(e.features[0].properties["source"] &&
                     <span
                       style={{ backgroundColor: "rgba(0, 136, 136, 0.3)" }}
                     />
-                    Residential
+                    Residential{" "}
+                    <span style={{ marginLeft: "98px" }}>
+                      <input
+                        onChange={e =>
+                          this.setState({
+                            residential_status: e.target.checked
+                          })
+                        }
+                        type="checkbox"
+                        checked={this.state.residential_status}
+                        value="residential"
+                      />
+                    </span>
                   </div>
                   <div>
                     <span style={{ backgroundColor: "rgba(255,0,0, 0.3)" }} />
-                    Commercial
+                    Commercial{" "}
+                    <span style={{ marginLeft: "95px" }}>
+                      <input
+                        onChange={e =>
+                          this.setState({
+                            commercial_status: e.target.checked
+                          })
+                        }
+                        type="checkbox"
+                        checked={this.state.commercial_status}
+                        value="commercial"
+                      />
+                    </span>
                   </div>
                   <div>
                     <span style={{ backgroundColor: "rgb(0, 0, 0, 0.5)" }} />
-                    Commercial & Residential
+                    Commercial & Residential{" "}
+                    <span style={{ marginLeft: "21px" }}>
+                      <input
+                        onChange={e =>
+                          this.setState({
+                            resi_comm_status: e.target.checked
+                          })
+                        }
+                        type="checkbox"
+                        checked={this.state.resi_comm_status}
+                        value="residential_commercial"
+                      />
+                    </span>
                   </div>
                   <div>
                     <span
                       style={{ backgroundColor: "rgba(128, 0, 128, 0.3)" }}
                     />
-                    Church
+                    Church{" "}
+                    <span style={{ marginLeft: "121px" }}>
+                      <input
+                        onChange={e =>
+                          this.setState({
+                            church_status: e.target.checked
+                          })
+                        }
+                        type="checkbox"
+                        checked={this.state.church_status}
+                        value="church"
+                      />
+                    </span>
                   </div>
                   <div>
                     <span
                       style={{ backgroundColor: "rgba(255, 255, 0, 0.4)" }}
                     />
-                    School
+                    School{" "}
+                    <span style={{ marginLeft: "123px" }}>
+                      <input
+                        onChange={e =>
+                          this.setState({
+                            school_status: e.target.checked
+                          })
+                        }
+                        type="checkbox"
+                        checked={this.state.school_status}
+                        value="school"
+                      />
+                    </span> 
+                  </div>
+                  <div>
+                    <span style={{ backgroundColor: "rgba(0, 92, 230, 0.4)" }} />
+                    construction{" "}
+                    <span style={{ marginLeft: "96px" }}>
+                      <input
+                        onChange={e =>
+                          this.setState({
+                            construction_status: e.target.checked
+                          })
+                        }
+                        type="checkbox"
+                        checked={this.state.construction_status}
+                        value="construction"
+                      />
+                    </span>
+                  </div>
+                  <div>
+                    <span style={{ backgroundColor: "rgba(128, 128, 255, 0.4)" }} />
+                    Warehouse{" "}
+                    <span style={{ marginLeft: "98px" }}>
+                      <input
+                        onChange={e =>
+                          this.setState({
+                            warehouse_status: e.target.checked
+                          })
+                        }
+                        type="checkbox"
+                        checked={this.state.warehouse_status}
+                        value="other"
+                      />
+                    </span>
+                  </div>
+                  <div>
+                    <span style={{ backgroundColor: "rgba(128, 128, 128, 0.4)" }} />
+                    Industrial{" "}
+                    <span style={{ marginLeft: "110px" }}>
+                      <input
+                        onChange={e =>
+                          this.setState({
+                            industrial_status: e.target.checked
+                          })
+                        }
+                        type="checkbox"
+                        checked={this.state.industrial_status}
+                        value="industrial"
+                      />
+                    </span>
+                  </div>
+                  <div>
+                    <span style={{ backgroundColor: "rgba(238, 130, 238, 0.4)" }} />
+                    Shed{" "}
+                    <span style={{ marginLeft: "132px" }}>
+                      <input
+                        onChange={e =>
+                          this.setState({
+                            shed_status: e.target.checked
+                          })
+                        }
+                        type="checkbox"
+                        checked={this.state.shed_status}
+                        value="shed"
+                      />
+                    </span>
+                  </div>
+                  <div>
+                    <span style={{ backgroundColor: "rgb(0, 255, 0, 0.4)" }} />
+                    Toilet{" "}
+                    <span style={{ marginLeft: "130px" }}>
+                      <input
+                        onChange={e =>
+                          this.setState({
+                            toilets_status: e.target.checked
+                          })
+                        }
+                        type="checkbox"
+                        checked={this.state.toilets_status}
+                        value="toilet"
+                      />
+                    </span>
                   </div>
                   <div>
                     <span style={{ backgroundColor: "rgba(0, 128, 0, 0.4)" }} />
-                    Other
+                    Other{" "}
+                    <span style={{ marginLeft: "130px" }}>
+                      <input
+                        onChange={e =>
+                          this.setState({
+                            other_status: e.target.checked
+                          })
+                        }
+                        type="checkbox"
+                        checked={this.state.other_status}
+                        value="other"
+                      />
+                    </span>
                   </div>
                 </div>
               </div>
