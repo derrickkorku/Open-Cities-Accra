@@ -316,7 +316,7 @@ ${(e.features[0].properties["source"] &&
                 <div className="col-sm-7">
                   <h4>
                     {" "}
-                    <small className="font-weight-bold">
+                    <small className="font-weight-bold" style={{fontSize:"0.7em"}}>
                       Map Visualisation of drainage for{" "}
                       {this.state.render && this.state.community}, Accra-Ghana
                     </small>
@@ -509,7 +509,7 @@ ${(e.features[0].properties["source"] &&
                   <div>
                     <span style={{ backgroundColor: "#0099cc" }} />
                     Drain{" "}
-                    <span style={{ marginLeft: "53px" }}>
+                    <span style={{ marginLeft: "53px", float:"right" }}>
                       <input
                         onChange={e =>
                           this.setState({
@@ -525,7 +525,7 @@ ${(e.features[0].properties["source"] &&
                   <div>
                     <span style={{ backgroundColor: "#ff9999" }} />
                     Ditch{" "}
-                    <span style={{ marginLeft: "53px" }}>
+                    <span style={{ marginLeft: "53px", float:"right" }}>
                       <input
                         onChange={e =>
                           this.setState({
@@ -541,7 +541,7 @@ ${(e.features[0].properties["source"] &&
                   <div>
                     <span style={{ backgroundColor: "#009900" }} />
                     Stream{" "}
-                    <span style={{ marginLeft: "40px" }}>
+                    <span style={{ marginLeft: "40px", float:"right" }}>
                       <input
                         onChange={e =>
                           this.setState({

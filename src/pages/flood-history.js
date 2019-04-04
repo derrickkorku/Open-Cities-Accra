@@ -63,7 +63,12 @@ class FloodHistory extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      render: false
+      render: false,
+      waist_deep_status:true,
+      knee_deep_status:true,
+      chest_deep_status:true,
+      person_height_status:true,
+      not_measured_status:true,
     };
   }
   componentDidMount() {
@@ -83,7 +88,19 @@ class FloodHistory extends Component {
       });
 
     this.state.render && map.addControl(new mapboxgl.NavigationControl());
+    let filterArr= []
+      this.state.knee_deep_status && filterArr.push("Keen_deep_(30-50CM)")
+      this.state.chest_deep_status && filterArr.push("Chest_deep_(1-1.5M)")
+      this.state.waist_deep_status && filterArr.push("Waist_deep_(60cm-1m)")
+      this.state.person_height_status && filterArr.push("Person_height_(1.5-2M)")
 
+      let otherfilterArr= []
+      !this.state.knee_deep_status && otherfilterArr.push("Keen_deep_(30-50CM)")
+      !this.state.chest_deep_status && otherfilterArr.push("Chest_deep_(1-1.5M)")
+     ! this.state.waist_deep_status && otherfilterArr.push("Waist_deep_(60cm-1m)")
+      !this.state.person_height_status && otherfilterArr.push("Person_height_(1.5-2M)")
+
+let other = this.state.not_measured_status
     this.state.render &&
       map.on("load", function() {
         // Add a layer showing the state polygons.
@@ -111,6 +128,9 @@ class FloodHistory extends Component {
             "circle-radius": 10
           }
         });
+
+        other && map.setFilter("buildings", ["!in", "flood", ...otherfilterArr]);
+        !other && map.setFilter("buildings", ["in", "flood", ...filterArr]);
 
         map.on("click", "flood", function(e) {
           new mapboxgl.Popup()
@@ -238,7 +258,7 @@ class FloodHistory extends Component {
                 <div className="col-sm-7">
                   <h4>
                     {" "}
-                    <small className="font-weight-bold">
+                    <small className="font-weight-bold" style={{fontSize:"0.7em"}}>
                       Map Visualisation of flood history for Alogboshie,
                       Accra-Ghana
                     </small>
@@ -411,24 +431,80 @@ class FloodHistory extends Component {
                   <h4>Flood Depth</h4>
                   <div>
                     <span style={{ backgroundColor: "rgb(0, 136, 136)" }} />
-                    Knee deep (30-50cm)
+                    Knee deep (30-50cm)                     <span style={{ marginLeft: "20px", float:"right" }}>
+                      <input
+                        onChange={e =>
+                          this.setState({
+                            knee_deep_status: e.target.checked
+                          })
+                        }
+                        type="checkbox"
+                        checked={this.state.knee_deep_status}
+                        value="stream"
+                      />
+                    </span>
                   </div>
                   <div>
                     <span style={{ backgroundColor: "rgb(255, 192, 203)" }} />
-                    Waist deep (60cm-100cm)
+                    Waist deep (60cm-100cm)                     <span style={{ marginLeft: "20px", float:"right" }}>
+                      <input
+                        onChange={e =>
+                          this.setState({
+                            waist_deep_status: e.target.checked
+                          })
+                        }
+                        type="checkbox"
+                        checked={this.state.waist_deep_status}
+                        value="stream"
+                      />
+                    </span>
                   </div>
                   <div>
                     <span style={{ backgroundColor: "rgb(102, 102, 0)" }} />
-                    Chest deep (100-150cm)
+                    Chest deep (100-150cm)                     <span style={{ marginLeft: "20px", float:"right" }}>
+                      <input
+                        onChange={e =>
+                          this.setState({
+                            chest_deep_status: e.target.checked
+                          })
+                        }
+                        type="checkbox"
+                        checked={this.state.chest_deep_status}
+                        value="stream"
+                      />
+                    </span>
                   </div>
 
                   <div>
                     <span style={{ backgroundColor: "rgb(128, 0, 128)" }} />
-                    Person height (150-200cm)
+                    Person height (150-200cm)                   
+                     <span style={{ marginLeft: "20px", float:"right" }}>
+                      <input
+                        onChange={e =>
+                          this.setState({
+                            person_height_status: e.target.checked
+                          })
+                        }
+                        type="checkbox"
+                        checked={this.state.person_height_status}
+                        value="stream"
+                      />
+                    </span>
                   </div>
                   <div>
                     <span style={{ backgroundColor: "rgb(128, 128, 128)" }} />
-                    Not measured
+                    Not measured     <span style={{ marginLeft: "20px", float:"right" }}>
+                      <input
+                        onChange={e =>
+                          this.setState({
+                            not_measured_status: e.target.checked
+                          })
+                        }
+                        type="checkbox"
+                        checked={this.state.not_measured_status}
+                        value="stream"
+                      />
+                    </span>
                   </div>
                 </div>
               </div>

@@ -350,7 +350,7 @@ ${(e.features[0].properties["source"] &&
                 <div className="col-sm-2" />
                 <div className="col-sm-7">
                   <h4>
-                    <small className="font-weight-bold">
+                    <small className="font-weight-bold" style={{fontSize:"0.7em"}}>
                       Map Visualisation of buildings for{" "}
                       {this.state.render && this.state.community}, Accra-Ghana
                     </small>
@@ -562,7 +562,7 @@ ${(e.features[0].properties["source"] &&
                       style={{ backgroundColor: "rgba(0, 136, 136, 0.3)" }}
                     />
                     Residential{" "}
-                    <span style={{ marginLeft: "98px" }}>
+                    <span style={{ marginLeft: "98px", float:"right" }}>
                       <input
                         onChange={e =>
                           this.setState({
@@ -578,7 +578,7 @@ ${(e.features[0].properties["source"] &&
                   <div>
                     <span style={{ backgroundColor: "rgba(255,0,0, 0.3)" }} />
                     Commercial{" "}
-                    <span style={{ marginLeft: "95px" }}>
+                    <span style={{ marginLeft: "95px", float:"right" }}>
                       <input
                         onChange={e =>
                           this.setState({
@@ -594,7 +594,7 @@ ${(e.features[0].properties["source"] &&
                   <div>
                     <span style={{ backgroundColor: "rgb(0, 0, 0, 0.5)" }} />
                     Commercial & Residential{" "}
-                    <span style={{ marginLeft: "21px" }}>
+                    <span style={{ marginLeft: "21px", float:"right" }}>
                       <input
                         onChange={e =>
                           this.setState({
@@ -612,7 +612,7 @@ ${(e.features[0].properties["source"] &&
                       style={{ backgroundColor: "rgba(128, 0, 128, 0.3)" }}
                     />
                     Church{" "}
-                    <span style={{ marginLeft: "121px" }}>
+                    <span style={{ marginLeft: "121px", float:"right" }}>
                       <input
                         onChange={e =>
                           this.setState({
@@ -630,7 +630,7 @@ ${(e.features[0].properties["source"] &&
                       style={{ backgroundColor: "rgba(255, 255, 0, 0.4)" }}
                     />
                     School{" "}
-                    <span style={{ marginLeft: "123px" }}>
+                    <span style={{ marginLeft: "123px", float:"right" }}>
                       <input
                         onChange={e =>
                           this.setState({
@@ -646,7 +646,7 @@ ${(e.features[0].properties["source"] &&
                   <div>
                     <span style={{ backgroundColor: "rgba(0, 92, 230, 0.4)" }} />
                     construction{" "}
-                    <span style={{ marginLeft: "96px" }}>
+                    <span style={{ marginLeft: "96px", float:"right" }}>
                       <input
                         onChange={e =>
                           this.setState({
@@ -662,7 +662,7 @@ ${(e.features[0].properties["source"] &&
                   <div>
                     <span style={{ backgroundColor: "rgba(128, 128, 255, 0.4)" }} />
                     Warehouse{" "}
-                    <span style={{ marginLeft: "98px" }}>
+                    <span style={{ marginLeft: "98px", float:"right" }}>
                       <input
                         onChange={e =>
                           this.setState({
@@ -678,7 +678,7 @@ ${(e.features[0].properties["source"] &&
                   <div>
                     <span style={{ backgroundColor: "rgba(128, 128, 128, 0.4)" }} />
                     Industrial{" "}
-                    <span style={{ marginLeft: "110px" }}>
+                    <span style={{ marginLeft: "110px", float:"right" }}>
                       <input
                         onChange={e =>
                           this.setState({
@@ -694,7 +694,7 @@ ${(e.features[0].properties["source"] &&
                   <div>
                     <span style={{ backgroundColor: "rgba(238, 130, 238, 0.4)" }} />
                     Shed{" "}
-                    <span style={{ marginLeft: "132px" }}>
+                    <span style={{ marginLeft: "132px", float:"right" }}>
                       <input
                         onChange={e =>
                           this.setState({
@@ -710,7 +710,7 @@ ${(e.features[0].properties["source"] &&
                   <div>
                     <span style={{ backgroundColor: "rgb(0, 255, 0, 0.4)" }} />
                     Toilet{" "}
-                    <span style={{ marginLeft: "130px" }}>
+                    <span style={{ marginLeft: "130px", float:"right" }}>
                       <input
                         onChange={e =>
                           this.setState({
@@ -726,7 +726,7 @@ ${(e.features[0].properties["source"] &&
                   <div>
                     <span style={{ backgroundColor: "rgba(0, 128, 0, 0.4)" }} />
                     Other{" "}
-                    <span style={{ marginLeft: "130px" }}>
+                    <span style={{ marginLeft: "130px", float:"right" }}>
                       <input
                         onChange={e =>
                           this.setState({

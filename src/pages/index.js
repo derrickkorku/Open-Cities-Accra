@@ -700,7 +700,7 @@ ${(e.features[0].properties["moved_year"] &&
                     <div>
                       <span style={{ backgroundColor: "#088" }} />
                       Buildings{" "}
-                      <span style={{ marginLeft: "40px" }}>
+                      <span style={{ marginLeft: "40px", float:"right" }}>
                         <input
                           onChange={e =>
                             this.setState({
@@ -718,7 +718,7 @@ ${(e.features[0].properties["moved_year"] &&
                     <div>
                       <span style={{ backgroundColor: "blue" }} />
                       Drainage{" "}
-                      <span style={{ marginLeft: "40px" }}>
+                      <span style={{ marginLeft: "40px", float:"right" }}>
                         <input
                           onChange={e =>
                             this.setState({
@@ -736,7 +736,7 @@ ${(e.features[0].properties["moved_year"] &&
                     <div>
                       <span style={{ backgroundColor: "gray" }} />
                       Flood History{" "}
-                      <span style={{ marginLeft: "18px" }}>
+                      <span style={{ marginLeft: "18px", float:"right" }}>
                         <input
                           onChange={e =>
                             this.setState({
