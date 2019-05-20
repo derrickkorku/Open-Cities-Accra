@@ -650,8 +650,11 @@ ${(e.features[0].properties["moved_year"] &&
                   Contact
                 </a>
               </Link>
-
+              <span className="above-1300"> 
               <Footer />
+
+              </span>
+
 
               {/* <ul className="list-unstyled px-3 py-3 rounded bg-sidebar shadow">
                 <li className="mb-3" style={{float:"left"}}>
@@ -753,6 +756,10 @@ ${(e.features[0].properties["moved_year"] &&
                 </div>
               </div>
             </div>
+            <span className="below-1300"> 
+              <Footer />
+
+              </span>
           </div>
         </div>
       </div>

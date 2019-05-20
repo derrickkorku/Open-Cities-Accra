@@ -11,10 +11,10 @@ class Download extends Component {
 
     render(){
 return (
-    <div>
+    <div className="d-flex">
     <select
       className="form-control mb-3 text-center rounded"
-      style={{ float: "left", width: "70%" }}
+      style={{ width: "70%" }}
       onChange = {(e)=>{
           let filearr = e.target.value.split("/")
 let filename = filearr[filearr.length-1]
@@ -36,7 +36,7 @@ let filename = filearr[filearr.length-1]
 
 <option value="../static/alogboshie_waterways.geojson">Drainage</option>
     </select>
-    <div style={{ float: "left", marginLeft: "10px" }}>
+    <div style={{ marginLeft: "10px" }}>
       <a
         className="btn btn-dark"
         style={{ color: "white" }}

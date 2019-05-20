@@ -4,8 +4,8 @@ export default ()=>(
     <footer className="footer">
     <div className="container">
       <center>Powered by:</center>
-      <div className="row justify-content-center">
-        <ul className="list-inline py-2">
+      <div className="row">
+        <ul className="list-inline py-2 d-flex">
           <li className="list-inline-item">
             <Link href="http://mobilewebghana.org/">
               <a target="_blank">

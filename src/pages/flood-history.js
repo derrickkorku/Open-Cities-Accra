@@ -2,8 +2,7 @@ import Link from "next/link";
 import { Component } from "react";
 import { ResponsiveBar } from "@nivo/bar";
 import Download from "../components/download";
-import Footer from "../components/footer"
-
+import Footer from "../components/footer";
 
 const data = [
   {
@@ -18,7 +17,7 @@ const data = [
     "Person heightColor": "rgb(128, 0, 128)",
     "Not measured": 17,
     "Not measuredColor": "rgb(128, 128, 128)"
-  },
+  }
   // {
   //   suburb: "Akweteman",
   //   "Knee deep": 51,
@@ -64,11 +63,11 @@ class FloodHistory extends Component {
     super(props);
     this.state = {
       render: false,
-      waist_deep_status:true,
-      knee_deep_status:true,
-      chest_deep_status:true,
-      person_height_status:true,
-      not_measured_status:true,
+      waist_deep_status: true,
+      knee_deep_status: true,
+      chest_deep_status: true,
+      person_height_status: true,
+      not_measured_status: true
     };
   }
   componentDidMount() {
@@ -88,19 +87,21 @@ class FloodHistory extends Component {
       });
 
     this.state.render && map.addControl(new mapboxgl.NavigationControl());
-    let filterArr= []
-      this.state.knee_deep_status && filterArr.push("Keen_deep_(30-50CM)")
-      this.state.chest_deep_status && filterArr.push("Chest_deep_(1-1.5M)")
-      this.state.waist_deep_status && filterArr.push("Waist_deep_(60cm-1m)")
-      this.state.person_height_status && filterArr.push("Person_height_(1.5-2M)")
+    let filterArr = [];
+    this.state.knee_deep_status && filterArr.push("Keen_deep_(30-50CM)");
+    this.state.chest_deep_status && filterArr.push("Chest_deep_(1-1.5M)");
+    this.state.waist_deep_status && filterArr.push("Waist_deep_(60cm-1m)");
+    this.state.person_height_status && filterArr.push("Person_height_(1.5-2M)");
 
-      let otherfilterArr= []
-      !this.state.knee_deep_status && otherfilterArr.push("Keen_deep_(30-50CM)")
-      !this.state.chest_deep_status && otherfilterArr.push("Chest_deep_(1-1.5M)")
-     ! this.state.waist_deep_status && otherfilterArr.push("Waist_deep_(60cm-1m)")
-      !this.state.person_height_status && otherfilterArr.push("Person_height_(1.5-2M)")
+    let otherfilterArr = [];
+    !this.state.knee_deep_status && otherfilterArr.push("Keen_deep_(30-50CM)");
+    !this.state.chest_deep_status && otherfilterArr.push("Chest_deep_(1-1.5M)");
+    !this.state.waist_deep_status &&
+      otherfilterArr.push("Waist_deep_(60cm-1m)");
+    !this.state.person_height_status &&
+      otherfilterArr.push("Person_height_(1.5-2M)");
 
-let other = this.state.not_measured_status
+    let other = this.state.not_measured_status;
     this.state.render &&
       map.on("load", function() {
         // Add a layer showing the state polygons.
@@ -129,8 +130,18 @@ let other = this.state.not_measured_status
           }
         });
 
-        other && map.setFilter("buildings", ["!in", "flood", ...otherfilterArr]);
-        !other && map.setFilter("buildings", ["in", "flood", ...filterArr]);
+        other &&
+          map.setFilter("flood", [
+            "!in",
+            "flood_history.flood_depth",
+            ...otherfilterArr
+          ]);
+        !other &&
+          map.setFilter("flood", [
+            "in",
+            "flood_history.flood_depth",
+            ...filterArr
+          ]);
 
         map.on("click", "flood", function(e) {
           new mapboxgl.Popup()
@@ -244,46 +255,18 @@ let other = this.state.not_measured_status
     return (
       <div>
         <div className="container-fluid mt-3">
-          <div className="row" style={{ minHeight: "6vh" }}>
-            <div className="col-sm-3" style={{ marginTop: "0.8em" }}>
-              <center>
-                <Link href="/">
-                  <a className="home-link home-heading">Open Cities Accra Data Visualizations</a>
-                </Link>
-              </center>
-            </div>
-            <div className="col-sm-9">
-              <div className="row">
-                <div className="col-md-2" />
-                <div className="col-sm-7">
-                  <h4>
-                    {" "}
-                    <small className="font-weight-bold" style={{fontSize:"0.7em"}}>
-                      Map Visualisation of flood history for Alogboshie,
-                      Accra-Ghana
-                    </small>
-                  </h4>
-                </div>
-                <div className="col-sm-3">
-                  <select
-                    className="form-control mb-3 mr-3 w-100 rounded"
-                    disabled
-                  >
-                    <option>-- Select Community --</option>
-                    <option>Akweteyman</option>
-                    <option selected>Alogboshie</option>
-                    <option>Alajo</option>
-                    <option>Nima</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-          </div>
           <div className="row">
             <div className="col-sm-4">
-              <ul className="list-unstyled rounded bg-sidebar shadow">
+              <center>
+                <Link href="/">
+                  <a className="home-link home-heading ">
+                    Open Cities Accra Data Visualizations
+                  </a>
+                </Link>
+              </center>
+              <ul className="list-unstyled rounded bg-sidebar shadow mt-3">
                 <div
-                  className="btn-group btn-group-lg w-100 rounded"
+                  className="btn-group btn-group-md w-100 rounded"
                   role="group"
                 >
                   <Link href="/buildings">
@@ -298,7 +281,11 @@ let other = this.state.not_measured_status
                 </div>
 
                 <div className="info">
-                On this page users are be able to view the flood history data collected in the areas of interest on the map. Here you can explore the history of flooding in the area and how deep the water level was. Users can also download flood history data as a .csv file.
+                  On this page users are be able to view the flood history data
+                  collected in the areas of interest on the map. Here you can
+                  explore the history of flooding in the area and how deep the
+                  water level was. Users can also download flood history data as
+                  a .csv file.
                 </div>
 
                 <div className="py-2 px-2">
@@ -421,9 +408,39 @@ let other = this.state.not_measured_status
                 </Link>
               </center>
 
-              <Footer/>
+              <span className="above-1300"> 
+              <Footer />
+
+              </span>
             </div>
             <div className="col-sm-8">
+              <div className="row">
+              
+                <div className="col-sm-9">
+                  <h4>
+                    {" "}
+                    <small
+                      className="font-weight-bold"
+                      style={{ fontSize: "0.7em" }}
+                    >
+                      Map Visualisation of flood history for Alogboshie,
+                      Accra-Ghana
+                    </small>
+                  </h4>
+                </div>
+                <div className="col-sm-3">
+                  <select
+                    className="form-control mb-3 mr-3 w-100 rounded"
+                    disabled
+                  >
+                    <option>-- Select Community --</option>
+                    <option>Akweteyman</option>
+                    <option selected>Alogboshie</option>
+                    <option>Alajo</option>
+                    <option>Nima</option>
+                  </select>
+                </div>
+              </div>
               <div className="map-border" style={{ height: "91vh" }}>
                 <div id="map" />
                 <h4>Population</h4>
@@ -431,7 +448,8 @@ let other = this.state.not_measured_status
                   <h4>Flood Depth</h4>
                   <div>
                     <span style={{ backgroundColor: "rgb(0, 136, 136)" }} />
-                    Knee deep (30-50cm)                     <span style={{ marginLeft: "20px", float:"right" }}>
+                    Knee deep (30-50cm){" "}
+                    <span style={{ marginLeft: "20px", float: "right" }}>
                       <input
                         onChange={e =>
                           this.setState({
@@ -446,7 +464,8 @@ let other = this.state.not_measured_status
                   </div>
                   <div>
                     <span style={{ backgroundColor: "rgb(255, 192, 203)" }} />
-                    Waist deep (60cm-100cm)                     <span style={{ marginLeft: "20px", float:"right" }}>
+                    Waist deep (60cm-100cm){" "}
+                    <span style={{ marginLeft: "20px", float: "right" }}>
                       <input
                         onChange={e =>
                           this.setState({
@@ -461,7 +480,8 @@ let other = this.state.not_measured_status
                   </div>
                   <div>
                     <span style={{ backgroundColor: "rgb(102, 102, 0)" }} />
-                    Chest deep (100-150cm)                     <span style={{ marginLeft: "20px", float:"right" }}>
+                    Chest deep (100-150cm){" "}
+                    <span style={{ marginLeft: "20px", float: "right" }}>
                       <input
                         onChange={e =>
                           this.setState({
@@ -477,8 +497,8 @@ let other = this.state.not_measured_status
 
                   <div>
                     <span style={{ backgroundColor: "rgb(128, 0, 128)" }} />
-                    Person height (150-200cm)                   
-                     <span style={{ marginLeft: "20px", float:"right" }}>
+                    Person height (150-200cm)
+                    <span style={{ marginLeft: "20px", float: "right" }}>
                       <input
                         onChange={e =>
                           this.setState({
@@ -493,7 +513,8 @@ let other = this.state.not_measured_status
                   </div>
                   <div>
                     <span style={{ backgroundColor: "rgb(128, 128, 128)" }} />
-                    Not measured     <span style={{ marginLeft: "20px", float:"right" }}>
+                    Not measured{" "}
+                    <span style={{ marginLeft: "20px", float: "right" }}>
                       <input
                         onChange={e =>
                           this.setState({
@@ -509,6 +530,10 @@ let other = this.state.not_measured_status
                 </div>
               </div>
             </div>
+            <span className="below-1300"> 
+              <Footer />
+
+              </span>
           </div>
         </div>
       </div>

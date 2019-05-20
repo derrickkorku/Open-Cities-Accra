@@ -157,8 +157,30 @@ body {
   font: 12px/20px "Helvetica Neue", Arial, Helvetica, sans-serif;
 }
 
+.above-1300{
+  display: block;
+}
+
+.below-1300{
+  display: none;
+}
+
 @media screen and (min-width: 1040px) {
   .home-link {
     white-space: nowrap;
   }
+}
+
+@media (max-width:1350px){
+  .above-1300{
+    display: none
+  }
+  
+}
+
+@media (max-width:1350px){
+  .below-1300{
+    display: block
+  }
+  
 }

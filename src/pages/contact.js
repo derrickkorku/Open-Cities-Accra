@@ -142,6 +142,7 @@ class Contact extends Component {
                   borderColor: "red"
                 }}
               >
+              
                 <ClipLoader
                   css={override}
                   sizeUnit={"px"}

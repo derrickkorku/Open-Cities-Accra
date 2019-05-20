@@ -333,79 +333,16 @@ ${(e.features[0].properties["source"] &&
       <div>
         <div className="container-fluid mt-3">
           <div className="row">
-            <div
-              className="col-sm-3 text-center"
-              style={{ marginTop: "0.8em" }}
-            >
-              <center>
+            <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+            <center>
                 <Link href="/">
                   <a className="home-link home-heading">
                     Open Cities Accra Data Visualizations
                   </a>
                 </Link>
               </center>
-            </div>
-            <div className="col-sm-9">
-              <div className="row" style={{ minHeight: "6vh" }}>
-                <div className="col-sm-2" />
-                <div className="col-sm-7">
-                  <h4>
-                    <small className="font-weight-bold" style={{fontSize:"0.7em"}}>
-                      Map Visualisation of buildings for{" "}
-                      {this.state.render && this.state.community}, Accra-Ghana
-                    </small>
-                  </h4>
-                </div>
-                <div className="col-sm-3">
-                  <select
-                    className="form-control mb-3 mr-3 w-100 rounded"
-                    onChange={e => {
-                      if (e.target.value === "Akweteyman") {
-                        
-                        this.setState({
-                          community: e.target.value,
-                          buildings: "akweteyman_buildings.geojson",
-                          center: [-0.2410443288160593, 5.6134037536466415]
-                        });
-
-                      } else {
-                        if (e.target.value === "Alogboshie") {
-                          this.setState({
-                            community: e.target.value,
-                            buildings: "alobgoshie-buildings.geojson",
-                            center: [-0.2325, 5.6262]
-                          });
-                        } else {
-                          if (e.target.value === "Alajo") {
-                            this.setState({
-                              community: e.target.value,
-                              buildings: "alajo_buildings.geojson",
-                              center: [-0.2152084488221533, 5.598973832979908]
-                            });
-                          } else {
-                            return;
-                          }
-                        }
-                      }
-                    }}
-                  >
-                    <option>-- Select Community --</option>
-                    <option value="Alogboshie" selected>
-                      Alogboshie
-                    </option>
-                    <option value="Akweteyman">Akweteyman</option>
-                    <option value="Alajo">Alajo</option>
-                    {/* <option value="Nima">Nima</option> */}
-                  </select>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-sm-4">
-              <ul className="list-unstyled rounded bg-sidebar shadow">
                 <div
-                  className="btn-group btn-group-lg w-100 rounded"
+                  className="btn-group btn-group-md w-100 rounded mt-3"
                   role="group"
                 >
                   <Link href="/buildings">
@@ -542,16 +479,70 @@ ${(e.features[0].properties["source"] &&
                   </div>
                   <center>{Download}</center>
                 </div>
-              </ul>
+            
               <center>
                 <Link href="/contact">
                   <a className="btn btn-dark px-10">Contact</a>
                 </Link>
               </center>
-
+              <span className="above-1300"> 
               <Footer />
+
+              </span>
             </div>
-            <div className="col-sm-8">
+            <div className="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+            <div className="row" style={{ minHeight: "6vh" }}>
+                <div className="col-sm-9">
+                  <h4>
+                    <small className="font-weight-bold" style={{fontSize:"0.7em"}}>
+                      Map Visualisation of buildings for{" "}
+                      {this.state.render && this.state.community}, Accra-Ghana
+                    </small>
+                  </h4>
+                </div>
+                <div className="col-sm-3">
+                  <select
+                    className="form-control mb-3 mr-3 w-100 rounded"
+                    onChange={e => {
+                      if (e.target.value === "Akweteyman") {
+                        
+                        this.setState({
+                          community: e.target.value,
+                          buildings: "akweteyman_buildings.geojson",
+                          center: [-0.2410443288160593, 5.6134037536466415]
+                        });
+
+                      } else {
+                        if (e.target.value === "Alogboshie") {
+                          this.setState({
+                            community: e.target.value,
+                            buildings: "alobgoshie-buildings.geojson",
+                            center: [-0.2325, 5.6262]
+                          });
+                        } else {
+                          if (e.target.value === "Alajo") {
+                            this.setState({
+                              community: e.target.value,
+                              buildings: "alajo_buildings.geojson",
+                              center: [-0.2152084488221533, 5.598973832979908]
+                            });
+                          } else {
+                            return;
+                          }
+                        }
+                      }
+                    }}
+                  >
+                    <option>-- Select Community --</option>
+                    <option value="Alogboshie" selected>
+                      Alogboshie
+                    </option>
+                    <option value="Akweteyman">Akweteyman</option>
+                    <option value="Alajo">Alajo</option>
+                    {/* <option value="Nima">Nima</option> */}
+                  </select>
+                </div>
+              </div>
               <div className="map-border" style={{ height: "90vh" }}>
                 <div id="map" class="dark" />
                 <h4>Population</h4>
@@ -742,7 +733,12 @@ ${(e.features[0].properties["source"] &&
                 </div>
               </div>
             </div>
+            <span className="below-1300"> 
+              <Footer />
+
+              </span>
           </div>
+
         </div>
       </div>
     );
