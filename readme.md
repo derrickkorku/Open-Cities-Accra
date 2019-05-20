@@ -19,3 +19,5 @@ This is a web application project that shows realtime map data collected of some
 #### npm run build
 
 #### npm run start
+
+Visit live demo at https://ocav1-app.herokuapp.com/
