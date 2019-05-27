@@ -510,24 +510,132 @@ ${(e.features[0].properties["moved_year"] &&
     return (
       <div>
         <div className="container-fluid mt-3 mr-10 ml-10">
-          <div className="row" style={{ minHeight: "6vh" }}>
-            <div className="col-sm-4" style={{ marginTop: "0.8em" }}>
-              <center>
+          <div className="row index-pg">
+            <div className="col-sm-4">
+            <center>
                 <Link href="/">
-                  <a className="home-link">
-                    Open Cities Accra Data Visualizations
+                  <a className="home-link my-5">
+                  <h5>
+                  Open Cities Accra Data Visualizations
+
+                  </h5>
                   </a>
                 </Link>
               </center>
+              <div className="bg-sidebar">
+                <div className="info">
+                  This web application was developed as part of the Open Cities
+                  Accra project. The project sought to collect and curate
+                  up-to-date and accurate geospatial data in the following areas
+                  of interest in Accra: Akweteyman, Alajo, Alogboshie and Nima.
+                  This web application was developed as a data tool to help
+                  government agencies, institutions and other stakeholders
+                  working in the Disaster Risk Management field take data-driven
+                  decisions in their work. The maps display the following data -
+                  buildings, flood history and drainage.
+                </div>
+                <div style={{ marginTop: "30px" }} />
+
+                <div className=" row py-2 mx-1 rounded shadow">
+                  <div className="col-sm-4 mb-1">
+                    <Link href="/buildings">
+                      <a
+                        className="btn btn-md btn-block btn-light rounded"
+                        style={{ height: "100%" }}
+                      >
+                        <i className="fas fa-home fa-2x fa-color" />
+                        <br />
+                        Building
+                      </a>
+                    </Link>
+                  </div>
+                  <div className="mb-1 col-sm-4">
+                    <Link href="/flood-history">
+                      <a
+                        className="btn btn-md btn-block btn-light rounded"
+                        style={{ height: "100%" }}
+                      >
+                        <i className="fab fa-fort-awesome-alt fa-2x fa-color" />
+                        <br />
+                        Flood History
+                      </a>
+                    </Link>
+                  </div>
+                  <div className="col-sm-4">
+                    <Link href="/drainage">
+                      <a
+                        className="btn btn-block btn-md btn-light rounded"
+                        style={{ height: "100%" }}
+                      >
+                        <i className="fab fa-schlix fa-2x fa-color" />
+                        <br />
+                        Drainage Points
+                      </a>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+              <div style={{ clear: "both", marginTop: "30px" }} />
+              <div className="above-575">
+              <Link href="/contact">
+                <a
+                  className="btn btn-dark btn-block"
+                  style={{ width: "60%", marginLeft: "20%" }}
+                >
+                  Contact
+                </a>
+              </Link>
+              </div>
+
+              <span className="above-1300"> 
+              <Footer />
+
+              </span>
+
+
+              {/* <ul className="list-unstyled px-3 py-3 rounded bg-sidebar shadow">
+                <li className="mb-3" style={{float:"left"}}>
+                  <Link href="/buildings">
+                    <a className="btn btn-lg btn-block btn-light rounded p-home-btn">
+                      <i className="fas fa-home fa-2x fa-color" />
+                      <br />
+                      Building
+                    </a>
+                  </Link>
+                </li>
+                <li className="mb-3" style={{float:"left"}}>
+                  <Link href="/flood-history">
+                    <a className="btn btn-lg btn-block btn-light rounded p-home-btn">
+                      <i className="fab fa-fort-awesome-alt fa-2x fa-color" />
+                      <br />
+                      Flood History
+                    </a>
+                  </Link>
+                </li>
+                <li className="" style={{float:"left"}}>
+                  <Link href="/drainage">
+                    <a className="btn btn-lg btn-block btn-lg btn-light rounded p-home-btn">
+                      <i className="fab fa-schlix fa-2x fa-color" />
+                      <br />
+                      Drainage Points
+                    </a>
+                  </Link>
+                </li>
+              </ul>
+              <div style={{clear:"both"}}/>
+              <Link href="/contact">
+                <a className="btn btn-dark btn-block">Contact</a>
+              </Link> */}
             </div>
+
             <div className="col-sm-8">
-              <div className="row">
+            <div className="row">
                 <div className="col-sm-9">
-                  <h4>
-                    <small className="font-weight-bold">
+                  <h5>
+                  
                       {this.state.title}
-                    </small>
-                  </h4>
+                  
+                  </h5>
                 </div>
                 <div className="col-sm-3">
                   <select
@@ -584,114 +692,6 @@ ${(e.features[0].properties["moved_year"] &&
                   </select>
                 </div>
               </div>
-            </div>
-          </div>
-          <div className="row index-pg">
-            <div className="col-sm-4">
-              <div className="bg-sidebar">
-                <div className="info">
-                  This web application was developed as part of the Open Cities
-                  Accra project. The project sought to collect and curate
-                  up-to-date and accurate geospatial data in the following areas
-                  of interest in Accra: Akweteyman, Alajo, Alogboshie and Nima.
-                  This web application was developed as a data tool to help
-                  government agencies, institutions and other stakeholders
-                  working in the Disaster Risk Management field take data-driven
-                  decisions in their work. The maps display the following data -
-                  buildings, flood history and drainage.
-                </div>
-                <div style={{ marginTop: "30px" }} />
-
-                <div className=" row py-2 mx-1 rounded shadow">
-                  <div className="col-sm-4">
-                    <Link href="/buildings">
-                      <a
-                        className="btn btn-md btn-block btn-light rounded"
-                        style={{ height: "100%" }}
-                      >
-                        <i className="fas fa-home fa-2x fa-color" />
-                        <br />
-                        Building
-                      </a>
-                    </Link>
-                  </div>
-                  <div className="mb-1 col-sm-4">
-                    <Link href="/flood-history">
-                      <a
-                        className="btn btn-md btn-block btn-light rounded"
-                        style={{ height: "100%" }}
-                      >
-                        <i className="fab fa-fort-awesome-alt fa-2x fa-color" />
-                        <br />
-                        Flood History
-                      </a>
-                    </Link>
-                  </div>
-                  <div className="col-sm-4">
-                    <Link href="/drainage">
-                      <a
-                        className="btn btn-block btn-md btn-light rounded"
-                        style={{ height: "100%" }}
-                      >
-                        <i className="fab fa-schlix fa-2x fa-color" />
-                        <br />
-                        Drainage Points
-                      </a>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-              <div style={{ clear: "both", marginTop: "30px" }} />
-              <Link href="/contact">
-                <a
-                  className="btn btn-dark btn-block"
-                  style={{ width: "60%", marginLeft: "20%" }}
-                >
-                  Contact
-                </a>
-              </Link>
-              <span className="above-1300"> 
-              <Footer />
-
-              </span>
-
-
-              {/* <ul className="list-unstyled px-3 py-3 rounded bg-sidebar shadow">
-                <li className="mb-3" style={{float:"left"}}>
-                  <Link href="/buildings">
-                    <a className="btn btn-lg btn-block btn-light rounded p-home-btn">
-                      <i className="fas fa-home fa-2x fa-color" />
-                      <br />
-                      Building
-                    </a>
-                  </Link>
-                </li>
-                <li className="mb-3" style={{float:"left"}}>
-                  <Link href="/flood-history">
-                    <a className="btn btn-lg btn-block btn-light rounded p-home-btn">
-                      <i className="fab fa-fort-awesome-alt fa-2x fa-color" />
-                      <br />
-                      Flood History
-                    </a>
-                  </Link>
-                </li>
-                <li className="" style={{float:"left"}}>
-                  <Link href="/drainage">
-                    <a className="btn btn-lg btn-block btn-lg btn-light rounded p-home-btn">
-                      <i className="fab fa-schlix fa-2x fa-color" />
-                      <br />
-                      Drainage Points
-                    </a>
-                  </Link>
-                </li>
-              </ul>
-              <div style={{clear:"both"}}/>
-              <Link href="/contact">
-                <a className="btn btn-dark btn-block">Contact</a>
-              </Link> */}
-            </div>
-
-            <div className="col-sm-8">
               <div
                 className="map-border"
                 style={{ height: "90vh", width: "100%" }}
@@ -756,10 +756,19 @@ ${(e.features[0].properties["moved_year"] &&
                 </div>
               </div>
             </div>
-            <span className="below-1300"> 
+            <center className="below-575 mt-4 mx-auto" style={{width:"40%"}}>
+              <Link href="/contact">
+                <a
+                  className="btn btn-dark btn-block"
+                >
+                  Contact Us
+                </a>
+              </Link>
+              </center>
+            <div className="below-1300"> 
               <Footer />
 
-              </span>
+              </div>
           </div>
         </div>
       </div>

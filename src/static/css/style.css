@@ -161,7 +161,7 @@ body {
   display: block;
 }
 
-.below-1300{
+.below-1300,  .below-575{
   display: none;
 }
 
@@ -183,4 +183,14 @@ body {
     display: block
   }
   
+}
+
+@media (max-width:575px){
+  .above-575{
+    display: none;
+  }
+
+  .below-575{
+    display: block;
+  }
 }
