@@ -37,7 +37,7 @@ $ npm run dev
 
 #### 5. Run the application in production mode
 
-You can prepare this application to be ready in production mode by running
+You can prepare this application to be ready in production by running
 ```shell
 $ npm run build
 ```
