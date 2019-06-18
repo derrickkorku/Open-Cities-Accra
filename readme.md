@@ -18,7 +18,7 @@ $ cd OCA
 #### 2. Create your Config variables
  Create a .env file in the root directory of this project and provide the necessary config variables using .env.example as a guide
 
-####  3 Install all packages
+####  3. Install all packages
 This will install both run-time project dependencies and developer tools listed
 in [package.json](package.json) file.
 You can install all packages used in this project by running
@@ -28,14 +28,14 @@ You can install all packages used in this project by running
 $ npm install
 ```
 
-#### Run the application in development mode
+#### 4. Run the application in development mode
 
 You can start this application in development mode by running
 ```shell
 $ npm run dev
 ```
 
-#### Run the application in production mode
+#### 5. Run the application in production mode
 
 You can prepare this application to be ready in production mode by running
 ```shell
